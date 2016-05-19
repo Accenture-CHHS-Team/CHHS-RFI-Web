@@ -1,0 +1,24 @@
+{
+  "name": "chhs-prototype-frontend",
+  "description": "California Health and Human Services - Front End Prototype",
+  "main": "dist/index.html",
+  "authors": [
+    "Chaotic Moon"
+  ],
+  "license": "ISC",
+  "moduleType": [
+    "es6"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.6"
+  }
+}
