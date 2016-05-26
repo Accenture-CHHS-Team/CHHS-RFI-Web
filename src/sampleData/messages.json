@@ -1,0 +1,17 @@
+[
+	{
+		"sender": "Lisa",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet aliquam semper. Ut gravida massa a justo finibus tempus. Nulla sit amet sapien nec ligula bibendum rhoncus. Praesent accumsan sed risus gravida ultrices. Quisque eleifend, quam in ornare vestibulum, enim elit placerat arcu, in ullamcorper enim libero vitae mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+		"date": "2016-05-24T18:09:52+00:00"
+	},
+	{
+		"sender": "Lisa",
+		"text": "Maecenas in nulla facilisis, dignissim metus at, feugiat lectus. Vestibulum luctus, lorem quis sollicitudin hendrerit, justo orci consequat ante, eu fermentum sapien arcu vel lorem. Cras iaculis tellus quis pretium aliquet. Aliquam maximus blandit purus eget vulputate. Donec iaculis dui velit, a vehicula ipsum molestie pretium.",
+		"date": "2016-05-23T18:09:52+00:00"
+	},
+	{
+		"sender": "Lisa",
+		"text": "Aliquam non mi quis tellus pulvinar finibus.",
+		"date": "2016-05-22T18:09:52+00:00"
+	}
+]

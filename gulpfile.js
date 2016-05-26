@@ -12,7 +12,13 @@ var gulp = require('gulp'),
 	minifycss = require('gulp-minify-css'),
 	imagemin = require('gulp-imagemin'),
 	connect = require('gulp-connect'),
-	gulpif = require('gulp-if');
+	gulpif = require('gulp-if'),
+	watchify = require('watchify'),
+	browserify = require('browserify'),
+	source = require('vinyl-source-stream'),
+	buffer = require('vinyl-buffer'),
+	sourcemaps = require('gulp-sourcemaps'),
+	babel = require('babelify');
 
 
 // Define project paths
@@ -45,7 +51,7 @@ var projectName = 'chhs-prototype-frontend',	// Used to prefix file names
 
 		// Bower CSS assets
 		bower_css: [
-			
+
 		],
 
 	},
@@ -139,22 +145,59 @@ gulp.task('js_vendor', ['clean_js'], function(){
 
 
 gulp.task('js', ['clean_js', 'js_vendor'], function(){
-	return gulp.src(files.js, { cwd: paths.source + 'js' })
-		.pipe(jshint(".jshintrc"))
-		.pipe(jshint.reporter('default'))
-		.pipe(plumber())
-		.pipe(jscs())
-		.pipe(jscs.reporter())
-		.pipe(plumber())
-		.pipe(concat(projectName + '.js'))
-		.pipe(gulp.dest('js', { cwd: paths.dist }))
+	return bundleJs()
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
 		.pipe(uglify())
+		.pipe(gulp.dest('js', { cwd: paths.dist }));
+	// return gulp.src(files.js, { cwd: paths.source + 'js' })
+	// 	.pipe(jshint(".jshintrc"))
+	// 	.pipe(jshint.reporter('default'))
+	// 	.pipe(plumber())
+	// 	.pipe(jscs())
+	// 	.pipe(jscs.reporter())
+	// 	.pipe(plumber())
+	// 	.pipe(concat(projectName + '.js'))
+	// 	.pipe(gulp.dest('js', { cwd: paths.dist }))
+	// 	.pipe(rename(function(path){
+	// 		path.basename += '.min';
+	// 	}))
+	// 	.pipe(uglify())
+	// 	.pipe(gulp.dest('js', { cwd: paths.dist }))
+	// 	.pipe(connect.reload());
+});
+
+var bundler = browserify(Object.assign({}, watchify.args, {
+		entries: ['./src/js/index.jsx'],
+		debug: true,
+		extensions: ['js', 'jsx']
+	})).transform(babel.configure({
+		// Use all of the ES2015 spec
+		presets: ['es2015', 'react']
+	})),
+	bundleWatcher = watchify(bundler);
+
+gulp.task('watch-js', watchBundleJs);
+bundleWatcher.on('update', watchBundleJs); // on any dep update, runs the bundler
+bundleWatcher.on('log', console.log); // output build logs to terminal
+
+function bundleJs() {
+	return bundler.bundle()
+		.on('error', console.log.bind(console, 'Browserify Error'))
+		.pipe(source('bundle.js'))
+		.pipe(buffer())
+		.pipe(gulp.dest('js', { cwd: paths.dist }));
+}
+
+function watchBundleJs() {
+	return bundleWatcher.bundle()
+		.on('error', console.log.bind(console, 'Browserify Error'))
+		.pipe(source('bundle.js'))
+		.pipe(buffer())
 		.pipe(gulp.dest('js', { cwd: paths.dist }))
 		.pipe(connect.reload());
-});
+}
 
 
 //-----------------------------------------
@@ -265,6 +308,10 @@ gulp.task('build', ['js', 'css', 'assets', 'images', 'fonts'], function() {
 	// Done!
 });
 
+gulp.task('build-dev', ['watch-js', 'css', 'assets', 'images', 'fonts'], function() {
+	// Done!
+});
+
 gulp.task('build_staging', ['clean_staging'], function() {
 	gulp.src(paths.dist + '**/*')
 		.pipe(gulp.dest(paths.staging));
@@ -288,8 +335,8 @@ gulp.task('serve-staging', ['build_staging'], function() {
 // Watch files during development
 gulp.task('watch', ['build'], function(){
 	gulp.watch(paths.source + 'sass/**/*.scss', ['css']);
-	gulp.watch(paths.source + 'js/**/*.js', ['js']);
-	gulp.watch(paths.source + 'js/**/*.jsx', ['js']);
+	// gulp.watch(paths.source + 'js/**/*.js', ['js']);
+	// gulp.watch(paths.source + 'js/**/*.jsx', ['js']);
 	gulp.watch(paths.source + 'images/**/*.*', ['images']);
 	gulp.watch(paths.source + 'fonts/**/*.*', ['fonts']);
 	gulp.watch(paths.source + 'jade/**/*.jade', ['templates']);
