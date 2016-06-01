@@ -37,7 +37,6 @@
   "dependencies": {
     "babelify": "^7.3.0",
     "flux": "^2.1.1",
-    "nuka-carousel": "^1.2.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",

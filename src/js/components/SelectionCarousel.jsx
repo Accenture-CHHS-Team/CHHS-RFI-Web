@@ -1,5 +1,4 @@
 var React = require('React'),
-	// Carousel = require('nuka-carousel');
 	Carousel = require('react-slick');
 
 module.exports = React.createClass({
