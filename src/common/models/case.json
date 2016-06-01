@@ -1,0 +1,61 @@
+{
+  "name": "Case",
+  "plural": "Cases",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "CaseNumber": {
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    "CreatedOn": {
+      "type": "date"
+    },
+    "IsActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owner": {
+      "type": "belongsTo",
+      "model": "Identity",
+      "foreignKey": ""
+    },
+    "facilities": {
+      "type": "embedsMany",
+      "model": "CaseFacilityFacade",
+      "foreignKey": "caseId"
+    },
+    "connections": {
+      "type": "hasMany",
+      "model": "CaseConnection",
+      "foreignKey": "caseId"
+    },
+    "comforts": {
+      "type": "embedsMany",
+      "model": "CaseComfort",
+      "foreignKey": "caseId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

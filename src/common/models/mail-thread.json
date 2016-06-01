@@ -1,0 +1,54 @@
+{
+  "name": "MailThread",
+  "plural": "MailThreads",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "CreatedOn": {
+      "type": "date"
+    },
+    "LastUpdated": {
+      "type": "date"
+    },
+    "IsActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "client": {
+      "type": "belongsTo",
+      "model": "Identity",
+      "foreignKey": ""
+    },
+    "caseworker": {
+      "type": "belongsTo",
+      "model": "Identity",
+      "foreignKey": ""
+    },
+    "messages": {
+      "type": "hasMany",
+      "model": "MailMessage",
+      "foreignKey": "threadId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

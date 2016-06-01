@@ -1,0 +1,31 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "facilities": {
+    "name": "facilities",
+    "baseURL": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
+    "crud": false,
+    "connector": "rest",
+    "debug": false,
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "X-App-Token": "A_TOKEN_GOES_HERE"
+          },
+          "query": {
+            "facility_status": "LICENSED",
+            "$where": "within_circle(location, {long}, {lat}, {dist})"
+          }
+        },
+        "functions": {}
+      }
+    ]
+  }
+}

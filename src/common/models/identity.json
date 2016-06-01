@@ -1,0 +1,68 @@
+{
+  "name": "Identity",
+  "plural": "Identities",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FirstName": {
+      "type": "string"
+    },
+    "LastName": {
+      "type": "string"
+    },
+    "MiddleName": {
+      "type": "string"
+    },
+    "DateOfBirth": {
+      "type": "date"
+    },
+    "Gender": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "postaladdresses": {
+      "type": "hasMany",
+      "model": "PostalAddress",
+      "foreignKey": "identityId"
+    },
+    "connectionstocases": {
+      "type": "hasMany",
+      "model": "CaseConnection",
+      "foreignKey": "identityId"
+    },
+    "cases": {
+      "type": "hasMany",
+      "model": "Case",
+      "foreignKey": "clientIdentityId"
+    },
+    "clientthreads": {
+      "type": "hasMany",
+      "model": "MailThread",
+      "foreignKey": "clientIdentityId"
+    },
+    "caseworkerthreads": {
+      "type": "hasMany",
+      "model": "MailThread",
+      "foreignKey": "workerIdentityId"
+    },
+    "messages": {
+      "type": "hasMany",
+      "model": "MailMessage",
+      "foreignKey": "authorIdentityId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
