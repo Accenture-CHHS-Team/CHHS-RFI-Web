@@ -3,6 +3,44 @@
     "name": "db",
     "connector": "memory"
   },
+  "geocoder": {
+    "name": "geocoder",
+    "baseURL": "http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx",
+    "crud": false,
+    "connector": "rest",
+    "debug": true,
+    "operations": [
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "streetAddress": "{address}",
+            "city": "{city}",
+            "state": "{state}",
+            "zip": "{zip}",
+            "apikey": "TAMU_GEO_TOKEN_GOES_HERE",
+            "format": "json",
+            "allowTies": "true",
+            "notStore": "false",
+            "version": "4.01"
+          }
+        },
+        "functions": {
+          "geocode": [
+            "address",
+            "city",
+            "state",
+            "zip"
+          ]
+        }
+      }
+    ]
+  },
   "facilities": {
     "name": "facilities",
     "baseURL": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
@@ -21,12 +59,14 @@
           },
           "query": {
             "facility_status": "LICENSED",
-            "location_zip":"{zip}"
+            "location_zip": "{zip}"
           }
         },
         "functions": {
-          "list":[],
-          "listByZip":["zip"]
+          "list": [],
+          "listByZip": [
+            "zip"
+          ]
         }
       }
     ]

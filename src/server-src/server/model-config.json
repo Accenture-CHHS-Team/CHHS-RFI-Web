@@ -79,5 +79,9 @@
   "Facility": {
     "dataSource": "facilities",
     "public": true
+  },
+  "GeocodedPoint": {
+    "dataSource": "geocoder",
+    "public": true
   }
 }
