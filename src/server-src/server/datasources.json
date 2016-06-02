@@ -8,7 +8,7 @@
     "baseURL": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
     "crud": false,
     "connector": "rest",
-    "debug": false,
+    "debug": true,
     "operations": [
       {
         "template": {
@@ -17,14 +17,17 @@
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
-            "X-App-Token": "A_TOKEN_GOES_HERE"
+            "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
           },
           "query": {
             "facility_status": "LICENSED",
-            "$where": "within_circle(location, {long}, {lat}, {dist})"
+            "location_zip":"{zip}"
           }
         },
-        "functions": {}
+        "functions": {
+          "list":[],
+          "listByZip":["zip"]
+        }
       }
     ]
   }

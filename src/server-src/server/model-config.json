@@ -15,9 +15,9 @@
   },
   "User": {
     "dataSource": "db",
-    "public":true,
-    "options":{
-      "emailVerificationRequired":false
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
     }
   },
   "AccessToken": {
@@ -36,9 +36,9 @@
     "dataSource": "db",
     "public": false
   },
-  "Person":{
-    "dataSource":"db",
-    "public":false
+  "Person": {
+    "dataSource": "db",
+    "public": false
   },
   "Case": {
     "dataSource": "db",
