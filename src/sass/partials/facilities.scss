@@ -11,5 +11,16 @@
 		.info {
 
 		}
+
+		.link {
+			display: block;
+			width: 20px;
+			height: 30px;
+			margin-top: 55px;
+			text-indent: -9999px;
+			overflow: hidden;
+			background: transparent url(../images/caret-right.png) no-repeat scroll center center;
+			background-size: 50%;
+		}
 	}
 }

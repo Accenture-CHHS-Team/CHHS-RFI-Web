@@ -29,10 +29,13 @@ module.exports = React.createClass({
 						<div className="col-xs-3 image">
 
 						</div>
-						<div className="col-xs-9 info">
+						<div className="col-xs-8 info">
 							<h3>{item.name}</h3>
 							<span className="distance">{item.distance}</span>
 							<p>{item.description}</p>
+						</div>
+						<div className="col-xs-1 link-col text-center">
+							<Link to="/" className="link">View Facility</Link>
 						</div>
 					</div>
 				</div>
