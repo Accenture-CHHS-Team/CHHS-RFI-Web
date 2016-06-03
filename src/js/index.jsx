@@ -6,14 +6,20 @@ var React = require('react'),
 	hashHistory = require('react-router').hashHistory,
 	Login = require('./views/login.jsx'),
 	Onboarding = require('./views/Onboarding.jsx'),
-	Dashboard = require('./views/Dashboard.jsx');
+	Dashboard = require('./views/Dashboard.jsx'),
+	FFAPage = require('./views/ffa.jsx'),
+	Header = require('./components/Header.jsx');
 
 // Render the app
 ReactDOM.render(
-	<Router history={hashHistory}>
-		<Route path="/" component={Login}/>
-		<Route path="/onboarding" component={Onboarding}/>
-		<Route path="/dashboard" component={Dashboard}/>
-	</Router>,
+	<div>
+		<Header />
+		<Router history={hashHistory}>
+			<Route path="/login" component={Login} />
+			<Route path="/" component={Onboarding} />
+			<Route path="/dashboard" component={Dashboard} />
+			<Route path="/ffa" component={FFAPage} />
+		</Router>
+	</div>,
 	document.getElementById('app')
 );
