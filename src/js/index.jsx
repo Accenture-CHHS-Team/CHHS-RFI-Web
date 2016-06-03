@@ -5,8 +5,8 @@ var React = require('react'),
 	Route = require('react-router').Route,
 	hashHistory = require('react-router').hashHistory,
 	Login = require('./views/login.jsx'),
-	Onboarding = require('./views/Onboarding.jsx'),
-	Dashboard = require('./views/Dashboard.jsx'),
+	Onboarding = require('./views/onboarding.jsx'),
+	Dashboard = require('./views/dashboard.jsx'),
 	FFAPage = require('./views/ffa.jsx'),
 	Header = require('./components/Header.jsx');
 

@@ -5,7 +5,7 @@
 	}
 
 	.item {
-
+		cursor: pointer;
 		text-align: center;
 
 		.image {
@@ -13,6 +13,14 @@
 			background: $gray-lighter none no-repeat scroll center center;
 			margin: 0 0 1em 0;
 			background-size: 40%;
+			border: 5px solid transparent;
+			transition: border .2s linear;
+		}
+
+		&.selected {
+			.image {
+				border: 5px solid $brand-success;
+			}
 		}
 
 		// Item styles

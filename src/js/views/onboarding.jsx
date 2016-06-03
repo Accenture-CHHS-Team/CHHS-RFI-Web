@@ -1,12 +1,15 @@
 var React = require('React'),
+	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	Link = require('react-router').Link,
 	ProfileStore = require('../stores/ProfileStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	OptionsStore = require('../stores/OptionsStore'),
+	OptionsActions = require('../actions/OptionsActions'),
 	Hero = require('../components/Hero.jsx'),
 	SelectionCarousel = require('../components/SelectionCarousel.jsx');
 
 module.exports = React.createClass({
+	
 	getInitialState() {
 		var data = {
 			profile: ProfileStore.getData(),
@@ -21,14 +24,50 @@ module.exports = React.createClass({
 
 		return data;
 	},
+
+	componentDidMount() {
+		OptionsStore.on('change', function() {
+			this.setState({
+				options: OptionsStore.getData()
+			});
+		}.bind(this));
+	},
+
+	componentWillUnmount() {
+		OptionsStore.removeListener('change');
+	},
+
+	selectionsChanged(name, value) {
+		OptionsActions.selectOption(name, value);
+	},
+
+	getOptions(key) {
+		return typeof this.state.options[key] === 'object' ? this.state.options[key] : [];
+	},
+	
 	render() {
 		return (
 			<div>
 				<Hero data={this.state.heroData} />
 				<div className="container text-center">
-					<SelectionCarousel title="Family" body="So we can match {this.state.child.name} to something familiar, can you describe how your home is organized?" items={this.state.options.familyTypes} />
-					<SelectionCarousel title="Bed Times" body="When does {this.state.child.name} go to bed?" items={this.state.options.bedTimes} />
-					<SelectionCarousel title="Daily Routines" body="What are some of {this.state.child.name} routines?" items={this.state.options.dailyRoutines} />
+					<SelectionCarousel 
+						name="familyTypes"
+						onChange={this.selectionsChanged}
+						title="Family" 
+						body="So we can match {this.state.child.name} to something familiar, can you describe how your home is organized?" 
+						items={this.getOptions('familyTypes')} />
+					<SelectionCarousel 
+						name="bedTimes"
+						onChange={this.selectionsChanged}
+						title="Bed Times" 
+						body="When does {this.state.child.name} go to bed?" 
+						items={this.getOptions('bedTimes')} />
+					<SelectionCarousel 
+						name="dailyRoutines"
+						onChange={this.selectionsChanged}
+						title="Daily Routines" 
+						body="What are some of {this.state.child.name} routines?" 
+						items={this.getOptions('dailyRoutines')} />
 					<p style={{marginTop: '2em', marginBottom: '2em'}}>
 						<Link to="/ffa" className="btn btn-default">Next</Link>
 					</p>
