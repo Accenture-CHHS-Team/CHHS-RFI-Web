@@ -3,20 +3,31 @@ var React = require('React'),
 
 module.exports = React.createClass({
 	
-	getInitialState() {
+	getDefaultProps() {
 		return {
+			onChange: function() {},
+			items: [],
+			name: ''
 		};
+	},
+
+	handleSelection(e) {
+		var value = e.currentTarget.getAttribute('data-value');
+		this.props.onChange(this.props.name, value);
 	},
 
 	render() {
 		var items = this.props.items.map(function(item, i) {
 			return (
-				<div key={i} className={'item ' + item.style}>
+				<div key={i} 
+					data-value={item.value} 
+					className={'item ' + item.style + (item.selected ? ' selected' : '')} 
+					onClick={this.handleSelection}>
 					<div className="image"></div>
 					<span class="title">{item.title}</span>
 				</div>
 			);
-		});
+		}.bind(this));
 		var settings = {
 			dots: false,
 			infinite: false,
