@@ -50,7 +50,6 @@ module.exports = React.createClass({
 			}
 		}
 		if(current) {
-			console.log($(current).attr('id'));
 			$('nav a').removeClass('selected');
 			$('nav a[href="#' + $(current).attr('id') + '"]').addClass('selected');
 		}
