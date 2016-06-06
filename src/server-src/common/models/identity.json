@@ -21,6 +21,9 @@
     },
     "Gender": {
       "type": "string"
+    },
+    "CurrentCaseNumber": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -58,10 +61,46 @@
   },
   "acls": [
     {
-      "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "ALLOW",
+      "property":"resetPassword",
+      "accessType":"EXECUTE"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "register"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "login"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":"logout",
+      "accessType":"EXECUTE"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property":"findById",
+      "accessType":"EXECUTE"
+    },
+    {
+      "accessType":"EXECUTE",
+      "principalType":"ROLE",
+      "principalId":"$everyone",
+      "permission":"ALLOW",
+      "property":"find"
     }
   ],
   "methods": {}
