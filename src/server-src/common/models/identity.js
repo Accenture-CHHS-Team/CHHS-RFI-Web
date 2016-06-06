@@ -1,6 +1,11 @@
 var Faker = require('faker');
+var Utils = require('../utils');
+
+
 
 module.exports = function(Identity) {
+  Utils.disableAllMethods(Identity, ["findById", "login", "logout", "confirm", "resetPassword"]);
+
   Identity.register = function(email, pass, firstName, lastName, caseId, cb){
     Identity.create({email:email, password:pass}, function (err, identityInstance){
       if(err !== null){
