@@ -1,4 +1,5 @@
 var React = require('React'),
+	ExecutionEnvironment = require('react/node_modules/fbjs/lib/ExecutionEnvironment'),
 	Link = require('react-router').Link,
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	OptionsStore = require('../stores/OptionsStore'),
@@ -19,6 +20,40 @@ module.exports = React.createClass({
 			bedTimes: OptionsStore.getSelectedByKey('bedTimes'),
 			dailyRoutines: OptionsStore.getSelectedByKey('dailyRoutines')
 		};
+	},
+	componentDidMount() {
+	    if (ExecutionEnvironment.canUseDOM) {
+			document.addEventListener('scroll', this.handleScroll);
+			// Fire scroll for the first time
+			this.handleScroll();
+		}
+	},
+	componentWillUnmount() {
+		document.removeEventListener('scroll', this.handleScroll);
+	},
+	handleScroll(e) {
+		// Find first nav section above the fold
+		var sections = $('section'),
+			i = 0,
+			l = sections.length,
+			scroll = $(window).scrollTop(),
+			current,
+			section,
+			offset;
+		for(; i < l; i++) {
+			section = sections[i];
+			offset = $(section).offset().top + ($(section).height() * .8);	// Nav should switch when it's 80% throuth the section
+			if(offset - scroll > 0) {
+				// Found it!
+				current = section;
+				break;
+			}
+		}
+		if(current) {
+			console.log($(current).attr('id'));
+			$('nav a').removeClass('selected');
+			$('nav a[href="#' + $(current).attr('id') + '"]').addClass('selected');
+		}
 	},
 	render() {
 		var types = Object.keys(this.state.options),
@@ -53,9 +88,9 @@ module.exports = React.createClass({
 						</div>
 						<Sticky>
 							<nav className="row text-center">
-								<a href="#" className="col-xs-4 selected">Your family</a>
-								<a href="#" className="col-xs-4">Foster care</a>
-								<a href="#" className="col-xs-4">Chat with your caseworker</a>
+								<a href="#your-family" className="col-xs-4">Your family</a>
+								<a href="#facilities" className="col-xs-4">Foster care</a>
+								<a href="#chat" className="col-xs-4">Chat with your caseworker</a>
 							</nav>
 						</Sticky>
 
