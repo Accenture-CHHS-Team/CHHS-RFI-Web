@@ -6,9 +6,9 @@ module.exports = React.createClass({
 		return (
 			<header id="main-head">
 				<div className="container">
-					<h1 id="logo">Parent's Caring Portal</h1>
+					<h1 id="logo">Parents Caring Portal</h1>
 					<nav>
-						<Link to="/dashboard">My Account</Link>
+						<Link to="/login">Sign Out</Link>
 					</nav>
 				</div>
 			</header>
