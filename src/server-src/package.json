@@ -8,6 +8,7 @@
     "posttest": "nsp check"
   },
   "dependencies": {
+    "chai": "^3.5.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "faker": "^3.1.0",
@@ -20,6 +21,8 @@
     "loopback-connector-rest": "^2.0.0",
     "loopback-datasource-juggler": "^2.46.0",
     "serve-favicon": "^2.0.1",
+    "should": "^9.0.0",
+    "supertest": "^1.2.0",
     "yeoman-environment": "^1.6.1"
   },
   "devDependencies": {

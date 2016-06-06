@@ -61,11 +61,11 @@
   },
   "acls": [
     {
+      "accessType": "EXECUTE",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"resetPassword",
-      "accessType":"EXECUTE"
+      "property": "resetPassword"
     },
     {
       "accessType": "EXECUTE",
@@ -82,25 +82,25 @@
       "property": "login"
     },
     {
+      "accessType": "EXECUTE",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW",
-      "property":"logout",
-      "accessType":"EXECUTE"
+      "property": "logout"
     },
     {
+      "accessType": "EXECUTE",
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW",
-      "property":"findById",
-      "accessType":"EXECUTE"
+      "property": "findById"
     },
     {
-      "accessType":"EXECUTE",
-      "principalType":"ROLE",
-      "principalId":"$everyone",
-      "permission":"ALLOW",
-      "property":"find"
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
     }
   ],
   "methods": {}
