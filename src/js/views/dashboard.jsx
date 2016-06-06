@@ -5,7 +5,9 @@ var React = require('React'),
 	Option = require('../components/Option.jsx'),
 	ChatBox = require('../components/ChatBox.jsx'),
 	FacilitiesStore = require('../stores/FacilitiesStore'),
-	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList;
+	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList,
+	StickyContainer = require('react-sticky').StickyContainer,
+	Sticky = require('react-sticky').Sticky;
 
 module.exports = React.createClass({
 	getInitialState() {
@@ -41,18 +43,19 @@ module.exports = React.createClass({
 			}.bind(this));
 		
 		return (
-			<div className="dashboard container">
+			<StickyContainer className="dashboard container">
 				<div className="row">
 					<div className="col-xs-12">
 						<div className="notification">
 							Welcome to your caring dashboard. Here you can suggest comforts for {this.state.child.name} and also chat with your caseworker
 						</div>
-
-						<nav className="row text-center">
-							<a href="#" className="col-xs-4 selected"><span>Your family</span></a>
-							<a href="#" className="col-xs-4"><span>Foster care</span></a>
-							<a href="#" className="col-xs-4"><span>Chat with your caseworker</span></a>
-						</nav>
+						<Sticky>
+							<nav className="row text-center">
+								<a href="#" className="col-xs-4 selected"><span>Your family</span></a>
+								<a href="#" className="col-xs-4"><span>Foster care</span></a>
+								<a href="#" className="col-xs-4"><span>Chat with your caseworker</span></a>
+							</nav>
+						</Sticky>
 
 						<section id="your-family">
 							<p>You know your house best. By updating this list, you can help Jaden find a place that is familiar. Here’s what you’ve said so far:</p>
@@ -89,7 +92,7 @@ module.exports = React.createClass({
 						</section>
 					</div>
 				</div>
-			</div>
+			</StickyContainer>
 		)
 	}
 });

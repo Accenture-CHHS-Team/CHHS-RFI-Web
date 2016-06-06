@@ -1,12 +1,17 @@
 .dashboard {
 	padding: 3em 0;
 
+	.sticky {
+		z-index: 1000;
+	}
+
 	nav {
+		background-color: $white;
 		a {
 			span {
 				display: block;
-				padding-top: .5em;
-				padding-bottom: .5em;
+				padding-top: 1em;
+				padding-bottom: 1em;
 				border-bottom: 4px solid transparent;
 			}
 			&.selected {
@@ -50,7 +55,7 @@
 			text-align: center;
 		}
 		.conversation {
-			padding: 1em;
+			// padding: 1em;
 		}
 	}
 
