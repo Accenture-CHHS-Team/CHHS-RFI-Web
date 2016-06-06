@@ -14,10 +14,13 @@ var OptionsStore = Object.assign({}, EventEmitter.prototype, {
 	},
 
 	getSelectedByKey: function(key) {
-		var selected = [];
-		for(var i = 0, l = data[key].length; i < l; i++) {
-			if(data[key][i].selected) {
-				selected.push(data[key][i]);
+		var selected = [],
+			options = data[key].options,
+			i = 0, 
+			l = options.length;
+		for(var i = 0, l = options.length; i < l; i++) {
+			if(typeof options[i].selected === 'boolean' && options[i].selected === true) {
+				selected.push(options[i]);
 			}
 		}
 
@@ -29,13 +32,17 @@ var OptionsStore = Object.assign({}, EventEmitter.prototype, {
 		// Make sure it's an existing key
 		if(data[key] === 'undefined') return false;
 
-		for(var i = 0, l = data[key].length; i < l; i++) {
+		var options = data[key].options,
+			i = 0, 
+			l = options.length;
+
+		for(; i < l; i++) {
 			// Should only one be selected?
-			data[key][i].selected = false;
+			options[i].selected = false;
 
 			// If it's the one 
-			if (data[key][i].value === value) {
-				data[key][i].selected = data[key][i].selected ? false : true;
+			if (options[i].value === value) {
+				options[i].selected = options[i].selected ? false : true;
 			}
 		}
 

@@ -1,16 +1,9 @@
-var React = require('React'),
-	MessagesStore = require('../stores/MessagesStore');
+var React = require('React');
 
 module.exports = React.createClass({
-	
-	getInitialState() {
-		return {
-			messages: MessagesStore.getAll()
-		};
-	},
 
 	render() {
-		var items = this.state.messages.map(function(item, i) {
+		var items = this.props.messages.map(function(item, i) {
 			return (
 				<li key={i}>
 					<span className="sender">From: {item.sender}</span>

@@ -49,7 +49,7 @@ module.exports = React.createClass({
 	},
 
 	getOptions(key) {
-		return typeof this.state.options[key] === 'object' ? this.state.options[key] : [];
+		return typeof this.state.options[key] === 'object' ? this.state.options[key].options : [];
 	},
 	
 	render() {
