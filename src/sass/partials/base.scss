@@ -11,10 +11,16 @@ h1, h2, h3, h4, h5 {
 	max-width: 970px;
 }
 
-.messages {
+.notification {
+	background: $notification-background;
 	padding: 2em;
-	background: $gray-lighter;
-	border: 1px solid $gray-light;
+	margin-bottom: 2em;
+}
+
+.messages {
+	// padding: 2em;
+	// background: $gray-lighter;
+	// border: 1px solid $gray-light;
 }
 
 ul.messages-list {

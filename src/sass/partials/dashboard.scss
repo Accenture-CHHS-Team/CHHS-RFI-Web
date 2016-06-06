@@ -1,0 +1,63 @@
+.dashboard {
+	padding: 3em 0;
+
+	nav {
+		a {
+			span {
+				display: block;
+				padding-top: .5em;
+				padding-bottom: .5em;
+				border-bottom: 4px solid transparent;
+			}
+			&.selected {
+				span {
+					border-bottom-color: $brand-primary;
+				}
+			}
+		}
+	}
+
+	section {
+		background-color: $gray-lighter;
+		padding: 1em 0 0 0;
+		margin-bottom: 2em;
+	}
+
+	#your-family {
+		text-align: center;
+		.row {
+			padding: 1em 0;
+		}
+		.footer {
+			background-color: #ebebeb;
+			padding: .5em;
+		}
+	}
+
+	#facilities {
+		padding: 1em;
+		.facility {
+			p { display: none; }
+		}
+	}
+
+	#messages {
+		padding: 0;
+		.info {
+			padding: 1em;
+			background-color: $brand-primary;
+			color: #fff;
+			text-align: center;
+		}
+		.conversation {
+			padding: 1em;
+		}
+	}
+
+	.option {
+		.image {
+			background-color: transparent;
+			border-color: transparent;
+		}
+	}
+}

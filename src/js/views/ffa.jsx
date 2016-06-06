@@ -3,7 +3,8 @@ var React = require('React'),
 	ProfileStore = require('../stores/ProfileStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	FacilitiesStore = require('../stores/FacilitiesStore'),
-	Hero = require('../components/Hero.jsx');
+	Hero = require('../components/Hero.jsx'),
+	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList;
 
 module.exports = React.createClass({
 	getInitialState() {
@@ -22,30 +23,12 @@ module.exports = React.createClass({
 	},
 
 	render() {
-		var facilities = this.state.facilities.map(function(item, i) {
-			return (
-				<div key={i} className="facility">
-					<div className="row">
-						<div className="col-xs-3 image">
-
-						</div>
-						<div className="col-xs-8 info">
-							<h3>{item.name}</h3>
-							<span className="distance">{item.distance}</span>
-							<p>{item.description}</p>
-						</div>
-						<div className="col-xs-1 link-col text-center">
-							<Link to="/" className="link">View Facility</Link>
-						</div>
-					</div>
-				</div>
-			);
-		}.bind(this));
+		
 		return (
 			<div>
 				<Hero data={this.state.heroData} />
-				<div className="container facilities">
-					{facilities}
+				<div className="container">
+					<FacilitiesList facilities={this.state.facilities} />
 				</div>
 				<p className="text-center" style={{marginTop: '2em', marginBottom: '2em'}}>
 					<Link to="/" className="btn btn-default">Go Back</Link> 

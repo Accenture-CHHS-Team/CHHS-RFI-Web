@@ -1,4 +1,5 @@
 var React = require('React'),
+	Option = require('../components/Option.jsx'),
 	Carousel = require('react-slick');
 
 module.exports = React.createClass({
@@ -19,12 +20,8 @@ module.exports = React.createClass({
 	render() {
 		var items = this.props.items.map(function(item, i) {
 			return (
-				<div key={i} 
-					data-value={item.value} 
-					className={'item ' + item.style + (item.selected ? ' selected' : '')} 
-					onClick={this.handleSelection}>
-					<div className="image"></div>
-					<span class="title">{item.title}</span>
+				<div key={i}>
+					<Option item={item} onSelect={this.handleSelection} />
 				</div>
 			);
 		}.bind(this));
