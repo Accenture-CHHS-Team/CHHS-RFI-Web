@@ -12,9 +12,22 @@ h1, h2, h3, h4, h5 {
 }
 
 .notification {
+	position: relative;
 	background: $notification-background;
 	padding: 2em;
 	margin-bottom: 2em;
+	.close {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		display: block;
+		width: 15px;
+		height: 14px;
+		overflow: hidden;
+		text-indent: -9999px;
+		background: transparent url(../images/close-notification.png) no-repeat scroll center center;
+		background-size: 15px 14px;
+	}
 }
 
 .messages {

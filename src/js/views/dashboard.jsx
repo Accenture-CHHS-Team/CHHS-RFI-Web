@@ -13,6 +13,7 @@ var React = require('React'),
 module.exports = React.createClass({
 	getInitialState() {
 		return {
+			showNotification: true,
 			child: ChildProfileStore.getData(),
 			options: OptionsStore.getData(),
 			facilities: FacilitiesStore.getData(),
@@ -54,6 +55,12 @@ module.exports = React.createClass({
 			$('nav a[href="#' + $(current).attr('id') + '"]').addClass('selected');
 		}
 	},
+	hideNotification(e) {
+		e.preventDefault();
+		this.setState({
+			showNotification: false
+		});
+	},
 	render() {
 		var types = Object.keys(this.state.options),
 			selected = [],
@@ -74,17 +81,22 @@ module.exports = React.createClass({
 						{selectedOptions}
 					</div>
 				);
-			}.bind(this));
+			}.bind(this)),
+
+			notifications = this.state.showNotification ? (
+				<div className="row">
+					<div className="col-xs-12 notification">
+						<p>Welcome to your caring dashboard. Here you can suggest comforts for {this.state.child.name} and also chat with your caseworker.</p>
+						<a href="#" className="close" onClick={this.hideNotification}>Close</a>
+					</div>
+				</div>
+				) : '';
 		
 		return (
 			<StickyContainer className="dashboard container">
 				<div className="row">
 					<div className="col-xs-12">
-						<div className="row">
-							<div className="col-xs-12 notification">
-								Welcome to your caring dashboard. Here you can suggest comforts for {this.state.child.name} and also chat with your caseworker
-							</div>
-						</div>
+						{notifications}
 						<Sticky>
 							<nav className="row text-center">
 								<a href="#your-family" className="col-xs-4">Your family</a>
