@@ -26,15 +26,22 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount() {
-		OptionsStore.on('change', function() {
-			this.setState({
-				options: OptionsStore.getData()
-			});
-		}.bind(this));
+		// Bind event functions so that we can remove them later
+		this.binds = {
+			optionsStoreChanged: function() {
+				this.setState({
+					options: OptionsStore.getData()
+				});
+			}.bind(this)
+		}
+
+		// Add listeners
+		OptionsStore.on('change', this.binds.optionsStoreChanged);
 	},
 
 	componentWillUnmount() {
-		OptionsStore.removeListener('change');
+		// Remove Listeners
+		OptionsStore.removeListener('change', this.binds.optionsStoreChanged);
 	},
 
 	selectionsChanged(name, value) {
