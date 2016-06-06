@@ -46,35 +46,43 @@ module.exports = React.createClass({
 			<StickyContainer className="dashboard container">
 				<div className="row">
 					<div className="col-xs-12">
-						<div className="notification">
-							Welcome to your caring dashboard. Here you can suggest comforts for {this.state.child.name} and also chat with your caseworker
+						<div className="row">
+							<div className="col-xs-12 notification">
+								Welcome to your caring dashboard. Here you can suggest comforts for {this.state.child.name} and also chat with your caseworker
+							</div>
 						</div>
 						<Sticky>
 							<nav className="row text-center">
-								<a href="#" className="col-xs-4 selected"><span>Your family</span></a>
-								<a href="#" className="col-xs-4"><span>Foster care</span></a>
-								<a href="#" className="col-xs-4"><span>Chat with your caseworker</span></a>
+								<a href="#" className="col-xs-4 selected">Your family</a>
+								<a href="#" className="col-xs-4">Foster care</a>
+								<a href="#" className="col-xs-4">Chat with your caseworker</a>
 							</nav>
 						</Sticky>
 
-						<section id="your-family">
-							<p>You know your house best. By updating this list, you can help Jaden find a place that is familiar. Here’s what you’ve said so far:</p>
-							<div className="row">
-								{options}
+						<section id="your-family" className="row">
+							<div className="col-xs-12">
+								<p>You know your house best. By updating this list, you can help Jaden find a place that is familiar. Here’s what you’ve said so far:</p>
+								<div className="row">
+									{options}
+								</div>
+								<div className="row">
+									<div className="col-xs-12 footer text-right">
+										<Link to="/" className="btn btn-primary">Make Updates</Link>
+									</div>
+								</div>
 							</div>
-							<p className="footer text-right">
-								<Link to="/" className="btn btn-primary">Make Updates</Link>
-							</p>
 						</section>
 
-						<section id="facilities">
-							<FacilitiesList facilities={this.state.facilities} />
+						<section id="facilities" className="row">
+							<div className="col-xs-12">
+								<FacilitiesList facilities={this.state.facilities} />
+							</div>
 						</section>
 
-						<section id="messages">
-							<div className="row">
-								<div className="col-xs-4">
-									<div className="info">
+						<section id="chat" className="row">
+							<div className="col-xs-12">
+								<div className="row">
+									<div className="col-xs-4 info">
 										<h4>Lisa Lee</h4>
 										<p>You can send Lisa a message and she will get back to you as soon as possible.</p>
 										<hr/>
@@ -82,9 +90,7 @@ module.exports = React.createClass({
 										<p>(916) 874-3100 or <br/>(209) 744-0499</p>
 										<p>For emergencies dial 9-1-1 </p>
 									</div>
-								</div>
-								<div className="col-xs-8">
-									<div className="conversation">
+									<div className="col-xs-8 conversation">
 										<ChatBox />
 									</div>
 								</div>

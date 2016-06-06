@@ -1,5 +1,6 @@
 .dashboard {
-	padding: 3em 0;
+	padding-top: 3em;
+	padding-bottom: 3em;
 
 	.sticky {
 		z-index: 1000;
@@ -8,34 +9,34 @@
 	nav {
 		background-color: $white;
 		a {
-			span {
-				display: block;
-				padding-top: 1em;
-				padding-bottom: 1em;
-				border-bottom: 4px solid transparent;
-			}
+			padding-top: 1em;
+			padding-bottom: 1em;
+			border-bottom: 4px solid transparent;
 			&.selected {
-				span {
-					border-bottom-color: $brand-primary;
-				}
+				border-bottom-color: $brand-primary;
 			}
 		}
 	}
 
 	section {
 		background-color: $gray-lighter;
-		padding: 1em 0 0 0;
+		// padding: 1em 0 0 0;
 		margin-bottom: 2em;
 	}
 
 	#your-family {
 		text-align: center;
+		p {
+			margin: 1em 0;
+		}
 		.row {
-			padding: 1em 0;
+			padding-top: 1em;
+			padding-bottom: 1em;
 		}
 		.footer {
 			background-color: #ebebeb;
-			padding: .5em;
+			padding-top: 1em;
+			padding-bottom: 1em;
 		}
 	}
 
@@ -46,7 +47,8 @@
 		}
 	}
 
-	#messages {
+	#chat {
+		height: 400px;
 		padding: 0;
 		.info {
 			padding: 1em;
