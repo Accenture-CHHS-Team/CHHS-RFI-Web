@@ -1,3 +1,43 @@
 body {
-	
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 800;
+}
+
+.container {
+	// For now, this is the max width of the site.
+	max-width: 970px;
+}
+
+.notification {
+	position: relative;
+	background: $notification-background;
+	padding: 2em;
+	margin-bottom: 2em;
+	.close {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		display: block;
+		width: 15px;
+		height: 14px;
+		overflow: hidden;
+		text-indent: -9999px;
+		background: transparent url(../images/close-notification.png) no-repeat scroll center center;
+		background-size: 15px 14px;
+	}
+}
+
+.messages {
+	// padding: 2em;
+	// background: $gray-lighter;
+	// border: 1px solid $gray-light;
+}
+
+ul.messages-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
