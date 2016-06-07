@@ -3,6 +3,7 @@ var React = require('react'),
 	ProfileStore = require('../stores/ProfileStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	FacilitiesStore = require('../stores/FacilitiesStore'),
+	FacilitiesActions = require('../actions/FacilitiesActions'),
 	Hero = require('../components/Hero.jsx'),
 	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList;
 
@@ -36,11 +37,16 @@ module.exports = React.createClass({
 
 		// Add listeners
 		ProfileStore.on('change', this.binds.setState);
+		FacilitiesStore.on('change', this.binds.setState);
+
+		// Get facilities list
+		FacilitiesActions.getList();
 	},
 
 	componentWillUnmount() {
 		// Remove Listeners
 		ProfileStore.removeListener('change', this.binds.setState);
+		FacilitiesStore.removeListener('change', this.binds.setState);
 	},
 
 	render() {

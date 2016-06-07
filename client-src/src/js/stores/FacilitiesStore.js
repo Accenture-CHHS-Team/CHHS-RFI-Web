@@ -13,7 +13,7 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 		return data;
 	},
 
-	_updateFromServer: function(newData) {
+	_listFromServer: function(newData) {
 		data = newData;
 		this.emit('change');
 	},
@@ -21,8 +21,8 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 	dispatcherId: AppDispatcher.register(function(payload) {
 		var action = payload.action;
 		switch(action.type) {
-			case 'FACILITIES_SERVER_UPDATE':
-				FacilitiesStore._updateFromServer(action.data);
+			case 'GET_FACILITIES_LIST':
+				FacilitiesStore._listFromServer(action.data);
 				break;
 		}
 	}.bind(this))
