@@ -58,22 +58,21 @@ module.exports = function(Identity) {
     }
   );
 
-
   /*
-   * Note that remote method hooks consume the output of the remote method -- in this case, the object
-   * returned from the /Identities/register call, which is not an actual Identity instance. Hence, the
-   * use of the "response" key, which is the key of the response data defined in the /register
-   * remoteMethod() invocation above.
+   * Model hooks are deprecated, but this is a quick way to test triggered
+   * functionality. Operation hooks aren't fully-baked yet, despite the
+   * eager deprecation of mhooks.
    */
-  Identity.afterRemote('register', function(ctx, IdentityInstance, next){
+  console.log("Continuing to use model hooks until ophooks are more reliable.");
+  Identity.afterCreate =  function(next){
     console.log("Mocking case data with new Identity:");
-    console.log(IdentityInstance);
+    console.log(this);
     // create new case
     var Case = Identity.app.models.Case;
     var newCase = Case.create({
-      CaseNumber : IdentityInstance.result.CaseID,
-      ownerId : IdentityInstance.result.ID,
-      clientIdentityId : IdentityInstance.result.ID,
+      CaseNumber : this.CurrentCaseNumber,
+      ownerId : this.id,
+      clientIdentityId : this.id,
       CreatedOn : new Date()
     }, function(err, CaseInstance){
       if(err !== null){
@@ -81,12 +80,14 @@ module.exports = function(Identity) {
         return next(err);
       }
       console.log("Case successfully mocked.");
+      var caseId = CaseInstance.CaseNumber;
       // add child
+      
       // add caseworker
       if(next && typeof next === 'function'){
         return next(null, "ok");
       } 
     });
     
-  });
+  };
 };

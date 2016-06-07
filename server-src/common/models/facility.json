@@ -89,7 +89,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$unauthenticated",
+      "principalId": "$everyone",
       "permission": "ALLOW"
     }
   ],
