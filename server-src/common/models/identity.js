@@ -33,8 +33,6 @@ module.exports = function(Identity) {
             return cb("Identity update failed: " + err);
           }
           console.log(obj);
-          // create child person
-          
           return cb(null, {OK : true, Email : email, CaseID : caseId, ID: obj.id}, "application/json");
         }
       );
@@ -79,11 +77,27 @@ module.exports = function(Identity) {
         console.log("Error reported when mocking case data: " + err);
         return next(err);
       }
-      console.log("Case successfully mocked.");
-      var caseId = CaseInstance.CaseNumber;
-      // add child
       
-      // add caseworker
+      var caseId = CaseInstance.CaseNumber;
+      
+      CaseInstance.dependents.create({
+        FirstName : Faker.name.firstName()
+      }, function(err, DepInstance){
+        if(err !== null){
+          console.log("Error creating dependent: " + err);
+        }
+      });
+      
+      CaseInstance.caseworkers.create({
+        FirstName : Faker.name.firstName(),
+        LastName : Faker.name.lastName()
+      }, function(err, DepInstance){
+        if(err !== null){
+          console.log("Error creating caseworker: " + err);
+        }
+      });
+      
+      console.log("Case successfully mocked.");
       if(next && typeof next === 'function'){
         return next(null, "ok");
       } 

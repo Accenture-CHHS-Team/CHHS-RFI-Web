@@ -48,10 +48,6 @@
     "dataSource": "db",
     "public": true
   },
-  "CaseConnection": {
-    "dataSource": "db",
-    "public": true
-  },
   "Comfort": {
     "dataSource": "db",
     "public": true
@@ -68,10 +64,6 @@
     "dataSource": "db",
     "public": true
   },
-  "MailThread": {
-    "dataSource": "db",
-    "public": true
-  },
   "MailMessage": {
     "dataSource": "db",
     "public": true
@@ -82,6 +74,14 @@
   },
   "GeocodedPoint": {
     "dataSource": "geocoder",
+    "public": true
+  },
+  "Dependent": {
+    "dataSource": "db",
+    "public": true
+  },
+  "CaseWorker": {
+    "dataSource": "db",
     "public": true
   }
 }

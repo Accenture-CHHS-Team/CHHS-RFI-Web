@@ -38,15 +38,25 @@
       "model": "CaseFacilityFacade",
       "foreignKey": "caseId"
     },
-    "connections": {
-      "type": "hasMany",
-      "model": "CaseConnection",
-      "foreignKey": "caseId"
-    },
     "comforts": {
       "type": "embedsMany",
       "model": "CaseComfort",
       "foreignKey": "caseId"
+    },
+    "dependents": {
+      "type": "hasMany",
+      "model": "Dependent",
+      "foreignKey": "caseId"
+    },
+    "caseworkers":{
+      "type":"hasMany",
+      "model":"CaseWorker",
+      "foreignKey":"caseId"
+    },
+    "messages":{
+      "type":"hasMany",
+      "model":"MailMessage",
+      "foreignKey":"caseId"
     }
   },
   "acls": [
@@ -54,7 +64,7 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "ALLOW"
     },
     {
       "accessType": "EXECUTE",

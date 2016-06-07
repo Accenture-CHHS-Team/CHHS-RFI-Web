@@ -1,0 +1,14 @@
+{
+  "name": "CaseWorker",
+  "plural":"CaseWorkers",
+  "base": "Person",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

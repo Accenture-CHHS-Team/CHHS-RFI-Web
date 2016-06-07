@@ -10,7 +10,7 @@ function createIdentity(Identity){
       "email":"jsmith@mail-box.dom",
       "password":"CALHHS_USER_@ACN"
     }, function(err, ident){
-      
+      	
     });
 }
 
@@ -103,6 +103,6 @@ module.exports = function(app) {
     var Identity = app.models.Identity;
     var Case = app.models.Case;
     var Comfort = app.models.Comfort;
-    createComforts(Comfort);
+    //createComforts(Comfort);
     createIdentity(Identity);
 };
