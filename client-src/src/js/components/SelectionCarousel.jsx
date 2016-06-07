@@ -1,4 +1,4 @@
-var React = require('React'),
+var React = require('react'),
 	Option = require('../components/Option.jsx'),
 	Carousel = require('react-slick');
 

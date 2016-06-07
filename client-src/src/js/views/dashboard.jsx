@@ -1,4 +1,4 @@
-var React = require('React'),
+var React = require('react'),
 	ExecutionEnvironment = require('react/node_modules/fbjs/lib/ExecutionEnvironment'),
 	Link = require('react-router').Link,
 	ChildProfileStore = require('../stores/ChildProfileStore'),
