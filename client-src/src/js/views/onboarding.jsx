@@ -1,4 +1,4 @@
-var React = require('React'),
+var React = require('react'),
 	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	Link = require('react-router').Link,
 	ProfileStore = require('../stores/ProfileStore'),

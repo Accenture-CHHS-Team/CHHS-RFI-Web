@@ -1,4 +1,4 @@
-var React = require('React'),
+var React = require('react'),
 	MessagesStore = require('../stores/MessagesStore'),
 	MessageInput = require('./MessageInput.jsx'),
 	MessageList = require('./MessagesList.jsx'),

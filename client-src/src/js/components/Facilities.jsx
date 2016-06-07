@@ -1,4 +1,4 @@
-var React = require('React'),
+var React = require('react'),
 	Link = require('react-router').Link;
 
 var Facility = React.createClass({
