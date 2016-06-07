@@ -8,6 +8,10 @@ var React = require('react'),
 
 module.exports = React.createClass({
 	getInitialState() {
+		return this.getState();
+	},
+
+	getState() {
 		var data = {
 			profile: ProfileStore.getData(),
 			child: ChildProfileStore.getData(),
@@ -15,11 +19,28 @@ module.exports = React.createClass({
 		};
 
 		data.heroData = {
-			title: data.profile.name + ',',
+			title: data.profile.FirstName + ',',
 			bodyContent: '<p>There are many places that ' + data.child.name + ' can stay:<br/>with a relative, in county homes, or in foster family agencies. For ' + data.child.name + ', your caseworker has recommended these foster agencies within 5 miles of your location. You can explore them below:</p>'
 		};
 
 		return data;
+	},
+
+	componentDidMount() {
+		// Bind event functions so that we can remove them later
+		this.binds = {
+			setState: function() {
+				this.setState(this.getState());
+			}.bind(this)
+		};
+
+		// Add listeners
+		ProfileStore.on('change', this.binds.setState);
+	},
+
+	componentWillUnmount() {
+		// Remove Listeners
+		ProfileStore.removeListener('change', this.binds.setState);
 	},
 
 	render() {

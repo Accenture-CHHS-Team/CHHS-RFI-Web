@@ -25,7 +25,7 @@ var gulp = require('gulp'),
 var projectName = 'chhs-prototype-frontend',	// Used to prefix file names
 	paths = {
 		source: "src/",
-		dist: "dist/",
+		dist: "../server-src/client/",
 		staging: "dist-staging/"
 	},
 	files = {
@@ -94,23 +94,23 @@ gulp.task('clean', ['clean_css', 'clean_js', 'clean_html', 'clean_images'], func
 });
 
 gulp.task('clean_css', function (cb) {
-	del([paths.dist + 'css/**/*'], cb);
+	del([paths.dist + 'css/**/*'], {force: true}, cb);
 });
 
 gulp.task('clean_js', function (cb) {
-	del([paths.dist + 'js/**/*'], cb);
+	del([paths.dist + 'js/**/*'], {force: true}, cb);
 });
 
 gulp.task('clean_html', function (cb) {
-	del([paths.dist + '**/*.html', '!'+ paths.dist + 'blog/**'], cb);
+	del([paths.dist + '**/*.html', '!'+ paths.dist + 'blog/**'], {force: true}, cb);
 });
 
 gulp.task('clean_images', function (cb) {
-	del([paths.dist + 'images/**/*'], cb);
+	del([paths.dist + 'images/**/*'], {force: true}, cb);
 });
 
 gulp.task('clean_fonts', function (cb) {
-	del([paths.dist + 'fonts/**/*'], cb);
+	del([paths.dist + 'fonts/**/*'], {force: true}, cb);
 });
 
 gulp.task('clean_assets', function(cb) {
@@ -118,7 +118,7 @@ gulp.task('clean_assets', function(cb) {
 	for(var i = 0, l = files.assetsToCopy.length; i < l; i++) {
 		assets.push(paths.dist + files.assetsToCopy[i]);
 	}
-	del(assets, cb);
+	del(assets, {force: true}, cb);
 });
 
 gulp.task('clean_staging', function(cb) {
@@ -317,6 +317,10 @@ gulp.task('build_staging', ['clean_staging'], function() {
 		.pipe(gulp.dest(paths.staging));
 });
 
+// Dev
+gulp.task('dev', ['build-dev', 'watch'], function() {
+});
+
 // Serve
 gulp.task('serve', ['build'], function() {
 	return connect.server(serverOptions);
@@ -341,7 +345,6 @@ gulp.task('watch', ['build'], function(){
 	gulp.watch(paths.source + 'fonts/**/*.*', ['fonts']);
 	gulp.watch(paths.source + 'jade/**/*.jade', ['templates']);
 	gulp.watch(paths.source + 'jade/**/*.json', ['templates']);
-	gulp.watch(paths.source + files.authJson, ['auth']);
 
 	// Assets
 	var assets = [];
