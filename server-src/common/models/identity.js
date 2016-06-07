@@ -33,10 +33,6 @@ module.exports = function(Identity) {
             return cb("Identity update failed: " + err);
           }
           console.log(obj);
-          // create child person
-          var Person = identityInstance.app.models.Person;
-          var Case = identityInstance.app.models.Case;
-
           return cb(null, {OK : true, Email : email, CaseID : caseId, ID: obj.id}, "application/json");
         }
       );

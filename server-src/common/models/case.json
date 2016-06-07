@@ -52,6 +52,11 @@
       "type":"hasMany",
       "model":"CaseWorker",
       "foreignKey":"caseId"
+    },
+    "messages":{
+      "type":"hasMany",
+      "model":"MailMessage",
+      "foreignKey":"caseId"
     }
   },
   "acls": [

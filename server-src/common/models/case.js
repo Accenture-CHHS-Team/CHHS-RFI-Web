@@ -23,7 +23,11 @@ module.exports = function(Case) {
 		
 		"__findById__caseworkers", "__updateById__caseworkers", "__link__caseworkers", 
 		"__get__caseworkers", "__create__caseworkers", "__update__caseworkers", 
-		"__destroy__caseworkers", "__unlink__caseworkers", "__delete__caseworkers"
+		"__destroy__caseworkers", "__unlink__caseworkers", "__delete__caseworkers",
+		
+		"__findById__messages", "__updateById__messages", "__link__messages", 
+		"__get__messages", "__create__messages", "__update__messages", 
+		"__destroy__messages", "__unlink__messages", "__delete__messages"
 
    ]);
 };
