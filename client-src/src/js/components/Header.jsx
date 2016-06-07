@@ -8,7 +8,7 @@ module.exports = React.createClass({
 				<div className="container">
 					<h1 id="logo">Parents Caring Portal</h1>
 					<nav>
-						<Link to="/login">Sign Out</Link>
+						<a href="#/logout">Sign Out</a>
 					</nav>
 				</div>
 			</header>

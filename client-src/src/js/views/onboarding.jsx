@@ -11,6 +11,10 @@ var React = require('react'),
 module.exports = React.createClass({
 	
 	getInitialState() {
+		return this.getState();
+	},
+
+	getState() {
 		var data = {
 			profile: ProfileStore.getData(),
 			child: ChildProfileStore.getData(),
@@ -18,7 +22,7 @@ module.exports = React.createClass({
 		};
 
 		data.heroData = {
-			title: 'Hi ' + data.profile.name + ',',
+			title: 'Hi ' + data.profile.FirstName + ',',
 			bodyContent: '<p>Thank you for signing in to the Parent’s Caring Portal.</p><p>Since you know your home best, could you tell us a little bit about it? That will help us find the best place for ' + data.child.name + '.</p>'
 		};
 
@@ -28,20 +32,20 @@ module.exports = React.createClass({
 	componentDidMount() {
 		// Bind event functions so that we can remove them later
 		this.binds = {
-			optionsStoreChanged: function() {
-				this.setState({
-					options: OptionsStore.getData()
-				});
+			setState: function() {
+				this.setState(this.getState());
 			}.bind(this)
-		}
+		};
 
 		// Add listeners
-		OptionsStore.on('change', this.binds.optionsStoreChanged);
+		OptionsStore.on('change', this.binds.setState);
+		ProfileStore.on('change', this.binds.setState);
 	},
 
 	componentWillUnmount() {
 		// Remove Listeners
-		OptionsStore.removeListener('change', this.binds.optionsStoreChanged);
+		OptionsStore.removeListener('change', this.binds.setState);
+		ProfileStore.removeListener('change', this.binds.setState);
 	},
 
 	selectionsChanged(name, value) {

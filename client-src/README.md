@@ -9,5 +9,6 @@
 	* Run `$ bower install`
 
 ## Local Dev Environment
-* Build project to "dist" folder: `$ gulp`
-* Build project, serve at localhost:8000, and watch for changes: `$ gulp serve-dev`
+* From ../server-src/ run `$ node .` to start the server
+* Build project, and watch for changes: `$ gulp dev`
+* Browse at localhost:3000
