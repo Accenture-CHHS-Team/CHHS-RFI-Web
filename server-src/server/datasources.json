@@ -12,7 +12,7 @@
     "operations": [
       {
         "template": {
-          "method": "POST",
+          "method": "GET",
           "url": "http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx",
           "headers": {
             "accepts": "application/json",
