@@ -40,7 +40,9 @@ module.exports = React.createClass({
 		FacilitiesStore.on('change', this.binds.setState);
 
 		// Get facilities list
-		FacilitiesActions.getList();
+		// FacilitiesActions.getListByRadius();
+
+		// Try geocoding the user's address
 	},
 
 	componentWillUnmount() {

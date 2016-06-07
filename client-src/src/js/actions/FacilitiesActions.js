@@ -12,6 +12,24 @@ var FacilitiesActions = {
 					}
 				})
 			});
+	},
+	getListByRadius: function(lat, lng, radius) {
+		$.ajax({
+			url: ApiConstants.BASEURL + 'Facilities/listByRadius',
+			data: {
+				lat: lat,
+				long: lng,
+				radius: radius || 5
+			}
+		})
+		.then(function(data) {
+			AppDispatcher.dispatch({
+				action: {
+					type: 'GET_FACILITIES_LIST',
+					data: data
+				}
+			})
+		});
 	}
 };
 

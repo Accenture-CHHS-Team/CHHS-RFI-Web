@@ -126,20 +126,16 @@ module.exports = React.createClass({
 						</section>
 
 						<section id="chat" className="row">
-							<div className="col-xs-12">
-								<div className="row">
-									<div className="col-xs-4 info">
-										<h4>Lisa Lee</h4>
-										<p>You can send Lisa a message and she will get back to you as soon as possible.</p>
-										<hr/>
-										<p>To contact your caseworker you may also call:</p>
-										<p>(916) 874-3100 or <br/>(209) 744-0499</p>
-										<p>For emergencies dial 9-1-1 </p>
-									</div>
-									<div className="col-xs-8 conversation">
-										<ChatBox />
-									</div>
-								</div>
+							<div className="col-xs-4 info">
+								<h4>Lisa Lee</h4>
+								<p>You can send Lisa a message and she will get back to you as soon as possible.</p>
+								<hr/>
+								<p>To contact your caseworker you may also call:</p>
+								<p>(916) 874-3100 or <br/>(209) 744-0499</p>
+								<p>For emergencies dial 9-1-1 </p>
+							</div>
+							<div className="col-xs-8 conversation">
+								<ChatBox />
 							</div>
 						</section>
 					</div>
