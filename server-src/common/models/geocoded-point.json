@@ -1,0 +1,14 @@
+{
+  "name": "GeocodedPoint",
+  "plural": "GeocodedPoints",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
