@@ -33,11 +33,6 @@
       "model": "PostalAddress",
       "foreignKey": "identityId"
     },
-    "connectionstocases": {
-      "type": "hasMany",
-      "model": "CaseConnection",
-      "foreignKey": "identityId"
-    },
     "cases": {
       "type": "hasMany",
       "model": "Case",

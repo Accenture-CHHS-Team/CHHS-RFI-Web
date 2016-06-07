@@ -38,7 +38,7 @@
   },
   "validations": [],
   "relations": {
-    "person": {
+    "case": {
       "type": "belongsTo",
       "model": "Identity",
       "foreignKey": ""

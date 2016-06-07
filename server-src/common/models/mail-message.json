@@ -7,6 +7,15 @@
     "validateUpsert": true
   },
   "properties": {
+    "IsFromClient" : {
+      "type":"boolean",
+      "required":true,
+      "default":false
+    },
+    "MessageFrom" : {
+      "type":"string",
+      "required":true 
+    },
     "MessageBody": {
       "type": "string",
       "required": true
@@ -28,23 +37,14 @@
   },
   "validations": [],
   "relations": {
-    "author": {
-      "type": "belongsTo",
-      "model": "Identity",
-      "foreignKey": ""
-    },
-    "thread": {
-      "type": "belongsTo",
-      "model": "MailThread",
-      "foreignKey": ""
-    }
+    
   },
   "acls": [
     {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
