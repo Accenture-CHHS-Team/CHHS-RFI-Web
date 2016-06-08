@@ -3,9 +3,22 @@
 ##Team
 > Assigned one leader and gave that person authority and responsibility and held that person accountable for the quality of the prototype submitted
 
+< We established a Product Owner at the outset. They defined what success would look like for the project and then provided feedback, input and oversight at every stage.
+
 < 25 words
 
 > Assembled a multidisciplinary and collaborative team that includes, at a minimum, five of the labor categories as identified in Attachment C - ADPQ Vendor Pool Labor Category Descriptions
+
+< We assembled a multidisciplinary and collaborative team that included the following roles: 
+ 1. Product Manager - Michael Green 
+ 2. Technical Architect - Craig Mertens
+ 3. Interaction Designer - David Hindman
+ 4. Visual Designer - Essi Salonen
+ 5. Front End Web Developer - Matthew McCloskey
+ 6. Backend Web Developer - Daniel Haab
+ 7. DevOps Engineer - Jeffery Miles
+ 8. Delivery Manager - Z. Henry-Frazer
+ 9. Usability Tester/Agile Coach - Zane Sadler
 
 < 100 words
 
@@ -36,6 +49,8 @@ Concept Validation: With an overall concept of the service in mind, we brought h
 
 ## Development Process
 > Used an iterative approach, where feedback informed subsequent work or versions of the prototype
+
+< We began the project by defining the request and receiving an over view from the product owner. The team immediately collaborated to define an initial set of functionality which they felt met the goals of the effort and could be completed in the allocated time. We also established the cadence, roles and responsibilities of this specific agile development effort. We decided to implement 1 week sprints that would allow us to divide the output into finite deliverables while still provide enough time to make meaningful progress during each iteration. After establishing the initial user stories, the team focused on implementing the technical infrastructure needed to support them while also engaging in user research to further refine and prioritize those stories. This process involved capturing feedback across multiple iterations from users, the product owner and project team as the stories moved from sketches to wireframes and then visual designs. Technical development followed a similar cycle with elements of the complete application being deployed for review, testing and feedback as soon as they were available with usability testing and development happening in parallel as the team moved forward towards an MVP release. Feedback that couldn’t’ be supported for that initial release was captured in the backlog for consideration in subsequent iterations. 
 
 < 200 words
 
