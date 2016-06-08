@@ -101,7 +101,7 @@ module.exports = React.createClass({
 		return (
 			<span ref="wrapper">
 				<a ref="link" className="change-location" data-toggle="popover">{this.props.text}</a>
-				<span id="popover-target" className="content"><LocationForm onChange={this.handleChange} address={this.props.address} /></span>
+				<span className="content"><LocationForm onChange={this.handleChange} address={this.props.address} /></span>
 			</span>
 		);
 	}

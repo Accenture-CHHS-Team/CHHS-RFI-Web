@@ -45,7 +45,7 @@ var FacilitiesList = React.createClass({
 					FacilitiesStore.isListPending()
 						? <p className="text-center loading">Loading...</p>
 						: this.props.facilities.length === 0 
-							? <p className="text-center no-results">No facilities found in your area. <a href="#" onClick={this.changeAddress}>Try another address</a>.</p>
+							? <p className="text-center no-results">No facilities found in your area. Try another address.</p>
 							: facilities
 				}
 			</div>
