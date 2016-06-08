@@ -1,16 +1,27 @@
 
+
 function createIdentity(Identity){
     Identity.create({
       FirstName : "Jane",
       LastName : "Smith",
       MiddleName : "Q",
-      "DateOfBirth":"1990-01-01",
-      "Gender":"F",
-      "CurrentCaseNumber":"1234567890",
-      "email":"jsmith@mail-box.dom",
-      "password":"CALHHS_USER_@ACN"
+      DateOfBirth:"1990-01-01",
+      Gender:"F",
+      CurrentCaseNumber:"1234567890",
+      email:"jsmith@mail-box.dom",
+      password:"CALHHS_USER_@ACN"      
     }, function(err, ident){
-      	
+      	if(ident !== undefined && ident !== null){
+          ident.postaladdresses.create({
+          AddressLine1 : "7831 S Sepulveda Blvd",
+          City : "Los Angeles",
+          State : "CA",
+          PostalCode : "90045",
+          AddressType : "HOME"
+        }, function(err, ident){
+          
+        });
+        }
     });
 }
 
