@@ -8,6 +8,7 @@
     "posttest": "nsp check"
   },
   "dependencies": {
+    "bunyan": "^1.8.1",
     "chai": "^3.5.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",

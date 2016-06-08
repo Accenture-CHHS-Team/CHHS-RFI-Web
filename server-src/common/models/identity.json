@@ -29,7 +29,7 @@
   "validations": [],
   "relations": {
     "postaladdresses": {
-      "type": "hasMany",
+      "type": "embedsMany",
       "model": "PostalAddress",
       "foreignKey": "identityId"
     },
@@ -37,21 +37,6 @@
       "type": "hasMany",
       "model": "Case",
       "foreignKey": "clientIdentityId"
-    },
-    "clientthreads": {
-      "type": "hasMany",
-      "model": "MailThread",
-      "foreignKey": "clientIdentityId"
-    },
-    "caseworkerthreads": {
-      "type": "hasMany",
-      "model": "MailThread",
-      "foreignKey": "workerIdentityId"
-    },
-    "messages": {
-      "type": "hasMany",
-      "model": "MailMessage",
-      "foreignKey": "authorIdentityId"
     }
   },
   "acls": [
