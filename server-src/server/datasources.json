@@ -12,7 +12,7 @@
     "operations": [
       {
         "template": {
-          "method": "POST",
+          "method": "GET",
           "url": "http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx",
           "headers": {
             "accepts": "application/json",
@@ -58,13 +58,29 @@
             "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
           },
           "query": {
-            "facility_status": "LICENSED",
-            "location_zip": "{zip}",
-            "$where": "within_circle(location, {long}, {lat}, {radius})"
+            "facility_status": "LICENSED"
           }
         },
         "functions": {
-          "list": [],
+          "list": [           
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
+          },
+          "query": {
+            "facility_status": "LICENSED",
+            "$where": "within_circle(location, {lat}, {long}, {radius})"
+          }
+        },
+        "functions": {
           "listByRadius": [
             "long",
             "lat",
