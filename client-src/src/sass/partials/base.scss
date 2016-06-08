@@ -16,6 +16,9 @@ h1, h2, h3, h4, h5 {
 	background: $notification-background;
 	padding: 2em;
 	margin-bottom: 2em;
+	p:last-of-type {
+		margin-bottom: 0;
+	}
 	.close {
 		position: absolute;
 		top: 1em;

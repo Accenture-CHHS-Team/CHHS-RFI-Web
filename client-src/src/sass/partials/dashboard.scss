@@ -30,9 +30,9 @@
 		p {
 			margin: 1em 0;
 		}
-		.row {
-			padding-top: 1em;
-			padding-bottom: 1em;
+		.options {
+			padding-top: 3em;
+			padding-bottom: 3em;
 		}
 		.footer {
 			background-color: #ebebeb;
@@ -69,6 +69,18 @@
 			bottom: 0;
 			left: 0;
 			width: 30%;
+
+			.image {
+				width: 70px;
+				height: 70px;
+				background: $gray-lighter;
+				border-radius: 70px;
+				margin: 1em auto;
+				background-image: url(../images/mom.png);
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: contain;
+			}
 		}
 		.conversation {
 			padding: 1em;

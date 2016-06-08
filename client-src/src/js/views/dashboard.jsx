@@ -149,8 +149,8 @@ module.exports = React.createClass({
 			notifications = this.state.showNotification ? (
 				<div className="row">
 					<div className="col-xs-12 notification">
-						<p>Welcome to your caring dashboard. Here you can suggest comforts {!this.state.dependent.FirstName ? '' : 'for ' + this.state.dependent.FirstName} and also chat with your caseworker.</p>
 						<a href="#" className="close" onClick={this.hideNotification}>Close</a>
+						<p>Welcome to your caring dashboard. Here you can suggest comforts {!this.state.dependent.FirstName ? '' : 'for ' + this.state.dependent.FirstName} and also chat with your caseworker.</p>
 					</div>
 				</div>
 				) : '';
@@ -170,8 +170,8 @@ module.exports = React.createClass({
 
 						<section id="your-family" className="row">
 							<div className="col-xs-12">
-								<p>You know your house best. By updating this list, you can help Jaden find a place that is familiar. Here’s what you’ve said so far:</p>
-								<div className="row">
+								<p>You know your house best. By updating this list, you can help {this.state.dependent.FirstName} find a place that is familiar. Here’s what you’ve said so far:</p>
+								<div className="row options">
 									{options}
 								</div>
 								<div className="row">
@@ -184,6 +184,7 @@ module.exports = React.createClass({
 
 						<section id="facilities" className="row">
 							<div className="col-xs-12">
+								<p className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near your location:</p>
 								<FacilitiesList facilities={this.state.facilities} />
 							</div>
 						</section>
@@ -193,6 +194,7 @@ module.exports = React.createClass({
 								{
 									!this.state.caseworker.FirstName ? '' :
 									<div>
+										<div className="image"></div>
 										<h4>{this.state.caseworker.FirstName + ' ' + this.state.caseworker.LastName}</h4>
 										<p>You can send {this.state.caseworker.FirstName} a message and she will get back to you as soon as possible.</p>
 										<hr/>
