@@ -16,7 +16,7 @@ var Facility = React.createClass({
 					</div>
 					<div className="col-xs-8 info">
 						<h3>{toTitleCase(this.props.item.facility_name)}</h3>
-						<span className="distance">Capacity: {this.props.item.facility_capacity}</span>
+						<span className="distance">Distance: {Math.round((this.props.item.location.distance * 0.000621371) * 100) / 100} miles away</span>
 						<p>{toTitleCase(this.props.item.facility_type)}</p>
 					</div>
 					<div className="col-xs-1 link-col text-center">
