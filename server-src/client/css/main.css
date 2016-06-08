@@ -2703,6 +2703,10 @@ header#main-head {
 .selection-carousel .items {
   padding: 1em 0; }
 
+@media (max-width: 768px) {
+  .selection-carousel {
+    margin: 0 20px; } }
+
 .selection-carousel .option {
   cursor: pointer; }
 
@@ -2733,6 +2737,12 @@ header#main-head {
   .selection-carousel .slick-slider .slick-prev.slick-disabled, .selection-carousel .slick-slider .slick-next.slick-disabled {
     visibility: hidden; }
 
+@media (max-width: 768px) {
+  .selection-carousel .slick-slider .slick-prev {
+    left: -15px; }
+  .selection-carousel .slick-slider .slick-next {
+    right: -15px; } }
+
 .selection-carousel .slick-slider .slick-prev:before {
   background: transparent url(../images/caret-left.png) no-repeat scroll center center;
   background-size: 50%; }
@@ -2750,6 +2760,9 @@ header#main-head {
     background-size: 40%;
     border: 5px solid transparent;
     transition: border .2s linear; }
+    @media (max-width: 768px) {
+      .option .image {
+        height: 120px; } }
   .option.selected .image {
     border: 5px solid #07b895; }
   .option.family .image {
@@ -2858,6 +2871,8 @@ header#main-head {
         display: none; }
       .dashboard #facilities .facility .image {
         height: 120px; }
+      .dashboard #facilities .facility .link {
+        margin-top: 44px; }
   .dashboard #chat {
     height: 400px;
     padding: 0;
