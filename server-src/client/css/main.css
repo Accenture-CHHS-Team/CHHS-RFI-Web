@@ -2256,6 +2256,9 @@ header#main-head {
   padding: 30vh; }
   .login h1 {
     margin-bottom: 1em; }
+  .login .btn-login {
+    padding-left: 5em;
+    padding-right: 5em; }
 
 .hero {
   background: #19a1c9;
@@ -2427,10 +2430,10 @@ header#main-head {
       .dashboard #chat .info .image {
         width: 70px;
         height: 70px;
-        background: #eeeeee;
+        background: transparent;
         border-radius: 70px;
         margin: 1em auto;
-        background-image: url(../images/mom.png);
+        background-image: url(../images/lisa-avatar-big-dashboard.png);
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain; }
