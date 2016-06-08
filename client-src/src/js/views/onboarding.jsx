@@ -62,6 +62,18 @@ module.exports = React.createClass({
 	getOptions(key) {
 		return typeof this.state.options[key] === 'object' ? this.state.options[key].options : [];
 	},
+
+	allOptionsSelected() {
+		var options = OptionsStore.getData(),
+			allSelected = true;
+		Object.keys(options).forEach(function(key) {
+			if(OptionsStore.getSelectedByKey(key).length === 0) {
+				allSelected = false;
+			}
+		});
+
+		return allSelected;
+	},
 	
 	render() {
 		return (
@@ -87,7 +99,11 @@ module.exports = React.createClass({
 						body={!this.state.dependent.FirstName ? '' : 'What are some of ' + this.state.dependent.FirstName + ' routines?'} 
 						items={this.getOptions('dailyRoutines')} />
 					<p style={{marginTop: '2em', marginBottom: '2em'}}>
-						<Link to="/ffa" className="btn btn-default">Next</Link>
+						{
+							this.allOptionsSelected()
+								? <Link to="/ffa" className="btn btn-default">Next</Link>
+								: <p>Please make your selections above before continuing</p>
+						}
 					</p>
 				</div>
 			</div>
