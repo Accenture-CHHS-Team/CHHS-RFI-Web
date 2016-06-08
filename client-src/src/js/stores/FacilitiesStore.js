@@ -15,7 +15,6 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 
 	_listFromServer: function(newData) {
 		data = newData;
-		this.emit('change');
 	},
 
 	dispatcherId: AppDispatcher.register(function(payload) {
@@ -25,6 +24,7 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 				FacilitiesStore._listFromServer(action.data);
 				break;
 		}
+		this.emit('change');
 	}.bind(this))
 });
 

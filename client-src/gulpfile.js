@@ -318,7 +318,7 @@ gulp.task('build_staging', ['clean_staging'], function() {
 });
 
 // Dev
-gulp.task('dev', ['build-dev', 'watch'], function() {
+gulp.task('dev', ['build', 'watch'], function() {
 });
 
 // Serve

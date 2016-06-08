@@ -2436,8 +2436,7 @@ header#main-head {
         .dashboard #chat .conversation .messages-list li {
           padding: 1em;
           margin: 1em 0;
-          background: #ffffff;
-          border: 1px solid #777777; }
+          background: #ffffff; }
   .dashboard .option .image {
     background-color: transparent;
     border-color: transparent; }

@@ -1,6 +1,7 @@
 var React = require('react'),
 	ExecutionEnvironment = require('react/node_modules/fbjs/lib/ExecutionEnvironment'),
 	Link = require('react-router').Link,
+	ProfileStore = require('../stores/ProfileStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	OptionsStore = require('../stores/OptionsStore'),
 	Option = require('../components/Option.jsx'),
@@ -8,30 +9,65 @@ var React = require('react'),
 	FacilitiesStore = require('../stores/FacilitiesStore'),
 	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList,
 	StickyContainer = require('react-sticky').StickyContainer,
-	Sticky = require('react-sticky').Sticky;
+	Sticky = require('react-sticky').Sticky,
+	CaseStore = require('../stores/CaseStore'),
+	CaseActions = require('../actions/CaseActions');
 
 module.exports = React.createClass({
-	getInitialState() {
-		return {
+	getState() {
+		var data = {
 			showNotification: true,
 			child: ChildProfileStore.getData(),
 			options: OptionsStore.getData(),
 			facilities: FacilitiesStore.getData(),
 			familyTypes: OptionsStore.getSelectedByKey('familyTypes'),
 			bedTimes: OptionsStore.getSelectedByKey('bedTimes'),
-			dailyRoutines: OptionsStore.getSelectedByKey('dailyRoutines')
+			dailyRoutines: OptionsStore.getSelectedByKey('dailyRoutines'),
+			caseworker: CaseStore.getCaseWorker()
 		};
+
+		// Try to load the case worker
+		// var profile = ProfileStore.getData();
+		// if(Object.getOwnPropertyNames(data.caseworker).length === 0 && profile.CurrentCaseNumber) {
+		// 	CaseActions.getCaseWorker(profile.CurrentCaseNumber);
+		// }
+
+		// Test getting case
+		// if(ProfileStore.getData().CurrentCaseNumber) {
+		// 	CaseActions.getCase(ProfileStore.getData().CurrentCaseNumber);
+		// }
+
+		return data;
 	},
+
+	getInitialState() {
+		return this.getState();
+	},
+
+	updateState() {
+		var state = this.getState();
+		this.setState(state);
+	},
+
 	componentDidMount() {
+		// If we can use the dom, watch scrolling
 	    if (ExecutionEnvironment.canUseDOM) {
 			document.addEventListener('scroll', this.handleScroll);
 			// Fire scroll for the first time
 			this.handleScroll();
 		}
+
+		// Add listeners
+		ProfileStore.on('change', this.updateState);
+		CaseStore.on('change', this.updateState);
 	},
+
 	componentWillUnmount() {
 		document.removeEventListener('scroll', this.handleScroll);
+		ProfileStore.removeListener('change', this.updateState);
+		CaseStore.removeListener('change', this.updateState);
 	},
+
 	handleScroll(e) {
 		// Find first nav section above the fold
 		var sections = $('section'),
@@ -55,12 +91,14 @@ module.exports = React.createClass({
 			$('nav a[href="#' + $(current).attr('id') + '"]').addClass('selected');
 		}
 	},
+
 	hideNotification(e) {
 		e.preventDefault();
 		this.setState({
 			showNotification: false
 		});
 	},
+
 	render() {
 		var types = Object.keys(this.state.options),
 			selected = [],
