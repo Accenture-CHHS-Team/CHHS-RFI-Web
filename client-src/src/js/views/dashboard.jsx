@@ -3,6 +3,7 @@ var React = require('react'),
 	Link = require('react-router').Link,
 	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	ProfileStore = require('../stores/ProfileStore'),
+	ProfileActions = require('../actions/ProfileActions'),
 	CaseStore = require('../stores/CaseStore'),
 	OptionsStore = require('../stores/OptionsStore'),
 	Option = require('../components/Option.jsx'),
@@ -13,7 +14,8 @@ var React = require('react'),
 	StickyContainer = require('react-sticky').StickyContainer,
 	Sticky = require('react-sticky').Sticky,
 	CaseStore = require('../stores/CaseStore'),
-	CaseActions = require('../actions/CaseActions');
+	CaseActions = require('../actions/CaseActions'),
+	ChangeLocationLink = require('../components/ChangeLocationLink.jsx');
 
 module.exports = React.createClass({
 	getState() {
@@ -26,18 +28,8 @@ module.exports = React.createClass({
 			familyTypes: OptionsStore.getSelectedByKey('familyTypes'),
 			bedTimes: OptionsStore.getSelectedByKey('bedTimes'),
 			dailyRoutines: OptionsStore.getSelectedByKey('dailyRoutines'),
+			address: ProfileStore.getAddress()
 		};
-
-		// Try to load the case worker
-		// var profile = ProfileStore.getData();
-		// if(Object.getOwnPropertyNames(data.caseworker).length === 0 && profile.CurrentCaseNumber) {
-		// 	CaseActions.getCaseWorker(profile.CurrentCaseNumber);
-		// }
-
-		// Test getting case
-		// if(ProfileStore.getData().CurrentCaseNumber) {
-		// 	CaseActions.getCase(ProfileStore.getData().CurrentCaseNumber);
-		// }
 
 		return data;
 	},
@@ -124,6 +116,12 @@ module.exports = React.createClass({
 		});
 	},
 
+	handleNewAddress: function(address) {
+		ProfileActions.updateAddress(address);
+		// Reload the facilities list
+		FacilitiesActions.listByAddress(ProfileStore.getAddress());
+	},
+
 	render() {
 		var types = Object.keys(this.state.options),
 			selected = [],
@@ -184,7 +182,7 @@ module.exports = React.createClass({
 
 						<section id="facilities" className="row">
 							<div className="col-xs-12">
-								<p className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near your location:</p>
+								<div className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near <ChangeLocationLink address={this.state.address} onChange={this.handleNewAddress} />:</div>
 								<FacilitiesList facilities={this.state.facilities} />
 							</div>
 						</section>

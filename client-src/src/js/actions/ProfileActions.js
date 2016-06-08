@@ -12,6 +12,15 @@ var ProfileActions = {
 					}
 				});
 			}.bind(this));
+	},
+
+	updateAddress: function(newAddress) {
+		AppDispatcher.dispatch({
+			action: {
+				type: 'PROFILE_ADDRESS_UPDATED',
+				data: newAddress
+			}
+		});
 	}
 };
 
