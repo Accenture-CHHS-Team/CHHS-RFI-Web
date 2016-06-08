@@ -99,11 +99,13 @@ module.exports = React.createClass({
 						title="Daily Routines" 
 						body={!this.state.dependent.FirstName ? '' : 'What are some of ' + this.state.dependent.FirstName + ' routines?'} 
 						items={this.getOptions('dailyRoutines')} />
-					<div style={{marginTop: '2em', marginBottom: '2em'}}>
+				</div>
+				<div className="footer">
+					<div className="container text-right">
 						{
 							this.allOptionsSelected()
 								? <Link to={this.state.mode === 'setup' ? '/ffa' : '/dashboard'} className="btn btn-primary">{this.state.mode === 'setup' ? 'Next' : 'Update'}</Link>
-								: <p>Please make your selections above before continuing</p>
+								: <p className="text-center">Please make your selections above before continuing</p>
 						}
 					</div>
 				</div>

@@ -2456,6 +2456,10 @@ h1, h2, h3, h4, h5 {
     background: transparent url(../images/close-notification.png) no-repeat scroll center center;
     background-size: 15px 14px; }
 
+.footer {
+  background: #e2e2e2;
+  padding: 1em; }
+
 ul.messages-list {
   list-style: none;
   margin: 0;
@@ -2468,6 +2472,12 @@ ul.messages-list {
 
 .popover-content {
   color: #000; }
+
+.btn-link.back {
+  padding-left: 12px;
+  background: transparent url(../images/caret-left-small.png) no-repeat scroll left center;
+  background-size: 4px 10px;
+  color: #777777; }
 
 header#main-head {
   background: #222222;
