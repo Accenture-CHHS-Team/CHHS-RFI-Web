@@ -2510,6 +2510,10 @@ header#main-head {
   .login .btn-login {
     padding-left: 5em;
     padding-right: 5em; }
+  @media (max-width: 768px) {
+    .login .btn-login {
+      display: block;
+      width: 100%; } }
 
 .hero {
   background: #19a1c9;
@@ -2682,6 +2686,9 @@ header#main-head {
     height: 400px;
     padding: 0;
     position: relative; }
+    @media (max-width: 768px) {
+      .dashboard #chat {
+        height: auto; } }
     .dashboard #chat > .row {
       position: absolute;
       top: 0;
@@ -2698,6 +2705,10 @@ header#main-head {
       bottom: 0;
       left: 0;
       width: 30%; }
+      @media (max-width: 768px) {
+        .dashboard #chat .info {
+          position: relative;
+          width: 100%; } }
       .dashboard #chat .info .image {
         width: 70px;
         height: 70px;
@@ -2716,11 +2727,21 @@ header#main-head {
       left: 30%;
       width: auto;
       right: 1em; }
+      @media (max-width: 768px) {
+        .dashboard #chat .conversation {
+          position: relative;
+          width: 100%;
+          left: 0;
+          right: 0;
+          height: 40vh; } }
       .dashboard #chat .conversation form {
         position: absolute;
         left: 1em;
         right: 0;
         bottom: 1em; }
+        @media (max-width: 768px) {
+          .dashboard #chat .conversation form {
+            right: 1em; } }
       .dashboard #chat .conversation .messages-list {
         position: absolute;
         top: 0;

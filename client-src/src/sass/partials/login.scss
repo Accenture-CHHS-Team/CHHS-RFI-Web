@@ -11,4 +11,11 @@
 		padding-left: 5em;
 		padding-right: 5em;
 	}
+
+	@media(max-width: $screen-sm) {
+		.btn-login {
+			display: block;
+			width: 100%;
+		}
+	}
 }

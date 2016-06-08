@@ -3,7 +3,7 @@ var React = require('react');
 module.exports = React.createClass({
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log('componentDidUpdate');
+		// console.log('componentDidUpdate');
 	    $(this.refs.list).stop(true).animate({ scrollTop: $(this.refs.list).height() }, 500);
 	},
 
