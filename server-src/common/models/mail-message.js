@@ -1,5 +1,6 @@
 var Utils = require('../utils');
-var App
+var log = require('../log');
+
 module.exports = function(MailMessage) {
    Utils.disableAllMethods(MailMessage, [
                 "findById","upsert", "exists", "find", "findOne", "create",
@@ -21,19 +22,19 @@ module.exports = function(MailMessage) {
        
         var Case = MailMessage.app.models.Case.findById(caseId, {}, 
             function(err, CaseInstance){
-                console.log("Checking CaseInstance");
-                console.log(CaseInstance);
+                log.debug("Checking CaseInstance");
+                log.debug(CaseInstance);
                 if(err !== null && err !== undefined){
                     return cb({OK : false, message: "Error adding message: " + err + "!", Reason : err});
                 }     
                 if(CaseInstance === undefined || CaseInstance === null){
                     return cb({OK: false, message: "No case with matching ID (" + caseId + ") found!", Reason : err});
                 }
-                console.log("Identity Instance ID: " + CaseInstance.clientIdentityId);
+                log.debug("Identity Instance ID: " + CaseInstance.clientIdentityId);
                 MailMessage.app.models.Identity.findById(CaseInstance.clientIdentityId, {},                    
                     function(err, IdentityInstance){
-                        console.log("Checking IdentityInstance");
-                        console.log(IdentityInstance);
+                        log.debug("Checking IdentityInstance");
+                        log.debug(IdentityInstance);
                         if(err !== null && err !== undefined){
                             return cb({OK: false, message:"Error adding message: " + err + "!", Reason : err});
                         }     

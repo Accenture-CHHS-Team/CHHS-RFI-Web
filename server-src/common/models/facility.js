@@ -1,6 +1,6 @@
 var Utils = require('../utils');
 var Request = require('request');
-
+var log = require('../log');
 
 
 module.exports = function(Facility) {
@@ -21,6 +21,7 @@ module.exports = function(Facility) {
         }
       }, function (err, response, body) {
         if (err !== null && err !== undefined){
+          log.error(err.message);
           return cb(null, {OK : false, message: err.message, refid : '0e301bc9-cd6e-45ec-8720-18b148f6a6e3'});
         }
         if (response.statusCode !== 200) {
@@ -49,7 +50,7 @@ module.exports = function(Facility) {
             }, function(facerr, facresponse, facbody){
               
               if (facerr !== null && facerr !== undefined){
-                console.log(facerr.message);
+                log.error(facerr.message);
                 return cb(null, {OK : false, message: 'Error with facilities list', reifd:'6f1c0984-cbec-4c42-9c89-014c3c02e7f9'});
               }
               if (facresponse.statusCode !== 200) {

@@ -1,6 +1,6 @@
 var Faker = require('faker');
 var Utils = require('../utils');
-
+var log = require('../log');
 
 
 module.exports = function(Identity) {
@@ -16,11 +16,11 @@ module.exports = function(Identity) {
     }
     Identity.create({email:email, password:pass}, function (err, identityInstance){
       if(err !== null){
-        console.log("User creation failed with error:");
-        console.log(err);
+        log.error("User creation failed with error:");
+        log.error(err);
         return cb({OK : false, message: "User creation failed", Reason : err});
       }
-      console.log("User created for email:" + email + ", case " + caseId);
+      log.debug("User created for email:" + email + ", case " + caseId);
       identityInstance.FirstName = firstName;
       identityInstance.LastName = lastName;
       identityInstance.CurrentCaseNumber = caseId;
@@ -28,11 +28,10 @@ module.exports = function(Identity) {
         {},
         function(err, obj){
           if(err !== null){
-            console.log("Error saving Identity");
-            console.log(err);
+            log.error("Error saving Identity");
+            log.error(err);
             return cb("Identity update failed: " + err);
           }
-          console.log(obj);
           return cb(null, {OK : true, Email : email, CaseID : caseId, ID: obj.id}, "application/json");
         }
       );
@@ -61,10 +60,11 @@ module.exports = function(Identity) {
    * functionality. Operation hooks aren't fully-baked yet, despite the
    * eager deprecation of mhooks.
    */
-  console.log("Continuing to use model hooks until ophooks are more reliable.");
+  console.log("CALHHS: Identity.afterCreate: Continuing to use model hooks until ophooks are more reliable across all event hooks.");
+  console.log("(Loopback *will* complain)");
   Identity.afterCreate =  function(next){
-    console.log("Mocking case data with new Identity:");
-    console.log(this);
+    log.debug("Mocking case data with new Identity:");
+    log.debug(this);
     // create new case
     var Case = Identity.app.models.Case;
     var newCase = Case.create({
@@ -74,7 +74,7 @@ module.exports = function(Identity) {
       CreatedOn : new Date()
     }, function(err, CaseInstance){
       if(err !== null){
-        console.log("Error reported when mocking case data: " + err);
+        log.error("Error reported when mocking case data: " + err);
         return next(err);
       }
       
@@ -84,7 +84,7 @@ module.exports = function(Identity) {
         FirstName : Faker.name.firstName()
       }, function(err, DepInstance){
         if(err !== null){
-          console.log("Error creating dependent: " + err);
+          log.error("Error creating dependent: " + err);
         }
       });
       
@@ -93,11 +93,11 @@ module.exports = function(Identity) {
         LastName : Faker.name.lastName()
       }, function(err, DepInstance){
         if(err !== null){
-          console.log("Error creating caseworker: " + err);
+          log.error("Error creating caseworker: " + err);
         }
       });
       
-      console.log("Case successfully mocked.");
+      log.debug("Case successfully mocked.");
       if(next && typeof next === 'function'){
         return next(null, "ok");
       } 
