@@ -19,11 +19,23 @@ var React = require('react'),
 
 // Main App container
 var App = React.createClass({
+	getInitialState() {
+	    return {
+	        loggedIn: AuthStore.loggedIn()  
+	    };
+	},
+	
+	checkLogin() {
+		this.setState({ loggedIn: AuthStore.loggedIn() });
+	},
+
 	componentDidMount() {
 	    // Load the profile if we're logged in
 	    if(AuthStore.loggedIn()) {
 	    	ProfileActions.load(AuthStore.userId());
 	    }
+
+	    AuthStore.on('change', this.checkLogin);
 
 	    // Load the case information
 		AppDispatcher.register(function(payload) {
@@ -53,10 +65,14 @@ var App = React.createClass({
 		});
 	},
 
+	componentWillUnmount() {
+	    AuthStore.removeListener('change', this.checkLogin);
+	},
+
 	render() {
 		return (
 			<div>
-				<Header />
+				<Header loggedIn={this.state.loggedIn} />
 				{this.props.children}
 			</div>
 		)
