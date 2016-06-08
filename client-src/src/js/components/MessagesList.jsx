@@ -12,13 +12,9 @@ module.exports = React.createClass({
 			);
 		});
 		return (
-			<div className="row">
-				<div className="col-lg-12">
-					<ul className="messages-list">
-						{items}
-					</ul>
-				</div>
-			</div>
+			<ul className="messages-list">
+				{items}
+			</ul>
 		)
 	}
 

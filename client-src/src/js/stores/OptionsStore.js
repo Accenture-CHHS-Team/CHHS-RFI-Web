@@ -45,13 +45,10 @@ var OptionsStore = Object.assign({}, EventEmitter.prototype, {
 				options[i].selected = options[i].selected ? false : true;
 			}
 		}
-
-		this.emit('change');
 	},
 
 	_updateFromServer: function(newData) {
 		data = newData;
-		this.emit('change');
 	},
 
 	dispatcherId: AppDispatcher.register(function(payload) {
@@ -64,7 +61,8 @@ var OptionsStore = Object.assign({}, EventEmitter.prototype, {
 				OptionsStore._updateFromServer(action.data);
 				break;
 		}
-	}.bind(this))
+		OptionsStore.emit('change');
+	})
 });
 
 module.exports = OptionsStore;

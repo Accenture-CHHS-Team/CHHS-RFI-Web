@@ -1,21 +1,44 @@
 var React = require('react'),
 	Link = require('react-router').Link,
+	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	ProfileStore = require('../stores/ProfileStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	FacilitiesStore = require('../stores/FacilitiesStore'),
+	FacilitiesActions = require('../actions/FacilitiesActions'),
 	Hero = require('../components/Hero.jsx'),
 	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList;
 
 module.exports = React.createClass({
 	getInitialState() {
-		return this.getState();
+		var state = this.getState();
+
+		// Get facilities list if we need it
+		if(state.facilities.length === 0) {
+			var address = ProfileStore.getAddress();
+			// If we already have the address, go ahead and load facilities
+			if(address) {
+				FacilitiesActions.listByAddress(address);
+			}
+			// Else, wait for profile to be loaded
+			else {
+				AppDispatcher.register(function(payload) {
+					var action = payload.action;
+					if(action.type === 'PROFILE_LOADED') {
+						AppDispatcher.waitFor([ProfileStore.dispatcherId]);
+						FacilitiesActions.listByAddress(ProfileStore.getAddress());
+					}
+				});
+			}
+		}
+
+		return state;
 	},
 
 	getState() {
 		var data = {
 			profile: ProfileStore.getData(),
 			child: ChildProfileStore.getData(),
-			facilities: FacilitiesStore.getData()
+			facilities: FacilitiesStore.getList()
 		};
 
 		data.heroData = {
@@ -36,11 +59,18 @@ module.exports = React.createClass({
 
 		// Add listeners
 		ProfileStore.on('change', this.binds.setState);
+		FacilitiesStore.on('change', this.binds.setState);
+
+		// Get facilities list
+		// FacilitiesActions.getListByRadius();
+
+		// Try geocoding the user's address
 	},
 
 	componentWillUnmount() {
 		// Remove Listeners
 		ProfileStore.removeListener('change', this.binds.setState);
+		FacilitiesStore.removeListener('change', this.binds.setState);
 	},
 
 	render() {

@@ -1,6 +1,6 @@
 var React = require('react'),
 	AuthStore = require('../stores/AuthStore'),
-	ProfileStore = require('../stores/ProfileStore'),
+	ProfileActions = require('../actions/ProfileActions'),
 	browserHistory = require('react-router').browserHistory;
 
 module.exports = React.createClass({
@@ -18,7 +18,7 @@ module.exports = React.createClass({
 
 	checkLogin() {
 		if(AuthStore.loggedIn()) {
-			ProfileStore.load(AuthStore.userId()).then(function() {
+			ProfileActions.load(AuthStore.userId()).then(function() {
 				window.location = '/#' + '/';
 			});
 		}
