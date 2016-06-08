@@ -26,7 +26,7 @@ module.exports = React.createClass({
 					var action = payload.action;
 					if(action.type === 'PROFILE_LOADED') {
 						AppDispatcher.waitFor([ProfileStore.dispatcherId]);
-						FacilitiesActions.listByAddress(ProfileStore.getAddress());
+						setTimeout(() => { FacilitiesActions.listByAddress(ProfileStore.getAddress()); }, 1);
 					}
 				});
 			}
