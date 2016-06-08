@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Person": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Case": {
+    "dataSource": "db",
+    "public": true
+  },
+  "PostalAddress": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Comfort": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Identity": {
+    "dataSource": "db",
+    "public": true
+  },
+  "CaseComfort": {
+    "dataSource": "db",
+    "public": true
+  },
+  "CaseFacilityFacade": {
+    "dataSource": "db",
+    "public": true
+  },
+  "MailMessage": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Facility": {
+    "dataSource": "facilities",
+    "public": true
+  },
+  "GeocodedPoint": {
+    "dataSource": "geocoder",
+    "public": true
+  },
+  "Dependent": {
+    "dataSource": "db",
+    "public": true
+  },
+  "CaseWorker": {
+    "dataSource": "db",
+    "public": true
+  }
+}

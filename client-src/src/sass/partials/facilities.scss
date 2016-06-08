@@ -1,0 +1,26 @@
+.facilities {
+	.facility {
+		background: $gray-lighter;
+		margin: 2em 0;
+
+		.image {
+			background: $gray-light;
+			height: 150px;
+		}
+
+		.info {
+			text-align: left;
+		}
+
+		.link {
+			display: block;
+			width: 20px;
+			height: 30px;
+			margin-top: 55px;
+			text-indent: -9999px;
+			overflow: hidden;
+			background: transparent url(../images/caret-right.png) no-repeat scroll center center;
+			background-size: 50%;
+		}
+	}
+}
