@@ -44,3 +44,14 @@ ul.messages-list {
 	margin: 0;
 	padding: 0;
 }
+
+.change-location {
+	cursor: pointer;
+	& ~ .content {
+		display: none;
+	}
+}
+
+.popover-content {
+	color: $gray-base;
+}

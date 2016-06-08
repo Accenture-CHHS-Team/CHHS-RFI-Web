@@ -2,12 +2,14 @@ var React = require('react'),
 	Link = require('react-router').Link,
 	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	ProfileStore = require('../stores/ProfileStore'),
+	ProfileActions = require('../actions/ProfileActions'),
 	CaseStore = require('../stores/CaseStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	FacilitiesStore = require('../stores/FacilitiesStore'),
 	FacilitiesActions = require('../actions/FacilitiesActions'),
 	Hero = require('../components/Hero.jsx'),
-	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList;
+	FacilitiesList = require('../components/Facilities.jsx').FacilitiesList,
+	ChangeLocationLink = require('../components/ChangeLocationLink.jsx');
 
 module.exports = React.createClass({
 	getInitialState() {
@@ -39,12 +41,15 @@ module.exports = React.createClass({
 		var data = {
 			profile: ProfileStore.getData(),
 			dependent: CaseStore.getDependentData(),
-			facilities: FacilitiesStore.getList()
+			facilities: FacilitiesStore.getList(),
+			address: ProfileStore.getAddress()
 		};
 
 		data.heroData = {
 			title: !data.profile.FirstName ? '' : data.profile.FirstName + ',',
-			bodyContent: !data.dependent.FirstName ? '' : '<p>There are many places that ' + data.dependent.FirstName + ' can stay:<br/>with a relative, in county homes, or in foster family agencies. For ' + data.dependent.FirstName + ', your caseworker has recommended these foster agencies within 5 miles of your location. You can explore them below:</p>'
+			bodyContent: !data.dependent.FirstName 
+				? '' 
+				: <div>There are many places that {data.dependent.FirstName} can stay:<br/>with a relative, in county homes, or in foster family agencies. For {data.dependent.FirstName}, your caseworker has recommended these foster agencies within 5 miles of <ChangeLocationLink address={data.address} onChange={this.handleNewAddress} />. You can explore them below:</div>
 		};
 
 		return data;
@@ -61,17 +66,18 @@ module.exports = React.createClass({
 		// Add listeners
 		ProfileStore.on('change', this.binds.setState);
 		FacilitiesStore.on('change', this.binds.setState);
-
-		// Get facilities list
-		// FacilitiesActions.getListByRadius();
-
-		// Try geocoding the user's address
 	},
 
 	componentWillUnmount() {
 		// Remove Listeners
 		ProfileStore.removeListener('change', this.binds.setState);
 		FacilitiesStore.removeListener('change', this.binds.setState);
+	},
+
+	handleNewAddress: function(address) {
+		ProfileActions.updateAddress(address);
+		// Reload the facilities list
+		FacilitiesActions.listByAddress(ProfileStore.getAddress());
 	},
 
 	render() {

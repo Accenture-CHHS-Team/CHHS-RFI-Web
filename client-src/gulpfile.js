@@ -46,7 +46,8 @@ var projectName = 'chhs-prototype-frontend',	// Used to prefix file names
 			'jquery/dist/jquery.js',
 			// 3rd party libraries
 			// Anything you need from bootstrap
-			// 'bootstrap-sass/assets/javascripts/bootstrap/tooltip.js',
+			'bootstrap-sass/assets/javascripts/bootstrap/tooltip.js',
+			'bootstrap-sass/assets/javascripts/bootstrap/popover.js'
 		],
 
 		// Bower CSS assets
