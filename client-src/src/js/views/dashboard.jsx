@@ -149,8 +149,8 @@ module.exports = React.createClass({
 			notifications = this.state.showNotification ? (
 				<div className="row">
 					<div className="col-xs-12 notification">
-						<p>Welcome to your caring dashboard. Here you can suggest comforts {!this.state.dependent.FirstName ? '' : 'for ' + this.state.dependent.FirstName} and also chat with your caseworker.</p>
 						<a href="#" className="close" onClick={this.hideNotification}>Close</a>
+						<p>Welcome to your caring dashboard. Here you can suggest comforts {!this.state.dependent.FirstName ? '' : 'for ' + this.state.dependent.FirstName} and also chat with your caseworker.</p>
 					</div>
 				</div>
 				) : '';
@@ -171,7 +171,7 @@ module.exports = React.createClass({
 						<section id="your-family" className="row">
 							<div className="col-xs-12">
 								<p>You know your house best. By updating this list, you can help Jaden find a place that is familiar. Here’s what you’ve said so far:</p>
-								<div className="row">
+								<div className="row options">
 									{options}
 								</div>
 								<div className="row">
