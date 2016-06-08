@@ -30,10 +30,11 @@ module.exports = React.createClass({
 							type="text"
 							value={this.state.value} 
 							onChange={this._onChange} 
-							className="form-control" />
+							className="form-control"
+							placeholder="Type your message here" />
 					</div>
 					<div className="col-xs-2">
-						<button type="submit" className="btn btn-default btn-block">Send</button>
+						<button type="submit" className="btn btn-primary btn-block">Send</button>
 					</div>
 				</div>
 			</form>
