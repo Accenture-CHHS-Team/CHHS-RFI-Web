@@ -32,8 +32,8 @@ var CaseStore = Object.assign({}, EventEmitter.prototype, {
 				CaseStore._updateCaseWorkerFromServer(action.data);
 				break;
 		}
-		this.emit('change');
-	}.bind(this))
+		CaseStore.emit('change');
+	})
 });
 
 module.exports = CaseStore;

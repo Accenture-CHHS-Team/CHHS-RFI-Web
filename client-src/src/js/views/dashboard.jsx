@@ -19,7 +19,7 @@ module.exports = React.createClass({
 			showNotification: true,
 			child: ChildProfileStore.getData(),
 			options: OptionsStore.getData(),
-			facilities: FacilitiesStore.getData(),
+			facilities: FacilitiesStore.getList(),
 			familyTypes: OptionsStore.getSelectedByKey('familyTypes'),
 			bedTimes: OptionsStore.getSelectedByKey('bedTimes'),
 			dailyRoutines: OptionsStore.getSelectedByKey('dailyRoutines'),

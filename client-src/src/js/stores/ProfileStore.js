@@ -11,6 +11,14 @@ var ProfileStore = Object.assign({}, EventEmitter.prototype, {
 		return data;
 	},
 
+	getAddress: function() {
+		if(typeof data.postalAddresses === 'object' && data.postalAddresses.length > 0) {
+			return data.postalAddresses[0];
+		}
+
+		return false;
+	},
+
 	loaded: function() {
 		return loaded;
 	},
@@ -22,8 +30,8 @@ var ProfileStore = Object.assign({}, EventEmitter.prototype, {
 				loadFromServer(action.data);
 				break;
 		}
-		this.emit('change');
-	}.bind(this))
+		ProfileStore.emit('change');
+	})
 });
 
 // Handle incomnig data from server

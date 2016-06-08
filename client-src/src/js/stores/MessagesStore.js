@@ -23,8 +23,6 @@ var MessagesStore = Object.assign({}, EventEmitter.prototype, {
 			'text': text,
 			'date': ISODateString(new Date())
 		});
-
-		this.emit('change');
 	},
 
 	dispatcherId: AppDispatcher.register(function(payload) {
@@ -34,7 +32,8 @@ var MessagesStore = Object.assign({}, EventEmitter.prototype, {
 				MessagesStore.create(action.text);
 				break;
 		}
-	}.bind(this))
+		MessagesStore.emit('change');
+	})
 });
 
 module.exports = MessagesStore;

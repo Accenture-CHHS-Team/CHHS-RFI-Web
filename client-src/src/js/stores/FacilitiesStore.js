@@ -2,30 +2,35 @@ var EventEmitter = require('events').EventEmitter,
 	AppDispatcher = require('../dispatchers/AppDispatcher');
 
 // Thes Data
-var data = {};
+var data = {},
+	facilitiesList = [];
 
 // For now, use sample data
-data = require('../../sampleData/ffas.json');
+facilitiesList = require('../../sampleData/ffas.json');
 
 var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 	
+	getList: function() {
+		return facilitiesList;
+	},
+	
 	getData: function() {
 		return data;
-	},
-
-	_listFromServer: function(newData) {
-		data = newData;
 	},
 
 	dispatcherId: AppDispatcher.register(function(payload) {
 		var action = payload.action;
 		switch(action.type) {
 			case 'GET_FACILITIES_LIST':
-				FacilitiesStore._listFromServer(action.data);
+				listFromServer(action.data);
 				break;
 		}
-		this.emit('change');
-	}.bind(this))
+		FacilitiesStore.emit('change');
+	})
 });
+
+function listFromServer(newData) {
+	facilitiesList = newData;
+}
 
 module.exports = FacilitiesStore;
