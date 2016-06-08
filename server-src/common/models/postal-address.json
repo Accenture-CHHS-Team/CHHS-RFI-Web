@@ -7,6 +7,9 @@
     "validateUpsert": true
   },
   "properties": {
+    "AddressType" : {
+      "type":"string"
+    },
     "AddressLine1": {
       "type": "string"
     },
