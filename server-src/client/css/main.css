@@ -2393,13 +2393,15 @@ header#main-head {
       padding-top: 3em;
       padding-bottom: 3em; }
     .dashboard #your-family .footer {
-      background-color: #ebebeb;
+      background-color: #e2e2e2;
       padding-top: 1em;
       padding-bottom: 1em; }
   .dashboard #facilities {
     padding: 1em; }
-    .dashboard #facilities .facility p {
-      display: none; }
+    .dashboard #facilities .facility {
+      background-color: #e2e2e2; }
+      .dashboard #facilities .facility p {
+        display: none; }
   .dashboard #chat {
     height: 400px;
     padding: 0;
