@@ -29,3 +29,19 @@
 		}
 	}
 }
+
+.facility-detail {
+	margin: 3em 0;
+
+	.back {
+		padding-left: 12px;
+		background: transparent url('../images/caret-left-blue-detail.png') no-repeat scroll left center;
+		background-size: 4px 10px;
+	}
+
+	.hero-image {
+		height: 50vh;
+		background: transparent url('../images/hero-image-detail.png') no-repeat scroll center center;
+		background-size: cover;
+	}
+}
