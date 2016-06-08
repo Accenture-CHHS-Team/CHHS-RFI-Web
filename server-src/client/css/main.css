@@ -2402,6 +2402,8 @@ header#main-head {
       background-color: #e2e2e2; }
       .dashboard #facilities .facility p {
         display: none; }
+      .dashboard #facilities .facility .image {
+        height: 120px; }
   .dashboard #chat {
     height: 400px;
     padding: 0;
