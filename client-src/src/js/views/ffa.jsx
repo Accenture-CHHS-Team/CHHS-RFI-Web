@@ -83,7 +83,7 @@ module.exports = React.createClass({
 					<FacilitiesList facilities={this.state.facilities} />
 				</div>
 				<p className="text-center" style={{marginTop: '2em', marginBottom: '2em'}}>
-					<Link to="/" className="btn btn-default">Go Back</Link> 
+					<Link to="/onboarding" className="btn btn-default">Go Back</Link> 
 					<Link to="/dashboard" className="btn btn-primary">Next</Link>
 				</p>
 			</div>

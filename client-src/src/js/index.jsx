@@ -22,34 +22,34 @@ var App = React.createClass({
 	    // Load the profile if we're logged in
 	    if(AuthStore.loggedIn()) {
 	    	ProfileActions.load(AuthStore.userId());
-
-	    	// Load the case information
-			AppDispatcher.register(function(payload) {
-				var action = payload.action;
-				if(action.type === 'PROFILE_LOADED') {
-					AppDispatcher.waitFor([ProfileStore.dispatcherId]);
-					CaseActions.getCase(ProfileStore.getData().CurrentCaseNumber);
-				}
-			});
-
-			// Load the caseworker
-			AppDispatcher.register(function(payload) {
-				var action = payload.action;
-				if(action.type === 'CASE_LOADED') {
-					AppDispatcher.waitFor([CaseStore.dispatcherId]);
-					CaseActions.getCaseWorker(CaseStore.getCaseData().id);
-				}
-			});
-
-			// Load the dependent
-			AppDispatcher.register(function(payload) {
-				var action = payload.action;
-				if(action.type === 'CASE_LOADED') {
-					AppDispatcher.waitFor([CaseStore.dispatcherId]);
-					CaseActions.getDependent(CaseStore.getCaseData().id);
-				}
-			});
 	    }
+
+	    // Load the case information
+		AppDispatcher.register(function(payload) {
+			var action = payload.action;
+			if(action.type === 'PROFILE_LOADED') {
+				AppDispatcher.waitFor([ProfileStore.dispatcherId]);
+				CaseActions.getCase(ProfileStore.getData().CurrentCaseNumber);
+			}
+		});
+
+		// Load the caseworker
+		AppDispatcher.register(function(payload) {
+			var action = payload.action;
+			if(action.type === 'CASE_LOADED') {
+				AppDispatcher.waitFor([CaseStore.dispatcherId]);
+				CaseActions.getCaseWorker(CaseStore.getCaseData().id);
+			}
+		});
+
+		// Load the dependent
+		AppDispatcher.register(function(payload) {
+			var action = payload.action;
+			if(action.type === 'CASE_LOADED') {
+				AppDispatcher.waitFor([CaseStore.dispatcherId]);
+				CaseActions.getDependent(CaseStore.getCaseData().id);
+			}
+		});
 	},
 
 	render() {
@@ -76,10 +76,10 @@ function requireAuth(nextState, replace) {
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
-			<IndexRoute component={Onboarding} />
+			<IndexRoute component={Login} />
 			<Route path="/login" component={Login} />
 			<Route path="/logout" component={Login} />
-			<Route path="/" component={Onboarding} onEnter={requireAuth} />
+			<Route path="/onboarding" component={Onboarding} onEnter={requireAuth} />
 			<Route path="/dashboard" component={Dashboard} onEnter={requireAuth} />
 			<Route path="/ffa" component={FFAPage} onEnter={requireAuth} />
 		</Route>

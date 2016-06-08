@@ -19,7 +19,7 @@ module.exports = React.createClass({
 	checkLogin() {
 		if(AuthStore.loggedIn()) {
 			ProfileActions.load(AuthStore.userId()).then(function() {
-				window.location = '/#' + '/';
+				window.location = '/#' + '/onboarding';
 			});
 		}
 	},
