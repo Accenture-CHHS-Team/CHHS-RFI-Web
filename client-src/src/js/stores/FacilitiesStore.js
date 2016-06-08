@@ -3,7 +3,8 @@ var EventEmitter = require('events').EventEmitter,
 
 // Thes Data
 var data = {},
-	facilitiesList = [];
+	facilitiesList = [],
+	listPending = false;
 
 // For now, use sample data
 // facilitiesList = require('../../sampleData/ffas.json');
@@ -18,9 +19,16 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 		return data;
 	},
 
+	isListPending: function() {
+		return listPending;
+	},
+
 	dispatcherId: AppDispatcher.register(function(payload) {
 		var action = payload.action;
 		switch(action.type) {
+			case 'FACILITIES_LIST_PENDING':
+				listPending = true;
+				break;
 			case 'GET_FACILITIES_LIST':
 				listFromServer(action.data);
 				break;
@@ -30,6 +38,7 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 });
 
 function listFromServer(newData) {
+	listPending = false;
 	switch(typeof newData.result.facilities) {
 		case 'undefined':
 			facilitiesList = [];

@@ -4,7 +4,7 @@ var ApiConstants = require('../constants/ApiConstants'),
 var FacilitiesActions = {
 
 	getList: function() {
-		$.ajax(ApiConstants.BASEURL + 'Facilities/list')
+		var promise = $.ajax(ApiConstants.BASEURL + 'Facilities/list')
 			.then(function(data) {
 				AppDispatcher.dispatch({
 					action: {
@@ -13,6 +13,12 @@ var FacilitiesActions = {
 					}
 				})
 			});
+		AppDispatcher.dispatch({
+			action: {
+				type: 'FACILITIES_LIST_PENDING',
+				promise: promise
+			}
+		});
 	},
 
 	listByAddress: function(address, radius) {
@@ -43,7 +49,7 @@ var FacilitiesActions = {
 		}
 
 		// Make call
-		$.ajax({
+		var promise = $.ajax({
 			url: ApiConstants.BASEURL + 'Facilities/listByAddress',
 			type: "POST",
 			data: data
@@ -55,6 +61,13 @@ var FacilitiesActions = {
 					data: data
 				}
 			})
+		});
+
+		AppDispatcher.dispatch({
+			action: {
+				type: 'FACILITIES_LIST_PENDING',
+				promise: promise
+			}
 		});
 	}
 };

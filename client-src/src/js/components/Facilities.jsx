@@ -1,5 +1,6 @@
 var React = require('react'),
-	Link = require('react-router').Link;
+	Link = require('react-router').Link,
+	FacilitiesStore = require('../stores/FacilitiesStore');
 
 function toTitleCase(str){
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -41,9 +42,11 @@ var FacilitiesList = React.createClass({
 		return (
 			<div className="facilities">
 				{
-					this.props.facilities.length === 0 
-						? <p className="text-center no-results">No facilities found in your area. <a href="#" onClick={this.changeAddress}>Try another address</a>.</p>
-						: facilities
+					FacilitiesStore.isListPending()
+						? <p className="text-center loading">Loading...</p>
+						: this.props.facilities.length === 0 
+							? <p className="text-center no-results">No facilities found in your area. <a href="#" onClick={this.changeAddress}>Try another address</a>.</p>
+							: facilities
 				}
 			</div>
 		);

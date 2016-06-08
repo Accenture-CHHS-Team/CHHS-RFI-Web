@@ -45,7 +45,7 @@ module.exports = React.createClass({
 	getInitialState() {
 		var state = this.getState();
 
-		// Get facilities list if we need it
+		// Get/Refresh facilities list if we need it
 		if(state.facilities.length === 0) {
 			var address = ProfileStore.getAddress();
 			// If we already have the address, go ahead and load facilities
@@ -58,7 +58,7 @@ module.exports = React.createClass({
 					var action = payload.action;
 					if(action.type === 'PROFILE_LOADED') {
 						AppDispatcher.waitFor([ProfileStore.dispatcherId]);
-						FacilitiesActions.listByAddress(ProfileStore.getAddress());
+						setTimeout(() => { FacilitiesActions.listByAddress(ProfileStore.getAddress()); }, 0);
 					}
 				});
 			}
@@ -83,12 +83,14 @@ module.exports = React.createClass({
 		// Add listeners
 		ProfileStore.on('change', this.updateState);
 		CaseStore.on('change', this.updateState);
+		FacilitiesStore.on('change', this.updateState);
 	},
 
 	componentWillUnmount() {
 		document.removeEventListener('scroll', this.handleScroll);
 		ProfileStore.removeListener('change', this.updateState);
 		CaseStore.removeListener('change', this.updateState);
+		FacilitiesStore.removeListener('change', this.updateState);
 	},
 
 	handleScroll(e) {
@@ -174,7 +176,7 @@ module.exports = React.createClass({
 								</div>
 								<div className="row">
 									<div className="col-xs-12 footer text-right">
-										<Link to="/" className="btn btn-primary">Make Updates</Link>
+										<Link to="/onboarding" className="btn btn-primary">Make Updates</Link>
 									</div>
 								</div>
 							</div>
