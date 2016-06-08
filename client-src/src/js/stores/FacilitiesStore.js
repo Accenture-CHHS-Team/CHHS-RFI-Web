@@ -30,8 +30,17 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 });
 
 function listFromServer(newData) {
-	facilitiesList = typeof newData.result.facilities === 'string' ? JSON.parse(newData.result.facilities) : newData.result.facilities;
-	// console.log(facilitiesList);
+	switch(typeof newData.result.facilities) {
+		case 'undefined':
+			facilitiesList = [];
+			break;
+		case 'string':
+			facilitiesList = JSON.parse(newData.result.facilities);
+			break;
+		case 'object':
+			facilitiesList = newData.result.facilities;
+			break;
+	}
 }
 
 module.exports = FacilitiesStore;

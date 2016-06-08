@@ -28,6 +28,9 @@ var Facility = React.createClass({
 });
 
 var FacilitiesList = React.createClass({
+	changeAddress(e) {
+		e.preventDefault();
+	},
 	render() {
 		var facilities = this.props.facilities.map(function(item, i) {
 			return (
@@ -37,7 +40,11 @@ var FacilitiesList = React.createClass({
 
 		return (
 			<div className="facilities">
-				{facilities}
+				{
+					this.props.facilities.length === 0 
+						? <p className="text-center no-results">No facilities found in your area. <a href="#" onClick={this.changeAddress}>Try another address</a>.</p>
+						: facilities
+				}
 			</div>
 		);
 	}
