@@ -23,7 +23,7 @@
             "city": "{city}",
             "state": "{state}",
             "zip": "{zip}",
-            "apikey": "TAMU_GEO_TOKEN_GOES_HERE",
+            "apikey": "ed2dda0e437f46f9b53701bf2b9c994b",
             "format": "json",
             "allowTies": "true",
             "notStore": "false",
@@ -55,7 +55,7 @@
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
-            "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
+            "X-App-Token": "u3XtopJ0MOxfJG3LCKgKJeIrV"
           },
           "query": {
             "facility_status": "LICENSED"
@@ -73,7 +73,7 @@
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
-            "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
+            "X-App-Token": "u3XtopJ0MOxfJG3LCKgKJeIrV"
           },
           "query": {
             "facility_status": "LICENSED",
