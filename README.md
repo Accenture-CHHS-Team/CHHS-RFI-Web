@@ -36,9 +36,18 @@
 
 < 25 words
 
-> Used at least five modern (see Note #2) and open-source technologies, regardless of architectural layer (frontend, backend, etc.)
+* Front End
+	* React.js
+* API Server
+	* NodeJS
+	* Loopback (Express-based API server)
+* Infrastructure
+	* Jenkins (Continuous integration)
+	* Vagrant (For developer systems)
+	* Docker 
+	* Sensu (Continuous monitoring server/client)
+	* PM2 (Node process manager)
 
-< 100 words
 
 > Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge
 
@@ -47,7 +56,7 @@
 ## Environment
 > Deployed the prototype on an Infrastructure as a Service (Iaas) or Platform as Service (Paas) provider, and indicated which provider they used.
 
-< 25 words
+* Deployed on AWS, 
 
 > Developed automated unit tests for their code
 
