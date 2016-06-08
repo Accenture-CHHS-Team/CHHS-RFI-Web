@@ -2353,6 +2353,8 @@ header#main-head {
   margin: 2em 0; }
   .facilities .facility .image {
     background: #777777;
+    background-size: cover;
+    background-position: center center;
     height: 150px; }
   .facilities .facility .info {
     text-align: left; }

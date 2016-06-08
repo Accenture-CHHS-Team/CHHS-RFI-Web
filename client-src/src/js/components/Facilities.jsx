@@ -12,7 +12,7 @@ var Facility = React.createClass({
 			<div className="facility">
 				<div className="row">
 					<div className="col-xs-3">
-						<div className="image"></div>
+						<div className="image" style={{backgroundImage: 'url("images/ffa-sample-' + ((this.props.index % 3) + 1) + '.png")'}}></div>
 					</div>
 					<div className="col-xs-8 info">
 						<h3>{toTitleCase(this.props.item.facility_name)}</h3>
@@ -35,7 +35,7 @@ var FacilitiesList = React.createClass({
 	render() {
 		var facilities = this.props.facilities.map(function(item, i) {
 			return (
-				<Facility key={i} item={item} />
+				<Facility key={i} index={i} item={item} />
 			);
 		}.bind(this));
 
