@@ -3,6 +3,10 @@
 		padding: 1em 0;
 	}
 
+	@media(max-width: $screen-sm) {
+		margin: 0 20px;
+	}
+
 	.option {
 		cursor: pointer;
 	}
@@ -49,6 +53,15 @@
 				visibility: hidden;
 			}
 		}
+		@media(max-width: $screen-sm) {
+			.slick-prev {
+				left: -15px;
+			}
+			.slick-next {
+				right: -15px;
+			}
+		}
+
 		.slick-prev:before {
 			background: transparent url(../images/caret-left.png) no-repeat scroll center center;
 			background-size: 50%;
@@ -70,6 +83,10 @@
 		background-size: 40%;
 		border: 5px solid transparent;
 		transition: border .2s linear;
+
+		@media(max-width: $screen-sm) {
+			height: 120px;
+		}
 	}
 
 	&.selected {

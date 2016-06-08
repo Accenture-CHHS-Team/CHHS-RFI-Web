@@ -9,7 +9,7 @@ header#main-head {
 
 	#logo {
 		position: absolute;
-		left: 0;
+		left: -13px;
 		top: -1px;
 		width: 106px;
 		height: 94px;
@@ -24,6 +24,10 @@ header#main-head {
 		text-align: right;
 		a {
 			color: #959595;
+		}
+
+		@media(max-width: $screen-sm) {
+			padding-right: 15px;
 		}
 	}
 }

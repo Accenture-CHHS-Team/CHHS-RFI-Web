@@ -137,7 +137,7 @@ module.exports = React.createClass({
 					selectedOptions = (<span>Not selected</span>);
 				}
 				return (
-					<div key={i} className="col-xs-4">
+					<div key={i} className="col-xs-6 col-sm-4">
 						<h4>{this.state.options[key].title}</h4>
 						{selectedOptions}
 					</div>
@@ -162,7 +162,7 @@ module.exports = React.createClass({
 							<nav className="row text-center">
 								<a href="#your-family" className="col-xs-4">Your family</a>
 								<a href="#facilities" className="col-xs-4">Foster care</a>
-								<a href="#chat" className="col-xs-4">Chat with your caseworker</a>
+								<a href="#chat" className="col-xs-4">Chat<span className="hidden-xs"> with your caseworker</span></a>
 							</nav>
 						</Sticky>
 

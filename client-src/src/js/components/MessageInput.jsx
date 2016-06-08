@@ -25,7 +25,7 @@ module.exports = React.createClass({
 		return (
 			<form onSubmit={this._save}>
 				<div className="row">
-					<div className="col-xs-10">
+					<div className="col-xs-9 col-sm-10">
 						<input 
 							type="text"
 							value={this.state.value} 
@@ -33,7 +33,7 @@ module.exports = React.createClass({
 							className="form-control"
 							placeholder="Type your message here" />
 					</div>
-					<div className="col-xs-2">
+					<div className="col-xs-3 col-sm-2">
 						<button type="submit" className="btn btn-primary btn-block">Send</button>
 					</div>
 				</div>
