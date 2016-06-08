@@ -2439,7 +2439,9 @@ h1, h2, h3, h4, h5 {
   position: relative;
   background: #b5e1eb;
   padding: 2em;
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  font-size: 1.1em;
+  text-align: center; }
   .notification p:last-of-type {
     margin-bottom: 0; }
   .notification .close {
@@ -2634,14 +2636,16 @@ header#main-head {
   .dashboard nav {
     background-color: #ffffff; }
     .dashboard nav a {
+      color: #959595;
       padding-top: 1em;
       padding-bottom: 1em;
       border-bottom: 4px solid transparent;
       transition: border .2s linear; }
       .dashboard nav a.selected {
-        border-bottom-color: #19a1c9; }
+        border-bottom-color: #19a1c9;
+        color: #19a1c9; }
   .dashboard section {
-    background-color: #eeeeee;
+    background-color: #f2f2f2;
     margin-bottom: 2em; }
   .dashboard #your-family {
     text-align: center; }
@@ -2651,13 +2655,15 @@ header#main-head {
       padding-top: 3em;
       padding-bottom: 3em; }
     .dashboard #your-family .footer {
-      background-color: #e2e2e2;
+      background-color: #ebebeb;
       padding-top: 1em;
       padding-bottom: 1em; }
+    .dashboard #your-family .option .image {
+      height: 120px; }
   .dashboard #facilities {
     padding: 1em; }
     .dashboard #facilities .facility {
-      background-color: #e2e2e2; }
+      background-color: #ebebeb; }
       .dashboard #facilities .facility p {
         display: none; }
       .dashboard #facilities .facility .image {
@@ -2676,7 +2682,7 @@ header#main-head {
       padding: 1em;
       background-color: #19a1c9;
       color: #fff;
-      text-align: center;
+      text-align: left;
       position: absolute;
       top: 0;
       bottom: 0;
