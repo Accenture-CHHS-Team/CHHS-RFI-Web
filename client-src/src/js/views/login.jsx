@@ -42,7 +42,7 @@ module.exports = React.createClass({
 				<div className="container text-center">
 					<h1>Sign in to your parent portal</h1>
 					<div className="row">
-						<form className="col-lg-8 col-lg-push-2 form-horizontal" onSubmit={this.handleSubmit}>
+						<form className="col-xs-8 col-xs-push-2 form-horizontal" onSubmit={this.handleSubmit}>
 							<div className="form-group">
 								<label className="control-label col-sm-4" for="childFirstName">Child's First Name</label>
 								<div className="col-sm-8">
