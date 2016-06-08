@@ -108,10 +108,47 @@
 				bottom: 4.5em;
 				overflow: scroll;
 				li {
+					position: relative;
 					padding: 1em;
-					margin: 1em 0;
+					margin: 1em .5em;
 					background: $white;
+					width: 78%;
 					// border: 1px solid $gray-light;
+
+					// Don't show sender for now
+					.sender {
+						display: none;
+					}
+
+					p:last-of-type {
+						margin-bottom: 0;
+					}
+
+					&:after {
+						right: 100%;
+						top: 50%;
+						border: solid transparent;
+						content: " ";
+						height: 0;
+						width: 0;
+						position: absolute;
+						pointer-events: none;
+						border-color: rgba(255, 255, 255, 0);
+						border-right-color: #ffffff;
+						border-width: 6px;
+						margin-top: -6px;
+					}
+
+					&.Me {
+						background: darken($gray-lighter, 5%);
+						margin-left: 20%;
+						&:after {
+							right: auto;
+							left: 100%;
+							border-right-color: transparent;
+							border-left-color: darken($gray-lighter, 5%);
+						}
+					}
 				}
 			}
 		}

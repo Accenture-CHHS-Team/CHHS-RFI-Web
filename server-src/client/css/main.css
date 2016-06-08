@@ -2711,9 +2711,36 @@ header#main-head {
         bottom: 4.5em;
         overflow: scroll; }
         .dashboard #chat .conversation .messages-list li {
+          position: relative;
           padding: 1em;
-          margin: 1em 0;
-          background: #ffffff; }
+          margin: 1em .5em;
+          background: #ffffff;
+          width: 78%; }
+          .dashboard #chat .conversation .messages-list li .sender {
+            display: none; }
+          .dashboard #chat .conversation .messages-list li p:last-of-type {
+            margin-bottom: 0; }
+          .dashboard #chat .conversation .messages-list li:after {
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(255, 255, 255, 0);
+            border-right-color: #ffffff;
+            border-width: 6px;
+            margin-top: -6px; }
+          .dashboard #chat .conversation .messages-list li.Me {
+            background: #e2e2e2;
+            margin-left: 20%; }
+            .dashboard #chat .conversation .messages-list li.Me:after {
+              right: auto;
+              left: 100%;
+              border-right-color: transparent;
+              border-left-color: #e2e2e2; }
   .dashboard .option .image {
     background-color: transparent;
     border-color: transparent; }
