@@ -3,6 +3,7 @@ var EventEmitter = require('events').EventEmitter,
 
 var caseData = {},
 	caseworker = {},
+	dependent = {},
 	loaded = false;
 
 var CaseStore = Object.assign({}, EventEmitter.prototype, {
@@ -10,30 +11,41 @@ var CaseStore = Object.assign({}, EventEmitter.prototype, {
 		return caseData;
 	},
 
-	getCaseWorker: function() {
+	getCaseWorkerData: function() {
 		return caseworker;
 	},
 
-	_updateCaseFromServer: function(data) {
-		caseData = data;
-	},
-
-	_updateCaseWorkerFromServer: function(data) {
-		caseworker = data;
+	getDependentData: function() {
+		return dependent;
 	},
 
 	dispatcherId: AppDispatcher.register(function(payload) {
 		var action = payload.action;
 		switch(action.type) {
-			case 'GET_CASE':
-				CaseStore._updateCaseFromServer(action.data);
+			case 'CASE_LOADED':
+				updateCaseFromServer(action.data);
 				break;
-			case 'GET_CASEWORKER':
-				CaseStore._updateCaseWorkerFromServer(action.data);
+			case 'CASEWORKER_LOADED':
+				updateCaseWorkerFromServer(action.data);
+				break;
+			case 'DEPENDENT_LOADED':
+				updateDependentFromServer(action.data);
 				break;
 		}
 		CaseStore.emit('change');
 	})
 });
+
+function updateCaseFromServer(data) {
+	caseData = data.length > 0 ? data[0] : {};
+}
+
+function updateCaseWorkerFromServer(data) {
+	caseworker = data.length > 0 ? data[0] : {};
+}
+
+function updateDependentFromServer(data) {
+	dependent = data.length > 0 ? data[0] : {};
+}
 
 module.exports = CaseStore;

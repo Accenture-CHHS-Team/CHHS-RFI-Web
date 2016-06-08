@@ -3,7 +3,7 @@ var React = require('react'),
 	Link = require('react-router').Link,
 	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	ProfileStore = require('../stores/ProfileStore'),
-	ChildProfileStore = require('../stores/ChildProfileStore'),
+	CaseStore = require('../stores/CaseStore'),
 	OptionsStore = require('../stores/OptionsStore'),
 	Option = require('../components/Option.jsx'),
 	ChatBox = require('../components/ChatBox.jsx'),
@@ -19,13 +19,13 @@ module.exports = React.createClass({
 	getState() {
 		var data = {
 			showNotification: true,
-			child: ChildProfileStore.getData(),
+			dependent: CaseStore.getDependentData(),
+			caseworker: CaseStore.getCaseWorkerData(),
 			options: OptionsStore.getData(),
 			facilities: FacilitiesStore.getList(),
 			familyTypes: OptionsStore.getSelectedByKey('familyTypes'),
 			bedTimes: OptionsStore.getSelectedByKey('bedTimes'),
 			dailyRoutines: OptionsStore.getSelectedByKey('dailyRoutines'),
-			caseworker: CaseStore.getCaseWorker()
 		};
 
 		// Try to load the case worker
@@ -147,7 +147,7 @@ module.exports = React.createClass({
 			notifications = this.state.showNotification ? (
 				<div className="row">
 					<div className="col-xs-12 notification">
-						<p>Welcome to your caring dashboard. Here you can suggest comforts for {this.state.child.name} and also chat with your caseworker.</p>
+						<p>Welcome to your caring dashboard. Here you can suggest comforts {!this.state.dependent.FirstName ? '' : 'for ' + this.state.dependent.FirstName} and also chat with your caseworker.</p>
 						<a href="#" className="close" onClick={this.hideNotification}>Close</a>
 					</div>
 				</div>
@@ -188,12 +188,17 @@ module.exports = React.createClass({
 
 						<section id="chat" className="row">
 							<div className="col-xs-4 info">
-								<h4>Lisa Lee</h4>
-								<p>You can send Lisa a message and she will get back to you as soon as possible.</p>
-								<hr/>
-								<p>To contact your caseworker you may also call:</p>
-								<p>(916) 874-3100 or <br/>(209) 744-0499</p>
-								<p>For emergencies dial 9-1-1 </p>
+								{
+									!this.state.caseworker.FirstName ? '' :
+									<div>
+										<h4>{this.state.caseworker.FirstName + ' ' + this.state.caseworker.LastName}</h4>
+										<p>You can send {this.state.caseworker.FirstName} a message and she will get back to you as soon as possible.</p>
+										<hr/>
+										<p>To contact your caseworker you may also call:</p>
+										<p>(916) 874-3100 or <br/>(209) 744-0499</p>
+										<p>For emergencies dial 9-1-1 </p>
+									</div>
+								}
 							</div>
 							<div className="col-xs-8 conversation">
 								<ChatBox />
