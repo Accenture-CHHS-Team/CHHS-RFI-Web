@@ -102,7 +102,7 @@ module.exports = React.createClass({
 					<p style={{marginTop: '2em', marginBottom: '2em'}}>
 						{
 							this.allOptionsSelected()
-								? <Link to={this.state.mode === 'setup' ? '/ffa' : '/dashboard'} className="btn btn-default">{this.state.mode === 'setup' ? 'Next' : 'Update'}</Link>
+								? <Link to={this.state.mode === 'setup' ? '/ffa' : '/dashboard'} className="btn btn-primary">{this.state.mode === 'setup' ? 'Next' : 'Update'}</Link>
 								: <p>Please make your selections above before continuing</p>
 						}
 					</p>
