@@ -73,7 +73,7 @@
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
-            "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
+            "X-App-Token": "u3XtopJ0MOxfJG3LCKgKJeIrV"
           },
           "query": {
             "facility_status": "LICENSED",

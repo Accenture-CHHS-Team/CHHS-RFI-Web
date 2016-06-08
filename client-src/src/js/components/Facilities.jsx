@@ -1,6 +1,10 @@
 var React = require('react'),
 	Link = require('react-router').Link;
 
+function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 var Facility = React.createClass({
 	render() {
 		return (
@@ -10,9 +14,9 @@ var Facility = React.createClass({
 						<div className="image"></div>
 					</div>
 					<div className="col-xs-8 info">
-						<h3>{this.props.item.name}</h3>
-						<span className="distance">{this.props.item.distance}</span>
-						<p>{this.props.item.description}</p>
+						<h3>{toTitleCase(this.props.item.facility_name)}</h3>
+						<span className="distance">Capacity: {this.props.item.facility_capacity}</span>
+						<p>{toTitleCase(this.props.item.facility_type)}</p>
 					</div>
 					<div className="col-xs-1 link-col text-center">
 						<Link to="/" className="link">View Facility</Link>

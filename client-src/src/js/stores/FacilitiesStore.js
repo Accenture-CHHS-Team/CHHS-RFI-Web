@@ -6,7 +6,7 @@ var data = {},
 	facilitiesList = [];
 
 // For now, use sample data
-facilitiesList = require('../../sampleData/ffas.json');
+// facilitiesList = require('../../sampleData/ffas.json');
 
 var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 	
@@ -30,7 +30,8 @@ var FacilitiesStore = Object.assign({}, EventEmitter.prototype, {
 });
 
 function listFromServer(newData) {
-	facilitiesList = newData;
+	facilitiesList = JSON.parse(newData.result.facilities);
+	console.log(facilitiesList);
 }
 
 module.exports = FacilitiesStore;
