@@ -151,7 +151,7 @@ gulp.task('js', ['clean_js', 'js_vendor'], function(){
 			path.basename += '.min';
 		}))
 		.pipe(uglify())
-		.pipe(gulp.dest('js', { cwd: paths.dist }));
+	.pipe(gulp.dest('js', { cwd: paths.dist }));
 	// return gulp.src(files.js, { cwd: paths.source + 'js' })
 	// 	.pipe(jshint(".jshintrc"))
 	// 	.pipe(jshint.reporter('default'))
@@ -176,12 +176,7 @@ var bundler = browserify(Object.assign({}, watchify.args, {
 	})).transform(babel.configure({
 		// Use all of the ES2015 spec
 		presets: ['es2015', 'react']
-	})),
-	bundleWatcher = watchify(bundler);
-
-gulp.task('watch-js', watchBundleJs);
-bundleWatcher.on('update', watchBundleJs); // on any dep update, runs the bundler
-bundleWatcher.on('log', console.log); // output build logs to terminal
+	}));
 
 function bundleJs() {
 	return bundler.bundle()
@@ -189,6 +184,15 @@ function bundleJs() {
 		.pipe(source('bundle.js'))
 		.pipe(buffer())
 		.pipe(gulp.dest('js', { cwd: paths.dist }));
+}
+
+var bundleWatcher;
+
+function createBundleWatcher(){
+	bundleWatcher = watchify(bundler);
+	gulp.task('watch-js', watchBundleJs);
+	bundleWatcher.on('update', watchBundleJs); // on any dep update, runs the bundler
+	bundleWatcher.on('log', console.log); // output build logs to terminal
 }
 
 function watchBundleJs() {
@@ -304,6 +308,26 @@ gulp.task('production', ['build'], function() {
 	// Done!
 });
 
+gulp.task('js-only', ['js'], function(){
+	
+});
+
+gulp.task('css-only', ['css'], function(){
+	
+});
+
+gulp.task('assets-only', ['assets'], function(){
+	
+});
+
+gulp.task('images-only', ['images'], function(){
+	
+});
+
+gulp.task('fonts-only', ['fonts'], function(){
+	
+});
+
 // Development Task
 gulp.task('build', ['js', 'css', 'assets', 'images', 'fonts'], function() {
 	// Done!
@@ -346,7 +370,8 @@ gulp.task('watch', ['build'], function(){
 	gulp.watch(paths.source + 'fonts/**/*.*', ['fonts']);
 	gulp.watch(paths.source + 'jade/**/*.jade', ['templates']);
 	gulp.watch(paths.source + 'jade/**/*.json', ['templates']);
-
+	createBundleWatcher();
+	
 	// Assets
 	var assets = [];
 	for(var i = 0, l = files.assetsToCopy.length; i < l; i++) {
