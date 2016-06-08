@@ -33,6 +33,11 @@ h1, h2, h3, h4, h5 {
 	}
 }
 
+.footer {
+	background: darken($gray-lighter, 5%);
+	padding: 1em;
+}
+
 .messages {
 	// padding: 2em;
 	// background: $gray-lighter;

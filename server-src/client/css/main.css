@@ -2454,6 +2454,10 @@ h1, h2, h3, h4, h5 {
     background: transparent url(../images/close-notification.png) no-repeat scroll center center;
     background-size: 15px 14px; }
 
+.footer {
+  background: #e2e2e2;
+  padding: 1em; }
+
 ul.messages-list {
   list-style: none;
   margin: 0;
@@ -2750,7 +2754,3 @@ header#main-head {
   .dashboard .option .image {
     background-color: transparent;
     border-color: transparent; }
-
-.ffas .footer {
-  background: #e2e2e2;
-  padding: 1em; }
