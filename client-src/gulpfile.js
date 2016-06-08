@@ -177,11 +177,14 @@ var bundler = browserify(Object.assign({}, watchify.args, {
 		// Use all of the ES2015 spec
 		presets: ['es2015', 'react']
 	})),
-	bundleWatcher = watchify(bundler);
+	bundleWatcher;
 
-gulp.task('watch-js', watchBundleJs);
-bundleWatcher.on('update', watchBundleJs); // on any dep update, runs the bundler
-bundleWatcher.on('log', console.log); // output build logs to terminal
+gulp.task('watch-js', function() {
+	bundleWatcher = watchify(bundler);
+	bundleWatcher.on('update', watchBundleJs); // on any dep update, runs the bundler
+	bundleWatcher.on('log', console.log); // output build logs to terminal
+	return watchBundleJs();
+});
 
 function bundleJs() {
 	return bundler.bundle()
@@ -319,7 +322,7 @@ gulp.task('build_staging', ['clean_staging'], function() {
 });
 
 // Dev
-gulp.task('dev', ['build', 'watch'], function() {
+gulp.task('dev', ['build-dev', 'watch'], function() {
 });
 
 // Serve
