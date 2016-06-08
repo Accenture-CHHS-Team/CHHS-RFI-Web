@@ -12,7 +12,7 @@ var CaseActions = {
 		.then(function(data) {
 			AppDispatcher.dispatch({
 				action: {
-					type: 'GET_CASE',
+					type: 'CASE_LOADED',
 					data: data
 				}
 			});
@@ -25,7 +25,7 @@ var CaseActions = {
 		.then(function(data) {
 			AppDispatcher.dispatch({
 				action: {
-					type: 'GET_CASEWORKER',
+					type: 'CASEWORKER_LOADED',
 					data: data
 				}
 			});

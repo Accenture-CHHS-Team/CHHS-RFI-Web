@@ -3,6 +3,7 @@ var React = require('react'),
 	Link = require('react-router').Link,
 	ProfileStore = require('../stores/ProfileStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
+	CaseStore = require('../stores/CaseStore'),
 	OptionsStore = require('../stores/OptionsStore'),
 	OptionsActions = require('../actions/OptionsActions'),
 	Hero = require('../components/Hero.jsx'),
@@ -11,12 +12,48 @@ var React = require('react'),
 module.exports = React.createClass({
 	
 	getInitialState() {
-		return this.getState();
+		var state = this.getState();
+
+		// Load the case information
+		if(Object.getOwnPropertyNames(state.caseData).length === 0) {
+			if(state.profile.CurrentCaseNumber) {
+				CaseActions.getCase(state.profile.CurrentCaseNumber);
+			}
+			else {
+				AppDispatcher.register(function(payload) {
+					var action = payload.action;
+					if(action.type === 'PROFILE_LOADED') {
+						AppDispatcher.waitFor([ProfileStore.dispatcherId]);
+						CaseActions.getCase(state.profile.CurrentCaseNumber);
+					}
+				});
+			}
+		}
+
+		// Load the caseworker
+		if(Object.getOwnPropertyNames(state.caseworker).length === 0) {
+			// If we already have the profile loaded, go ahead and load facilities
+			if(state.profile.CurrentCaseNumber) {
+				FacilitiesActions.listByAddress(address);
+			}
+			// Else, wait for profile to be loaded
+			else {
+				AppDispatcher.register(function(payload) {
+					var action = payload.action;
+					if(action.type === 'PROFILE_LOADED') {
+						AppDispatcher.waitFor([ProfileStore.dispatcherId]);
+						FacilitiesActions.listByAddress(ProfileStore.getAddress());
+					}
+				});
+			}
+		}
 	},
 
 	getState() {
 		var data = {
 			profile: ProfileStore.getData(),
+			caseData: CaseStore.getCaseData(ProfileStore.getData().CurrentCaseNumber),
+			caseworker: CaseStore.getCaseWorkerData(CaseStore.getCaseData().id),
 			child: ChildProfileStore.getData(),
 			options: OptionsStore.getData()
 		};

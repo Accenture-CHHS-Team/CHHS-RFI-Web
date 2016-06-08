@@ -10,30 +10,30 @@ var CaseStore = Object.assign({}, EventEmitter.prototype, {
 		return caseData;
 	},
 
-	getCaseWorker: function() {
+	getCaseWorkerData: function() {
 		return caseworker;
-	},
-
-	_updateCaseFromServer: function(data) {
-		caseData = data;
-	},
-
-	_updateCaseWorkerFromServer: function(data) {
-		caseworker = data;
 	},
 
 	dispatcherId: AppDispatcher.register(function(payload) {
 		var action = payload.action;
 		switch(action.type) {
-			case 'GET_CASE':
-				CaseStore._updateCaseFromServer(action.data);
+			case 'CASE_LOADED':
+				updateCaseFromServer(action.data);
 				break;
-			case 'GET_CASEWORKER':
-				CaseStore._updateCaseWorkerFromServer(action.data);
+			case 'CASEWORKER_LOADED':
+				updateCaseWorkerFromServer(action.data);
 				break;
 		}
 		CaseStore.emit('change');
 	})
 });
+
+function updateCaseFromServer(data) {
+	caseData = data;
+},
+
+function updateCaseWorkerFromServer(data) {
+	caseworker = data;
+},
 
 module.exports = CaseStore;

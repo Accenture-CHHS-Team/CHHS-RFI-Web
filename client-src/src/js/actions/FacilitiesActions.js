@@ -17,7 +17,7 @@ var FacilitiesActions = {
 
 	listByAddress: function(address, radius) {
 		var data = {};
-		data.radius = radius || 2000;
+		data.radius = radius || 4000;
 
 		// Copy keys, and convert address if needed
 		['streetAddress', 'city', 'state', 'zip'].forEach(function(val) {
