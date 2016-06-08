@@ -1,4 +1,4 @@
-
+var log = require('../../common/log');
 
 function createIdentity(Identity){
     Identity.create({
@@ -111,6 +111,7 @@ function createComforts(Comfort){
 }
 
 module.exports = function(app) {
+    log.debug("Adding initial data");
     var Identity = app.models.Identity;
     var Case = app.models.Case;
     var Comfort = app.models.Comfort;

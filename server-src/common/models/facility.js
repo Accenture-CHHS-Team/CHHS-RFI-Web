@@ -1,6 +1,6 @@
 var Utils = require('../utils');
 var Request = require('request');
-
+var log = require('../log');
 
 
 module.exports = function(Facility) {
@@ -21,6 +21,7 @@ module.exports = function(Facility) {
         }
       }, function (err, response, body) {
         if (err !== null && err !== undefined){
+          log.error(err.message);
           return cb(null, {OK : false, message: err.message, refid : '0e301bc9-cd6e-45ec-8720-18b148f6a6e3'});
         }
         if (response.statusCode !== 200) {
@@ -49,7 +50,7 @@ module.exports = function(Facility) {
             }, function(facerr, facresponse, facbody){
               
               if (facerr !== null && facerr !== undefined){
-                console.log(facerr.message);
+                log.error(facerr.message);
                 return cb(null, {OK : false, message: 'Error with facilities list', reifd:'6f1c0984-cbec-4c42-9c89-014c3c02e7f9'});
               }
               if (facresponse.statusCode !== 200) {
@@ -59,9 +60,33 @@ module.exports = function(Facility) {
               if(facbody[0] !== '['){
                 return cb(null, {OK : false, message : facbody, refid:'bb83d2fb-6cfa-4b0d-a32b-ff5f73205511'});
               }
-
+              var facs = JSON.parse(facbody);
               
-              return cb(null, {OK: true, facilities: facbody});
+              for(var x = 0; x < facs.length; x++){
+                if(facs[x].location !== undefined && facs[x].location.coordinates != undefined){
+                  var facility_geopoint = facs[x].location.coordinates;
+                  var facility_longitude = facs[x].location.coordinates[0];
+                  var facility_latitude = facs[x].location.coordinates[1];
+                                    
+                 
+                  // Calculate distance from address, using the haversine formula             
+                  // (see [http://mathforum.org/library/drmath/view/51879.html] for the short version,
+                  // or the complete derivation in, e.g., Ballou and Steen's `Plane and Spherical Trigonometry`, p. 160)                                  
+                  var fac_lat_rad = facility_latitude * Math.PI / 180;
+                  var adr_lat_rad = lat * Math.PI / 180;                  
+                  var d_lat = (lat - facility_latitude)* Math.PI / 180;
+                  var d_long = (long - facility_longitude)* Math.PI / 180;
+                  var a = Math.pow( Math.sin(d_lat/2),2)
+                      + Math.cos(fac_lat_rad) * Math.cos(adr_lat_rad) 
+                      * Math.pow(Math.sin(d_long/2),2);
+                  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));                 
+                  var d = 6371e3 * c; // Earth radius in meters
+                  log.debug('Calculated distance from (' + facility_latitude + ',' + facility_longitude + ') to (' + lat + ',' + long +'): ' + d);
+                  facs[x].location.distance = d;
+                }
+              }
+              
+              return cb(null, {OK: true, facilities: facs});
             });                                  
           }          
         }

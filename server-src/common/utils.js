@@ -1,3 +1,7 @@
+var log = require('./log');
+
+
+
 module.exports.disableAllMethods = function disableAllMethods(model, methodsToExpose)
 {
     if(model && model.sharedClass)
@@ -40,7 +44,7 @@ module.exports.disableAllMethods = function disableAllMethods(model, methodsToEx
 
         if(hiddenMethods.length > 0)
         {
-            console.log('\nRemote methods hidden for', modelName, ':', hiddenMethods.join(', '), '\n');
+            log.debug('\nRemote methods hidden for', modelName, ':', hiddenMethods.join(', '), '\n');
         }
     }
 };
