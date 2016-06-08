@@ -193,6 +193,7 @@ module.exports = React.createClass({
 								{
 									!this.state.caseworker.FirstName ? '' :
 									<div>
+										<div className="image"></div>
 										<h4>{this.state.caseworker.FirstName + ' ' + this.state.caseworker.LastName}</h4>
 										<p>You can send {this.state.caseworker.FirstName} a message and she will get back to you as soon as possible.</p>
 										<hr/>

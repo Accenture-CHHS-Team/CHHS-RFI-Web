@@ -2416,6 +2416,16 @@ header#main-head {
       bottom: 0;
       left: 0;
       width: 30%; }
+      .dashboard #chat .info .image {
+        width: 70px;
+        height: 70px;
+        background: #eeeeee;
+        border-radius: 70px;
+        margin: 1em auto;
+        background-image: url(../images/mom.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain; }
     .dashboard #chat .conversation {
       padding: 1em;
       position: absolute;
