@@ -14,16 +14,16 @@
 
 < In order to ensure the design was tailored specifically to user needs, we enlisted two subject matter experts to help with the prioritization of features, functionality, and overall look and feel. Lisa, a former caseworker, and Janay, a former foster child and caseworker were able to offer invaluable insight into the needs of biological parents with children in foster care. 
 
-We relied on Lisa and Janay for early design sketches and concept validation, as well as detailed user testing. We received feedback from a parent as well, who gave us detailed feedback from the end user perspective.  
+We relied on Lisa and Janay for input on the intial design concept as well as for user testing. We received feedback from a parent as well, who gave us detailed feedback from the end user perspective.  
 
 
 > Used at least three “human-centered design” techniques or tools
 
-< Research Interviews: One-on-one sessions with subject matter experts were a fundamental component of our user-centered design process. By engaging with former caseworkers, foster children, and parents we able to conceive of and design a digital portal that focuses specifically on the most important outcomes.  
+< Research Interviews: One-on-one sessions with subject matter experts were a fundamental component of our user-centered design process. By engaging with former caseworkers, foster children, and parents we were able to conceive of and design a digital portal that focuses specifically on the most important outcomes.  
 
 User Survey: To get an understanding of parents (end user needs), and to balance qualitative with quantitative feedback, we conducted an online survey with internal parents in the Accenture/Fjord community. With 28 respondents, we were able to spot emerging trends about what is important for families that are going through trauma and transition. For a more robust project, we would target a larger audience and attempt to tailor to the specific user base. 
 
-Concept Validation: With an overall concept of the service in mind, we brought high-level sketches and drawings in front of SMEs and users. We were able to solicit feedback early and often with this process, spotting necessary changes soon and pivoting quickly in response. Concept validation is a key tool for ensuring the design process is efficient and accurate. 
+Concept Validation: With an overall concept of the service in mind, we brought high-level sketches and drawings in front of subject experts. We were able to solicit feedback early and often with this process, spotting necessary changes soon and pivoting quickly in response. Concept validation is a key tool for ensuring the design process is efficient and accurate. 
 
 
 > Created or used a design style guide and/or a pattern library
