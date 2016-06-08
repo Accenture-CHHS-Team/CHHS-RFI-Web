@@ -2613,6 +2613,17 @@ header#main-head {
     background: transparent url(../images/caret-right.png) no-repeat scroll center center;
     background-size: 50%; }
 
+.facility-detail {
+  margin: 3em 0; }
+  .facility-detail .back {
+    padding-left: 12px;
+    background: transparent url("../images/caret-left-blue-detail.png") no-repeat scroll left center;
+    background-size: 4px 10px; }
+  .facility-detail .hero-image {
+    height: 50vh;
+    background: transparent url("../images/hero-image-detail.png") no-repeat scroll center center;
+    background-size: cover; }
+
 .dashboard {
   padding-top: 3em;
   padding-bottom: 50vh; }

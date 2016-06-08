@@ -14,6 +14,7 @@ var React = require('react'),
 	Onboarding = require('./views/onboarding.jsx'),
 	Dashboard = require('./views/dashboard.jsx'),
 	FFAPage = require('./views/ffa.jsx'),
+	FFADetailPage = require('./views/ffaDetail.jsx'),
 	Header = require('./components/Header.jsx');
 
 // Main App container
@@ -82,6 +83,7 @@ ReactDOM.render(
 			<Route path="/onboarding(/:mode)" component={Onboarding} onEnter={requireAuth} />
 			<Route path="/dashboard" component={Dashboard} onEnter={requireAuth} />
 			<Route path="/ffa" component={FFAPage} onEnter={requireAuth} />
+			<Route path="/ffadetail/:number" component={FFADetailPage} onEnter={requireAuth} />
 		</Route>
 	</Router>,
 	document.getElementById('app')

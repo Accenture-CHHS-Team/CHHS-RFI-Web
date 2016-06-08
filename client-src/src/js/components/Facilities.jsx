@@ -2,10 +2,6 @@ var React = require('react'),
 	Link = require('react-router').Link,
 	FacilitiesStore = require('../stores/FacilitiesStore');
 
-function toTitleCase(str){
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
-
 var Facility = React.createClass({
 	render() {
 		return (
@@ -15,12 +11,12 @@ var Facility = React.createClass({
 						<div className="image" style={{backgroundImage: 'url("images/ffa-sample-' + ((this.props.index % 3) + 1) + '.png")'}}></div>
 					</div>
 					<div className="col-xs-8 info">
-						<h3>{toTitleCase(this.props.item.facility_name)}</h3>
+						<h3>{this.props.item.facility_name}</h3>
 						<span className="distance">Distance: {Math.round((this.props.item.location.distance * 0.000621371) * 100) / 100} miles away</span>
-						<p>{toTitleCase(this.props.item.facility_type)}</p>
+						<p>{this.props.item.facility_type}</p>
 					</div>
 					<div className="col-xs-1 link-col text-center">
-						<Link to="/" className="link">View Facility</Link>
+						<Link to={'/ffadetail/' + this.props.item.facility_number} className="link">View Facility</Link>
 					</div>
 				</div>
 			</div>
