@@ -30,10 +30,10 @@ var CaseStore = Object.assign({}, EventEmitter.prototype, {
 
 function updateCaseFromServer(data) {
 	caseData = data;
-},
+}
 
 function updateCaseWorkerFromServer(data) {
 	caseworker = data;
-},
+}
 
 module.exports = CaseStore;
