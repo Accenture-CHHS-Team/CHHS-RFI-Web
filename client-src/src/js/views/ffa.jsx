@@ -49,8 +49,8 @@ module.exports = React.createClass({
 			title: !data.profile.FirstName ? '' : data.profile.FirstName + ',',
 			bodyContent: !data.dependent.FirstName 
 				? '' 
-				: <div>There are many places that {data.dependent.FirstName} can stay:<br/>with a relative, in county homes, or in foster family agencies. For {data.dependent.FirstName}, your caseworker has recommended these foster agencies within 5 miles of <ChangeLocationLink address={data.address} onChange={this.handleNewAddress} />. You can explore them below:</div>
-		};
+				: <div>There are many places that {data.dependent.FirstName} can stay:<br/>with a relative, in county homes, or in homes through a foster family agency. Your caseworker has recommended a foster family agency for {data.dependent.FirstName}. Here are examples of foster family agencies that are close to <ChangeLocationLink address={data.address} onChange={this.handleNewAddress} />.</div>
+		}
 
 		return data;
 	},
@@ -83,15 +83,17 @@ module.exports = React.createClass({
 	render() {
 		
 		return (
-			<div>
+			<div className="ffas">
 				<Hero data={this.state.heroData} />
 				<div className="container">
 					<FacilitiesList facilities={this.state.facilities} />
 				</div>
-				<p className="text-center" style={{marginTop: '2em', marginBottom: '2em'}}>
-					<Link to="/onboarding" className="btn btn-default">Go Back</Link> &nbsp;
-					<Link to="/dashboard" className="btn btn-primary">Next</Link>
-				</p>
+				<div className="footer">
+					<div className="container text-right">
+						<Link to="/onboarding" className="btn btn-link back">Go Back</Link> &nbsp;
+						<Link to="/dashboard" className="btn btn-primary">Next</Link>
+					</div>
+				</div>
 			</div>
 		)
 	}

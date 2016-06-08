@@ -12,7 +12,7 @@ var Facility = React.createClass({
 					</div>
 					<div className="col-xs-8 info">
 						<h3>{this.props.item.facility_name}</h3>
-						<span className="distance">Distance: {Math.round((this.props.item.location.distance * 0.000621371) * 100) / 100} miles away</span>
+						<p className="distance">Distance: {Math.round((this.props.item.location.distance * 0.000621371) * 100) / 100} miles away</p>
 						<p>{this.props.item.facility_type}</p>
 					</div>
 					<div className="col-xs-1 link-col text-center">

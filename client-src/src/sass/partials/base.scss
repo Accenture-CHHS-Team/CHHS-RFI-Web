@@ -55,3 +55,10 @@ ul.messages-list {
 .popover-content {
 	color: $gray-base;
 }
+
+.btn-link.back {
+	padding-left: 12px;
+	background: transparent url(../images/caret-left-small.png) no-repeat scroll left center;
+	background-size: 4px 10px;
+	color: $gray-light;
+}

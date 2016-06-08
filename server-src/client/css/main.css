@@ -2467,6 +2467,12 @@ ul.messages-list {
 .popover-content {
   color: #000; }
 
+.btn-link.back {
+  padding-left: 12px;
+  background: transparent url(../images/caret-left-small.png) no-repeat scroll left center;
+  background-size: 4px 10px;
+  color: #777777; }
+
 header#main-head {
   background: #222222;
   color: #ffffff; }
@@ -2744,3 +2750,7 @@ header#main-head {
   .dashboard .option .image {
     background-color: transparent;
     border-color: transparent; }
+
+.ffas .footer {
+  background: #e2e2e2;
+  padding: 1em; }
