@@ -6,24 +6,23 @@ var React = require('react'),
 	IndexRoute = require('react-router').IndexRoute,
 	hashHistory = require('react-router').hashHistory,
 	AuthStore = require('./stores/AuthStore'),
-	ProfileStore = require('./stores/ProfileStore'),
+	ProfileActions = require('./actions/ProfileActions'),
 	Login = require('./views/login.jsx'),
 	Onboarding = require('./views/onboarding.jsx'),
 	Dashboard = require('./views/dashboard.jsx'),
 	FFAPage = require('./views/ffa.jsx'),
 	Header = require('./components/Header.jsx');
 
-// Main App
+// Main App container
 var App = React.createClass({
 	componentDidMount() {
 	    // Load the profile if we're logged in
 	    if(AuthStore.loggedIn()) {
-	    	ProfileStore.load(AuthStore.userId());
+	    	ProfileActions.load(AuthStore.userId());
 	    }
 	},
 
 	render() {
-		
 		return (
 			<div>
 				<Header />
@@ -33,7 +32,7 @@ var App = React.createClass({
 	}
 });
 
-// Make sure user is logged in before allowing access
+// Check to make sure user is logged in before allowing access
 function requireAuth(nextState, replace) {
 	if( ! AuthStore.loggedIn()) {
 		replace({

@@ -1,5 +1,4 @@
-var ApiConstants = require('../constants/ApiConstants'),
-	EventEmitter = require('events').EventEmitter,
+var EventEmitter = require('events').EventEmitter,
 	AppDispatcher = require('../dispatchers/AppDispatcher');
 
 var data = {},
@@ -7,15 +6,6 @@ var data = {},
 	profileId;
 
 var ProfileStore = Object.assign({}, EventEmitter.prototype, {
-	load: function(id) {
-		return $.ajax(ApiConstants.BASEURL + 'Identities/' + id)
-			.then(function(profile) {
-				data = profile;
-				profileId = profile.id;
-				loaded = true;
-				this.emit('change');
-			}.bind(this));
-	},
 
 	getData: function() {
 		return data;
@@ -23,7 +13,23 @@ var ProfileStore = Object.assign({}, EventEmitter.prototype, {
 
 	loaded: function() {
 		return loaded;
-	}
+	},
+
+	dispatcherId: AppDispatcher.register(function(payload) {
+		var action = payload.action;
+		switch(action.type) {
+			case 'PROFILE_LOADED':
+				loadFromServer(action.data);
+				break;
+		}
+		this.emit('change');
+	}.bind(this))
 });
+
+// Handle incomnig data from server
+function loadFromServer(profile) {
+	loaded = true;
+	data = profile;
+}
 
 module.exports = ProfileStore;
