@@ -67,7 +67,7 @@ module.exports = React.createClass({
 							</div>
 							<div className="form-group">
 								<div class="col-sm-offset-4 col-sm-8">
-									<button type="submit" className="btn btn-default">login</button>
+									<button type="submit" className="btn btn-default">Login</button>
 								</div>
 							</div>
 						</form>
