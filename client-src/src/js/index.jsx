@@ -79,7 +79,7 @@ ReactDOM.render(
 			<IndexRoute component={Login} />
 			<Route path="/login" component={Login} />
 			<Route path="/logout" component={Login} />
-			<Route path="/onboarding" component={Onboarding} onEnter={requireAuth} />
+			<Route path="/onboarding(/:mode)" component={Onboarding} onEnter={requireAuth} />
 			<Route path="/dashboard" component={Dashboard} onEnter={requireAuth} />
 			<Route path="/ffa" component={FFAPage} onEnter={requireAuth} />
 		</Route>

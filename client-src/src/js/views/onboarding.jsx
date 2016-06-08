@@ -23,7 +23,8 @@ module.exports = React.createClass({
 			caseData: CaseStore.getCaseData(ProfileStore.getData().CurrentCaseNumber),
 			caseworker: CaseStore.getCaseWorkerData(CaseStore.getCaseData().id),
 			dependent: CaseStore.getDependentData(CaseStore.getCaseData().id),
-			options: OptionsStore.getData()
+			options: OptionsStore.getData(),
+			mode: typeof this.props.params.mode === 'string' ? this.props.params.mode : 'setup'
 		};
 
 		data.heroData = {
@@ -34,7 +35,7 @@ module.exports = React.createClass({
 		return data;
 	},
 
-	componentDidMount() {
+	componentDidMount() {		
 		// Bind event functions so that we can remove them later
 		this.binds = {
 			setState: function() {
@@ -62,6 +63,18 @@ module.exports = React.createClass({
 	getOptions(key) {
 		return typeof this.state.options[key] === 'object' ? this.state.options[key].options : [];
 	},
+
+	allOptionsSelected() {
+		var options = OptionsStore.getData(),
+			allSelected = true;
+		Object.keys(options).forEach(function(key) {
+			if(OptionsStore.getSelectedByKey(key).length === 0) {
+				allSelected = false;
+			}
+		});
+
+		return allSelected;
+	},
 	
 	render() {
 		return (
@@ -87,7 +100,11 @@ module.exports = React.createClass({
 						body={!this.state.dependent.FirstName ? '' : 'What are some of ' + this.state.dependent.FirstName + ' routines?'} 
 						items={this.getOptions('dailyRoutines')} />
 					<p style={{marginTop: '2em', marginBottom: '2em'}}>
-						<Link to="/ffa" className="btn btn-default">Next</Link>
+						{
+							this.allOptionsSelected()
+								? <Link to={this.state.mode === 'setup' ? '/ffa' : '/dashboard'} className="btn btn-primary">{this.state.mode === 'setup' ? 'Next' : 'Update'}</Link>
+								: <p>Please make your selections above before continuing</p>
+						}
 					</p>
 				</div>
 			</div>

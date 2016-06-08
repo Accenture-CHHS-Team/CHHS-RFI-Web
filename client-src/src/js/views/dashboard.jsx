@@ -176,7 +176,7 @@ module.exports = React.createClass({
 								</div>
 								<div className="row">
 									<div className="col-xs-12 footer text-right">
-										<Link to="/onboarding" className="btn btn-primary">Make Updates</Link>
+										<Link to="/onboarding/update" className="btn btn-primary">Make Updates</Link>
 									</div>
 								</div>
 							</div>
