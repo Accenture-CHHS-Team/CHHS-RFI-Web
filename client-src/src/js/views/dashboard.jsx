@@ -170,7 +170,7 @@ module.exports = React.createClass({
 
 						<section id="your-family" className="row">
 							<div className="col-xs-12">
-								<p>You know your house best. By updating this list, you can help Jaden find a place that is familiar. Here’s what you’ve said so far:</p>
+								<p>You know your house best. By updating this list, you can help {this.state.dependent.FirstName} find a place that is familiar. Here’s what you’ve said so far:</p>
 								<div className="row options">
 									{options}
 								</div>
@@ -184,6 +184,7 @@ module.exports = React.createClass({
 
 						<section id="facilities" className="row">
 							<div className="col-xs-12">
+								<p className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near your location:</p>
 								<FacilitiesList facilities={this.state.facilities} />
 							</div>
 						</section>
