@@ -1961,28 +1961,28 @@ fieldset[disabled] a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #1fb795;
-  border-color: #1ba183; }
+  background-color: #07b895;
+  border-color: #069f81; }
   .btn-primary:focus, .btn-primary.focus {
     color: #fff;
-    background-color: #188b71;
-    border-color: #09342a; }
+    background-color: #05876d;
+    border-color: #01251e; }
   .btn-primary:hover {
     color: #fff;
-    background-color: #188b71;
-    border-color: #126d59; }
+    background-color: #05876d;
+    border-color: #046451; }
   .btn-primary:active, .btn-primary.active,
   .open > .btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #188b71;
-    border-color: #126d59; }
+    background-color: #05876d;
+    border-color: #046451; }
     .btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus,
     .open > .btn-primary.dropdown-toggle:hover,
     .open > .btn-primary.dropdown-toggle:focus,
     .open > .btn-primary.dropdown-toggle.focus {
       color: #fff;
-      background-color: #126d59;
-      border-color: #09342a; }
+      background-color: #046451;
+      border-color: #01251e; }
   .btn-primary:active, .btn-primary.active,
   .open > .btn-primary.dropdown-toggle {
     background-image: none; }
@@ -1990,36 +1990,36 @@ fieldset[disabled] a.btn {
   fieldset[disabled] .btn-primary:hover,
   fieldset[disabled] .btn-primary:focus,
   fieldset[disabled] .btn-primary.focus {
-    background-color: #1fb795;
-    border-color: #1ba183; }
+    background-color: #07b895;
+    border-color: #069f81; }
   .btn-primary .badge {
-    color: #1fb795;
+    color: #07b895;
     background-color: #fff; }
 
 .btn-success {
   color: #fff;
-  background-color: #1fb795;
-  border-color: #1ba183; }
+  background-color: #07b895;
+  border-color: #069f81; }
   .btn-success:focus, .btn-success.focus {
     color: #fff;
-    background-color: #188b71;
-    border-color: #09342a; }
+    background-color: #05876d;
+    border-color: #01251e; }
   .btn-success:hover {
     color: #fff;
-    background-color: #188b71;
-    border-color: #126d59; }
+    background-color: #05876d;
+    border-color: #046451; }
   .btn-success:active, .btn-success.active,
   .open > .btn-success.dropdown-toggle {
     color: #fff;
-    background-color: #188b71;
-    border-color: #126d59; }
+    background-color: #05876d;
+    border-color: #046451; }
     .btn-success:active:hover, .btn-success:active:focus, .btn-success:active.focus, .btn-success.active:hover, .btn-success.active:focus, .btn-success.active.focus,
     .open > .btn-success.dropdown-toggle:hover,
     .open > .btn-success.dropdown-toggle:focus,
     .open > .btn-success.dropdown-toggle.focus {
       color: #fff;
-      background-color: #126d59;
-      border-color: #09342a; }
+      background-color: #046451;
+      border-color: #01251e; }
   .btn-success:active, .btn-success.active,
   .open > .btn-success.dropdown-toggle {
     background-image: none; }
@@ -2027,10 +2027,10 @@ fieldset[disabled] a.btn {
   fieldset[disabled] .btn-success:hover,
   fieldset[disabled] .btn-success:focus,
   fieldset[disabled] .btn-success.focus {
-    background-color: #1fb795;
-    border-color: #1ba183; }
+    background-color: #07b895;
+    border-color: #069f81; }
   .btn-success .badge {
-    color: #1fb795;
+    color: #07b895;
     background-color: #fff; }
 
 .btn-info {
@@ -2439,7 +2439,9 @@ h1, h2, h3, h4, h5 {
   position: relative;
   background: #b5e1eb;
   padding: 2em;
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  font-size: 1.1em;
+  text-align: center; }
   .notification p:last-of-type {
     margin-bottom: 0; }
   .notification .close {
@@ -2497,12 +2499,12 @@ header#main-head {
   header#main-head nav {
     text-align: right; }
     header#main-head nav a {
-      color: #ffffff; }
+      color: #959595; }
 
 .login {
   background: #19a1c9;
   color: #ffffff;
-  padding: 30vh; }
+  padding: 30vh 0; }
   .login h1 {
     margin-bottom: 1em; }
   .login .btn-login {
@@ -2569,7 +2571,7 @@ header#main-head {
     border: 5px solid transparent;
     transition: border .2s linear; }
   .option.selected .image {
-    border: 5px solid #1fb795; }
+    border: 5px solid #07b895; }
   .option.family .image {
     background-color: #d8e3d5; }
   .option.family.single .image {
@@ -2579,6 +2581,8 @@ header#main-head {
     background-image: url(../images/mom-dad.png); }
   .option.family.extended .image {
     background-image: url(../images/extended-family.png); }
+  .option.family.grandparents .image {
+    background-image: url(../images/grandparents.png); }
   .option.time .image {
     background-color: #eeeeee; }
   .option.time.time-8pm .image {
@@ -2590,7 +2594,7 @@ header#main-head {
   .option.time.time-11pm .image {
     background-image: url(../images/11pm.png); }
   .option.routines .image {
-    background-color: #19a1c9; }
+    background-color: #bfe0f0; }
   .option.routines.shower-morning .image {
     background-image: url(../images/shower-morning.png); }
   .option.routines.shower-evening .image {
@@ -2642,14 +2646,16 @@ header#main-head {
   .dashboard nav {
     background-color: #ffffff; }
     .dashboard nav a {
+      color: #959595;
       padding-top: 1em;
       padding-bottom: 1em;
       border-bottom: 4px solid transparent;
       transition: border .2s linear; }
       .dashboard nav a.selected {
-        border-bottom-color: #19a1c9; }
+        border-bottom-color: #19a1c9;
+        color: #19a1c9; }
   .dashboard section {
-    background-color: #eeeeee;
+    background-color: #f2f2f2;
     margin-bottom: 2em; }
   .dashboard #your-family {
     text-align: center; }
@@ -2659,13 +2665,15 @@ header#main-head {
       padding-top: 3em;
       padding-bottom: 3em; }
     .dashboard #your-family .footer {
-      background-color: #e2e2e2;
+      background-color: #ebebeb;
       padding-top: 1em;
       padding-bottom: 1em; }
+    .dashboard #your-family .option .image {
+      height: 120px; }
   .dashboard #facilities {
     padding: 1em; }
     .dashboard #facilities .facility {
-      background-color: #e2e2e2; }
+      background-color: #ebebeb; }
       .dashboard #facilities .facility p {
         display: none; }
       .dashboard #facilities .facility .image {
@@ -2684,7 +2692,7 @@ header#main-head {
       padding: 1em;
       background-color: #19a1c9;
       color: #fff;
-      text-align: center;
+      text-align: left;
       position: absolute;
       top: 0;
       bottom: 0;
