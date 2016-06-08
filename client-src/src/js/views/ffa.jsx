@@ -2,6 +2,7 @@ var React = require('react'),
 	Link = require('react-router').Link,
 	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	ProfileStore = require('../stores/ProfileStore'),
+	CaseStore = require('../stores/CaseStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	FacilitiesStore = require('../stores/FacilitiesStore'),
 	FacilitiesActions = require('../actions/FacilitiesActions'),
@@ -37,13 +38,13 @@ module.exports = React.createClass({
 	getState() {
 		var data = {
 			profile: ProfileStore.getData(),
-			child: ChildProfileStore.getData(),
+			dependent: CaseStore.getDependentData(),
 			facilities: FacilitiesStore.getList()
 		};
 
 		data.heroData = {
-			title: data.profile.FirstName + ',',
-			bodyContent: '<p>There are many places that ' + data.child.name + ' can stay:<br/>with a relative, in county homes, or in foster family agencies. For ' + data.child.name + ', your caseworker has recommended these foster agencies within 5 miles of your location. You can explore them below:</p>'
+			title: !data.profile.FirstName ? '' : data.profile.FirstName + ',',
+			bodyContent: !data.dependent.FirstName ? '' : '<p>There are many places that ' + data.dependent.FirstName + ' can stay:<br/>with a relative, in county homes, or in foster family agencies. For ' + data.dependent.FirstName + ', your caseworker has recommended these foster agencies within 5 miles of your location. You can explore them below:</p>'
 		};
 
 		return data;

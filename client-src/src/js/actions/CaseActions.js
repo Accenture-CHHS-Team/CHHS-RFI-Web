@@ -18,6 +18,7 @@ var CaseActions = {
 			});
 		})
 	},
+	
 	getCaseWorker: function(caseId) {
 		$.ajax({
 			url: ApiConstants.BASEURL + 'Cases/' + caseId + '/caseworkers'
@@ -26,6 +27,20 @@ var CaseActions = {
 			AppDispatcher.dispatch({
 				action: {
 					type: 'CASEWORKER_LOADED',
+					data: data
+				}
+			});
+		})
+	},
+
+	getDependent: function(caseId) {
+		$.ajax({
+			url: ApiConstants.BASEURL + 'Cases/' + caseId + '/dependents'
+		})
+		.then(function(data) {
+			AppDispatcher.dispatch({
+				action: {
+					type: 'DEPENDENT_LOADED',
 					data: data
 				}
 			});

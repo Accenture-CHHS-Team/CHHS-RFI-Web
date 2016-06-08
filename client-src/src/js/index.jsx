@@ -6,7 +6,10 @@ var React = require('react'),
 	IndexRoute = require('react-router').IndexRoute,
 	hashHistory = require('react-router').hashHistory,
 	AuthStore = require('./stores/AuthStore'),
+	ProfileStore = require('./stores/ProfileStore'),
 	ProfileActions = require('./actions/ProfileActions'),
+	CaseStore = require('./stores/CaseStore'),
+	CaseActions = require('./actions/CaseActions'),
 	Login = require('./views/login.jsx'),
 	Onboarding = require('./views/onboarding.jsx'),
 	Dashboard = require('./views/dashboard.jsx'),
@@ -19,6 +22,33 @@ var App = React.createClass({
 	    // Load the profile if we're logged in
 	    if(AuthStore.loggedIn()) {
 	    	ProfileActions.load(AuthStore.userId());
+
+	    	// Load the case information
+			AppDispatcher.register(function(payload) {
+				var action = payload.action;
+				if(action.type === 'PROFILE_LOADED') {
+					AppDispatcher.waitFor([ProfileStore.dispatcherId]);
+					CaseActions.getCase(ProfileStore.getData().CurrentCaseNumber);
+				}
+			});
+
+			// Load the caseworker
+			AppDispatcher.register(function(payload) {
+				var action = payload.action;
+				if(action.type === 'CASE_LOADED') {
+					AppDispatcher.waitFor([CaseStore.dispatcherId]);
+					CaseActions.getCaseWorker(CaseStore.getCaseData().id);
+				}
+			});
+
+			// Load the dependent
+			AppDispatcher.register(function(payload) {
+				var action = payload.action;
+				if(action.type === 'CASE_LOADED') {
+					AppDispatcher.waitFor([CaseStore.dispatcherId]);
+					CaseActions.getDependent(CaseStore.getCaseData().id);
+				}
+			});
 	    }
 	},
 

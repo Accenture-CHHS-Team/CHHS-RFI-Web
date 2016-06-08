@@ -4,6 +4,7 @@ var React = require('react'),
 	ProfileStore = require('../stores/ProfileStore'),
 	ChildProfileStore = require('../stores/ChildProfileStore'),
 	CaseStore = require('../stores/CaseStore'),
+	CaseActions = require('../actions/CaseActions'),
 	OptionsStore = require('../stores/OptionsStore'),
 	OptionsActions = require('../actions/OptionsActions'),
 	Hero = require('../components/Hero.jsx'),
@@ -13,40 +14,7 @@ module.exports = React.createClass({
 	
 	getInitialState() {
 		var state = this.getState();
-
-		// Load the case information
-		if(Object.getOwnPropertyNames(state.caseData).length === 0) {
-			if(state.profile.CurrentCaseNumber) {
-				CaseActions.getCase(state.profile.CurrentCaseNumber);
-			}
-			else {
-				AppDispatcher.register(function(payload) {
-					var action = payload.action;
-					if(action.type === 'PROFILE_LOADED') {
-						AppDispatcher.waitFor([ProfileStore.dispatcherId]);
-						CaseActions.getCase(state.profile.CurrentCaseNumber);
-					}
-				});
-			}
-		}
-
-		// Load the caseworker
-		if(Object.getOwnPropertyNames(state.caseworker).length === 0) {
-			// If we already have the profile loaded, go ahead and load facilities
-			if(state.profile.CurrentCaseNumber) {
-				FacilitiesActions.listByAddress(address);
-			}
-			// Else, wait for profile to be loaded
-			else {
-				AppDispatcher.register(function(payload) {
-					var action = payload.action;
-					if(action.type === 'PROFILE_LOADED') {
-						AppDispatcher.waitFor([ProfileStore.dispatcherId]);
-						FacilitiesActions.listByAddress(ProfileStore.getAddress());
-					}
-				});
-			}
-		}
+		return state;
 	},
 
 	getState() {
@@ -54,13 +22,13 @@ module.exports = React.createClass({
 			profile: ProfileStore.getData(),
 			caseData: CaseStore.getCaseData(ProfileStore.getData().CurrentCaseNumber),
 			caseworker: CaseStore.getCaseWorkerData(CaseStore.getCaseData().id),
-			child: ChildProfileStore.getData(),
+			dependent: CaseStore.getDependentData(CaseStore.getCaseData().id),
 			options: OptionsStore.getData()
 		};
 
 		data.heroData = {
-			title: 'Hi ' + data.profile.FirstName + ',',
-			bodyContent: '<p>Thank you for signing in to the Parent’s Caring Portal.</p><p>Since you know your home best, could you tell us a little bit about it? That will help us find the best place for ' + data.child.name + '.</p>'
+			title: !data.profile.FirstName ? '' : 'Hi ' + data.profile.FirstName + ',',
+			bodyContent: !data.dependent.FirstName ? '' : '<p>Thank you for signing in to the Parent’s Caring Portal.</p><p>Since you know your home best, could you tell us a little bit about it? That will help us find the best place for ' + data.dependent.FirstName + '.</p>'
 		};
 
 		return data;
@@ -77,12 +45,14 @@ module.exports = React.createClass({
 		// Add listeners
 		OptionsStore.on('change', this.binds.setState);
 		ProfileStore.on('change', this.binds.setState);
+		CaseStore.on('change', this.binds.setState);
 	},
 
 	componentWillUnmount() {
 		// Remove Listeners
 		OptionsStore.removeListener('change', this.binds.setState);
 		ProfileStore.removeListener('change', this.binds.setState);
+		CaseStore.removeListener('change', this.binds.setState);
 	},
 
 	selectionsChanged(name, value) {
@@ -102,19 +72,19 @@ module.exports = React.createClass({
 						name="familyTypes"
 						onChange={this.selectionsChanged}
 						title="Family" 
-						body="So we can match {this.state.child.name} to something familiar, can you describe how your home is organized?" 
+						body={!this.state.dependent.FirstName ? '' : 'So we can match ' + this.state.dependent.FirstName + ' to something familiar, can you describe how your home is organized?'} 
 						items={this.getOptions('familyTypes')} />
 					<SelectionCarousel 
 						name="bedTimes"
 						onChange={this.selectionsChanged}
 						title="Bed Times" 
-						body="When does {this.state.child.name} go to bed?" 
+						body={!this.state.dependent.FirstName ? '' : 'When does ' + this.state.dependent.FirstName + ' go to bed?'}
 						items={this.getOptions('bedTimes')} />
 					<SelectionCarousel 
 						name="dailyRoutines"
 						onChange={this.selectionsChanged}
 						title="Daily Routines" 
-						body="What are some of {this.state.child.name} routines?" 
+						body={!this.state.dependent.FirstName ? '' : 'What are some of ' + this.state.dependent.FirstName + ' routines?'} 
 						items={this.getOptions('dailyRoutines')} />
 					<p style={{marginTop: '2em', marginBottom: '2em'}}>
 						<Link to="/ffa" className="btn btn-default">Next</Link>
