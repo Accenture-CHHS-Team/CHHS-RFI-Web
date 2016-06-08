@@ -23,7 +23,8 @@ module.exports = React.createClass({
 			caseData: CaseStore.getCaseData(ProfileStore.getData().CurrentCaseNumber),
 			caseworker: CaseStore.getCaseWorkerData(CaseStore.getCaseData().id),
 			dependent: CaseStore.getDependentData(CaseStore.getCaseData().id),
-			options: OptionsStore.getData()
+			options: OptionsStore.getData(),
+			mode: typeof this.props.params.mode === 'string' ? this.props.params.mode : 'setup'
 		};
 
 		data.heroData = {
@@ -34,7 +35,7 @@ module.exports = React.createClass({
 		return data;
 	},
 
-	componentDidMount() {
+	componentDidMount() {		
 		// Bind event functions so that we can remove them later
 		this.binds = {
 			setState: function() {
@@ -101,7 +102,7 @@ module.exports = React.createClass({
 					<p style={{marginTop: '2em', marginBottom: '2em'}}>
 						{
 							this.allOptionsSelected()
-								? <Link to="/ffa" className="btn btn-default">Next</Link>
+								? <Link to={this.state.mode === 'setup' ? '/ffa' : '/dashboard'} className="btn btn-default">{this.state.mode === 'setup' ? 'Next' : 'Update'}</Link>
 								: <p>Please make your selections above before continuing</p>
 						}
 					</p>
