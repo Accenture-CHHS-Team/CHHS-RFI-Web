@@ -13,10 +13,10 @@ function createIdentity(Identity){
     }, function(err, ident){
       	if(ident !== undefined && ident !== null){
           ident.postaladdresses.create({
-          AddressLine1 : "7831 S Sepulveda Blvd",
-          City : "Los Angeles",
+          AddressLine1 : "291 Geary St",
+          City : "San Francisco",
           State : "CA",
-          PostalCode : "90045",
+          PostalCode : "94102",
           AddressType : "HOME"
         }, function(err, ident){
           
