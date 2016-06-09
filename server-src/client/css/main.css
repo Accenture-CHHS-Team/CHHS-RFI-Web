@@ -2687,9 +2687,11 @@ header#main-head {
     padding-left: 5em;
     padding-right: 5em; }
   @media (max-width: 768px) {
-    .login .btn-login {
-      display: block;
-      width: 100%; } }
+    .login {
+      padding: 10vh 0; }
+      .login .btn-login {
+        display: block;
+        width: 100%; } }
 
 .hero {
   background: #19a1c9;
@@ -2820,6 +2822,11 @@ header#main-head {
     background: transparent url(../images/caret-right.png) no-repeat scroll center center;
     background-size: 50%; }
 
+@media (max-width: 768px) {
+  .facilities h3 {
+    font-size: 1.4em;
+    margin: .5em 0; } }
+
 .facility-detail {
   margin: 3em 0; }
   .facility-detail .back {
@@ -2945,7 +2952,8 @@ header#main-head {
           padding: 1em;
           margin: 1em .5em;
           background: #ffffff;
-          width: 78%; }
+          width: 78%;
+          word-break: break-all; }
           .dashboard #chat .conversation .messages-list li .sender {
             display: none; }
           .dashboard #chat .conversation .messages-list li p:last-of-type {
