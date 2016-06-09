@@ -88,7 +88,7 @@ Unit tests used to validate key server functionality.
 
 > Setup or used configuration management
 
-Dockerfiles used to reliably set up containerized server environment for continuous deployment.
+Dockerfiles used to reliably set up a reproducible containerized server environment for continuous deployment. Jenkins is responsible for initiating builds when tracked repository branches are pushed to; the existing server containers are stopped, removed, the image updated, and the container started.
 
 > Setup or used continuous monitoring
 
