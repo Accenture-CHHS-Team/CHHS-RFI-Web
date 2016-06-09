@@ -25,7 +25,6 @@ In order to ensure the design was tailored specifically to user needs, we enlist
 
 We relied on Lisa and Janay for input on the intial design concept as well as for user testing. We received feedback from a parent as well, who gave us detailed feedback from the end user perspective.  
 
-
 > Used at least three “human-centered design” techniques or tools
 
 Research Interviews: One-on-one sessions with subject matter experts were a fundamental component of our human-centered design process. By engaging with former caseworkers, foster children, and parents we conceived of and designed a digital portal that focused on the most important outcomes.  
@@ -41,6 +40,10 @@ Style guides were used to define the overall look and feel for the product as we
 > Performed usability tests with people
 
 We gathered feedback from people using two methods: concept validation and user testing. Concept validation sessions ensured that the design direction addressed user needs whereas user testing sessions validated that the completed designs were usable and unserstandable.
+
+For additional information on the process and more human-centered design methods used, visit:
+https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/blob/master/Supplemental_Process_Documentation_0609.pdf
+
 
 ## Development Process
 > Used an iterative approach, where feedback informed subsequent work or versions of the prototype
