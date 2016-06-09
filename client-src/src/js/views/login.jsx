@@ -44,9 +44,9 @@ module.exports = React.createClass({
 					<div className="row">
 						<form className="col-xs-8 col-xs-push-2 form-horizontal" onSubmit={this.handleSubmit}>
 							<div className="form-group">
-								<label className="control-label col-sm-4" for="childFirstName">Child's First Name</label>
+								<label className="control-label col-sm-4" for="childFirstName">Case Number</label>
 								<div className="col-sm-8">
-									<input id="childFirstName" className="form-control" placeholder="Child's First Name" />
+									<input id="childFirstName" className="form-control" placeholder="Case Number" />
 								</div>
 							</div>
 							<div className="form-group">
