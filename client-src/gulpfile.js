@@ -18,7 +18,9 @@ var gulp = require('gulp'),
 	source = require('vinyl-source-stream'),
 	buffer = require('vinyl-buffer'),
 	sourcemaps = require('gulp-sourcemaps'),
-	babel = require('babelify');
+	babel = require('babelify'),
+	removeCode = require('gulp-remove-code'),
+	gulpif = require('gulp-if');
 
 
 // Define project paths
@@ -63,8 +65,8 @@ var projectName = 'chhs-prototype-frontend',	// Used to prefix file names
 		root: paths.dist,
 		port: 8000,
 		livereload: true
-	},
-
+	},	
+	
 	// Build environment
 	environment = argv.env ? argv.env : 'dev';
 
@@ -80,7 +82,7 @@ if(environment)
 		// 		root: paths.dist,
 		// 		port: 80
 		// 	};
-		// 	break;
+		// 	break;		
 	}
 }
 
@@ -147,6 +149,7 @@ gulp.task('js_vendor', ['clean_js'], function(){
 
 gulp.task('js', ['clean_js', 'js_vendor'], function(){
 	return bundleJs()
+		.pipe(gulpif(function(){return environment === 'prod'}, removeCode({production : true, development:false})))
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))

@@ -17,8 +17,12 @@ var React = require('react'),
 	FFADetailPage = require('./views/ffaDetail.jsx'),
 	Header = require('./components/Header.jsx');
 
-var A11y = require('@asaayers/react-a11y', { includeSrcNode: true });
-A11y(React);
+//removeIf(production)
+        var A11y = require('@asaayers/react-a11y', { includeSrcNode: true });
+        A11y(React);
+		console.log("ARIA testing starting...");
+//endRemoveIf(production)
+
 // Main App container
 var App = React.createClass({
 	getInitialState() {
