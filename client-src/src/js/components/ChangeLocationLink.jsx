@@ -54,7 +54,7 @@ var LocationForm = React.createClass({
 						<input aria-label="State" onChange={this.handleChange} type="text" className="form-control" placeholder="State" name="state" value={this.state.address.state} />
 					</div>
 					<div className="col-xs-6">
-						<input aria-label="Zip" onChange={this.handleChange} type="text" className="form-control" placeholder="Zip" name="zip" value={this.state.address.zip} />
+						<input aria-label="Zip Code" onChange={this.handleChange} type="text" className="form-control" placeholder="Zip" name="zip" value={this.state.address.zip} />
 					</div>
 				</div>
 				<button role="button" aria-label="Change your search address" type="submit" className="btn btn-primary btn-block">Update</button>
@@ -100,7 +100,7 @@ module.exports = React.createClass({
 	render() {
 		return (
 			<span ref="wrapper">
-				<a ref="link" className="change-location" data-toggle="popover">{this.props.text}</a>
+				<a ref="link" tabIndex='5' aria-label='Opens a form to change your address' className="change-location" data-toggle="popover">{this.props.text}</a>
 				<span className="content"><LocationForm onChange={this.handleChange} address={this.props.address} /></span>
 			</span>
 		);
