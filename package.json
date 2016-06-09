@@ -1,0 +1,11 @@
+{
+  "name": "chhs-prototype-frontend",
+  "version": "0.1.0",
+  "description": "California Health and Human Services - Front End Prototype",
+  "main": "server-src/client/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chaotic Moon",
+  "license": "ISC"
+}
