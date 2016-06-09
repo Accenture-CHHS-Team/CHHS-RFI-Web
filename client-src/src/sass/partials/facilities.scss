@@ -32,6 +32,12 @@
 			background-size: 50%;
 		}
 	}
+	@media(max-width: $screen-sm) {
+		h3 {
+			font-size: 1.4em;
+			margin: .5em 0;
+		}
+	}
 }
 
 .facility-detail {
