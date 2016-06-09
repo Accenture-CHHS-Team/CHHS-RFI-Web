@@ -35,9 +35,12 @@
     "yargs": "^3.29.0"
   },
   "dependencies": {
+    "@asaayers/react-a11y": "^0.1.0",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babelify": "^7.3.0",
     "flux": "^2.1.1",
+    "gulp-if": "^2.0.1",
+    "gulp-remove-code": "^1.0.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",

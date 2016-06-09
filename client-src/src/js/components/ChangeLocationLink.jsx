@@ -44,20 +44,20 @@ var LocationForm = React.createClass({
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div className="form-group">
-					<input onChange={this.handleChange} type="text" className="form-control" placeholder="Address" name="streetAddress" value={this.state.address.streetAddress} />
+					<input aria-label="Address" onChange={this.handleChange} type="text" className="form-control" placeholder="Address" name="streetAddress" value={this.state.address.streetAddress} />
 				</div>
 				<div className="form-group">
-					<input onChange={this.handleChange} type="text" className="form-control" placeholder="City" name="city" value={this.state.address.city} />
+					<input aria-label="City" onChange={this.handleChange} type="text" className="form-control" placeholder="City" name="city" value={this.state.address.city} />
 				</div>
 				<div className="form-group row">
 					<div className="col-xs-6">
-						<input onChange={this.handleChange} type="text" className="form-control" placeholder="State" name="state" value={this.state.address.state} />
+						<input aria-label="State" onChange={this.handleChange} type="text" className="form-control" placeholder="State" name="state" value={this.state.address.state} />
 					</div>
 					<div className="col-xs-6">
-						<input onChange={this.handleChange} type="text" className="form-control" placeholder="Zip" name="zip" value={this.state.address.zip} />
+						<input aria-label="Zip Code" onChange={this.handleChange} type="text" className="form-control" placeholder="Zip" name="zip" value={this.state.address.zip} />
 					</div>
 				</div>
-				<button type="submit" className="btn btn-primary btn-block">Update</button>
+				<button role="button" aria-label="Change your search address" type="submit" className="btn btn-primary btn-block">Update</button>
 			</form>
 		);
 	}
@@ -67,7 +67,7 @@ module.exports = React.createClass({
 	getDefaultProps() {
 		return {
 			address: {},
-			text: 'your location',
+			text: 'Use a Different Address',
 			onChange: function() {}
 		};
 	},
@@ -100,7 +100,7 @@ module.exports = React.createClass({
 	render() {
 		return (
 			<span ref="wrapper">
-				<a ref="link" className="change-location" data-toggle="popover">{this.props.text}</a>
+				<a ref="link" tabIndex='5' aria-label='Opens a form to change your address' className="change-location" data-toggle="popover">{this.props.text}</a>
 				<span className="content"><LocationForm onChange={this.handleChange} address={this.props.address} /></span>
 			</span>
 		);

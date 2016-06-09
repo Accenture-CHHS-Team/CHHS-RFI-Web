@@ -122,6 +122,18 @@ module.exports = React.createClass({
 		FacilitiesActions.listByAddress(ProfileStore.getAddress());
 	},
 
+	onKeyDown  : function(o, u, e){
+		// hide messages if space bar (for ARIA)		
+		if(o.keyCode === 32){
+			o.stopPropagation();
+			o.preventDefault();
+			e.stopPropagation();
+			e.preventDefault();
+			this.hideNotification(o);					
+			return false;
+		}
+	},
+
 	render() {
 		var types = Object.keys(this.state.options),
 			selected = [],
@@ -147,7 +159,7 @@ module.exports = React.createClass({
 			notifications = this.state.showNotification ? (
 				<div className="row">
 					<div className="col-xs-12 notification">
-						<a href="#" className="close" onClick={this.hideNotification}>Close</a>
+						<a href="#" role="button" tabIndex="1" className="close" onKeyDown={this.onKeyDown} onClick={this.hideNotification}>Close</a>
 						<p>Welcome to your caring home page. Here you can view suggestions for {!this.state.dependent.FirstName ? '' : 'for ' + this.state.dependent.FirstName} and chat with your caseworker.</p>
 					</div>
 				</div>
@@ -174,7 +186,7 @@ module.exports = React.createClass({
 								</div>
 								<div className="row">
 									<div className="col-xs-12 footer text-right">
-										<Link to="/onboarding/update" className="btn btn-primary">Make Updates</Link>
+										<Link role="link" to="/onboarding/update" aria-label="Make Updates" className="btn btn-primary">Make Updates</Link>
 									</div>
 								</div>
 							</div>
@@ -182,7 +194,7 @@ module.exports = React.createClass({
 
 						<section id="facilities" className="row">
 							<div className="col-xs-12">
-								<div className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near <ChangeLocationLink address={this.state.address} onChange={this.handleNewAddress} />:</div>
+								<div className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near your address. <ChangeLocationLink address={this.state.address} onChange={this.handleNewAddress} />:</div>
 								<FacilitiesList facilities={this.state.facilities} />
 							</div>
 						</section>

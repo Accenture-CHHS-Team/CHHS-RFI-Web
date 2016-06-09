@@ -10,7 +10,7 @@ module.exports = React.createClass({
 					<nav>
 						{
 							this.props.loggedIn
-								? <a href="#/logout">Sign Out</a>
+								? <a href="#/logout" role="button" tabIndex="0" >Sign Out</a>
 								: <span>&nbsp;</span>
 						}
 					</nav>

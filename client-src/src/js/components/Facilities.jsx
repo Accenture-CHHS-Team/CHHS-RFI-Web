@@ -16,7 +16,7 @@ var Facility = React.createClass({
 						<p>{this.props.item.facility_type}</p>
 					</div>
 					<div className="col-xs-2 col-sm-1 link-col text-center">
-						<Link to={'/ffadetail/' + this.props.item.facility_number} className="link">View Facility</Link>
+						<Link aria-label="View Facility" to={'/ffadetail/' + this.props.item.facility_number} className="link">View Facility</Link>
 					</div>
 				</div>
 			</div>

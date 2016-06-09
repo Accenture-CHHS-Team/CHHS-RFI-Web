@@ -3,6 +3,7 @@
 
 ### Build Directory ###
 dist
+server-src/client
 
 ### Bower ###
 bower_components

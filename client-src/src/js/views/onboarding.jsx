@@ -104,7 +104,7 @@ module.exports = React.createClass({
 					<div className="container text-right">
 						{
 							this.allOptionsSelected()
-								? <Link to={this.state.mode === 'setup' ? '/ffa' : '/dashboard'} className="btn btn-primary">{this.state.mode === 'setup' ? 'Next' : 'Update'}</Link>
+								? <Link aria-label='Update or Next' to={this.state.mode === 'setup' ? '/ffa' : '/dashboard'} className="btn btn-primary">{this.state.mode === 'setup' ? 'Next' : 'Update'}</Link>
 								: <p className="text-center">Please make your selections above before continuing</p>
 						}
 					</div>
