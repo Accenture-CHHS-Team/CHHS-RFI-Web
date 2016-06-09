@@ -1,0 +1,23 @@
+{
+  "browser": true,
+  "undef": true,
+  "unused": false,
+  "jquery": true,
+  "quotmark": "single",
+  "eqeqeq": true,
+  "globals": {
+    "console": false,
+  	"_": false
+  },
+  "predef": [
+    "hljs",
+    "App",
+    "app",
+    "Flux",
+    "ActiveXObject",
+    "Clipboard",
+    "Bloodhound"
+  ],
+  "esnext": true,
+  "laxbreak": true
+}

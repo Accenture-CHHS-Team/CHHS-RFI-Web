@@ -1,0 +1,85 @@
+{
+  "name": "Facility",
+  "plural": "Facilities",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FacilityType": {
+      "type": "string"
+    },
+    "FacilityNumber": {
+      "type": "string"
+    },
+    "FacilityName": {
+      "type": "string"
+    },
+    "Licensee": {
+      "type": "string"
+    },
+    "FacilityAdministrator": {
+      "type": "string"
+    },
+    "FacilityTelephoneNumber": {
+      "type": "string"
+    },
+    "FacilityAddress": {
+      "type": "string"
+    },
+    "FacilityCity": {
+      "type": "string"
+    },
+    "FacilityStates": {
+      "type": "string"
+    },
+    "FacilityZip": {
+      "type": "string"
+    },
+    "CountyName": {
+      "type": "string"
+    },
+    "RegionalOffice": {
+      "type": "string"
+    },
+    "FacilityCapacity": {
+      "type": "number"
+    },
+    "FacilityStatus": {
+      "type": "string"
+    },
+    "LicenseFirstDate": {
+      "type": "date"
+    },
+    "ClosedDate": {
+      "type": "date"
+    },
+    "LocationCity": {
+      "type": "string"
+    },
+    "Location": {
+      "type": "geopoint"
+    },
+    "LocationAddress": {
+      "type": "string"
+    },
+    "LocationZip": {
+      "type": "string"
+    },
+    "LocationState": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

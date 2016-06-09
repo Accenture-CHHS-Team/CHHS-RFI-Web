@@ -1,0 +1,33 @@
+header#main-head {
+	background: $gray-darker;
+	color: $white;
+
+	.container {
+		position: relative;
+		padding: 1em 0;
+	}
+
+	#logo {
+		position: absolute;
+		left: -13px;
+		top: -1px;
+		width: 106px;
+		height: 94px;
+		margin: 0;
+		padding: 0;
+		background: transparent url(../images/logo.png) no-repeat scroll left top;
+		background-size: 106px 94px;
+		text-indent: -9999px;
+	}
+
+	nav {
+		text-align: right;
+		a {
+			color: #959595;
+		}
+
+		@media(max-width: $screen-sm) {
+			padding-right: 15px;
+		}
+	}
+}

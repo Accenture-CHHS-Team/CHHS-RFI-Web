@@ -1,0 +1,51 @@
+{
+  "name": "chhs-prototype-frontend",
+  "version": "0.0.1",
+  "description": "California Health and Human Services - Front End Prototype",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chaotic Moon",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.0.15",
+    "bower": "^1.4.1",
+    "browserify": "^13.0.1",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^4.0.0",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-useref": "^3.1.0",
+    "jshint": "^2.8.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0",
+    "yargs": "^3.29.0"
+  },
+  "dependencies": {
+    "@asaayers/react-a11y": "^0.1.0",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babelify": "^7.3.0",
+    "flux": "^2.1.1",
+    "gulp-if": "^2.0.1",
+    "gulp-remove-code": "^1.0.2",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
+    "react-slick": "^0.12.2",
+    "react-sticky": "^5.0.3"
+  }
+}

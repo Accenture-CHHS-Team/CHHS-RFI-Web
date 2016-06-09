@@ -1,0 +1,79 @@
+{
+	"bedTimes": {
+		"title": "Bed Times",
+		"options": [
+			{
+				"title": "8 PM",
+				"value": "8 PM",
+				"style": "time time-8pm"
+			},
+			{
+				"title": "9 PM",
+				"value": "9 PM",
+				"style": "time time-9pm"
+			},
+			{
+				"title": "10 PM",
+				"value": "10 PM",
+				"style": "time time-10pm"
+			},
+			{
+				"title": "11 PM",
+				"value": "11 PM",
+				"style": "time time-11pm"
+			}
+		]
+	},
+
+	"familyTypes": {
+		"title": "Family",
+		"options": [
+			{
+				"title": "Single Parent",
+				"value": "Single Parent",
+				"style": "family single"
+			},
+			{
+				"title": "Two Parents",
+				"value": "Two Parents",
+				"style": "family two"
+			},
+			{
+				"title": "Extended Family",
+				"value": "Extended Family",
+				"style": "family extended"
+			},
+			{
+				"title": "Grandparents",
+				"value": "Grandparents",
+				"style": "family grandparents"
+			}
+		]
+	},
+
+	"dailyRoutines": {
+		"title": "Daily Routines",
+		"options": [
+			{
+				"title": "Shower in the morning",
+				"value": "Shower in the morning",
+				"style": "routines shower-morning"
+			},
+			{
+				"title": "Bath in the morning",
+				"value": "Bath in the morning",
+				"style": "routines bath-morning"
+			},
+			{
+				"title": "Shower in the evening",
+				"value": "Shower in the evening",
+				"style": "routines shower-evening"
+			},
+			{
+				"title": "Bath in the evening",
+				"value": "Bath in the evening",
+				"style": "routines bath-evening"
+			}
+		]
+	}
+}

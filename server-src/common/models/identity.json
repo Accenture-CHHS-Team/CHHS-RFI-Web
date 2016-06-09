@@ -1,0 +1,87 @@
+{
+  "name": "Identity",
+  "plural": "Identities",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FirstName": {
+      "type": "string"
+    },
+    "LastName": {
+      "type": "string"
+    },
+    "MiddleName": {
+      "type": "string"
+    },
+    "DateOfBirth": {
+      "type": "date"
+    },
+    "Gender": {
+      "type": "string"
+    },
+    "CurrentCaseNumber": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "postaladdresses": {
+      "type": "embedsMany",
+      "model": "PostalAddress",
+      "foreignKey": "identityId"
+    },
+    "cases": {
+      "type": "hasMany",
+      "model": "Case",
+      "foreignKey": "clientIdentityId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "resetPassword"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "register"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "login"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "logout"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    }
+  ],
+  "methods": {}
+}

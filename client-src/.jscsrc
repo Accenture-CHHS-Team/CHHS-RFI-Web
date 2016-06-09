@@ -1,0 +1,26 @@
+{
+	"validateLineBreaks": null,
+	"disallowTrailingWhitespace": null,
+	"disallowKeywordsOnNewLine": [],
+	"disallowMixedSpacesAndTabs": true,
+	"disallowSpacesInFunctionExpression": null,
+	"disallowSpacesInNamedFunctionExpression": null,
+	"disallowSpacesInAnonymousFunctionExpression": null,
+	"disallowSpacesInsideArrayBrackets": false,
+	"requireSpacesInsideArrayBrackets": null,
+	"disallowNewlineBeforeBlockStatements": true,
+	"disallowKeywordsOnNewLine": [],
+	"requireLineFeedAtFileEnd": true,
+	"maximumLineLength": {
+		"value": 500,
+		"tabSize": 4,
+		"allowUrlComments": true,
+		"allowRegex": true
+	},
+	"requireKeywordsOnNewLine": ["else"],
+	"disallowOperatorBeforeLineBreak": ["+", "."],
+	"requireBlocksOnNewline": 1,
+	"validateParameterSeparator": ", ",
+	"requireSpaceBeforeObjectValues": true,
+	"requireSpaceAfterBinaryOperators": true
+}

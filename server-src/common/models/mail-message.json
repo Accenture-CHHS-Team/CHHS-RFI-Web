@@ -1,0 +1,51 @@
+{
+  "name": "MailMessage",
+  "plural": "MailMessages",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "IsFromClient" : {
+      "type":"boolean",
+      "required":true,
+      "default":false
+    },
+    "MessageFrom" : {
+      "type":"string",
+      "required":true 
+    },
+    "MessageBody": {
+      "type": "string",
+      "required": true
+    },
+    "CreatedOn": {
+      "type": "date",
+      "required": true
+    },
+    "IsActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

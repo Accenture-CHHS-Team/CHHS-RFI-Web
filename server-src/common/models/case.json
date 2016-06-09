@@ -1,0 +1,138 @@
+{
+  "name": "Case",
+  "plural": "Cases",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "CaseNumber": {
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    "CreatedOn": {
+      "type": "date"
+    },
+    "IsActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owner": {
+      "type": "belongsTo",
+      "model": "Identity",
+      "foreignKey": ""
+    },
+    "facilities": {
+      "type": "embedsMany",
+      "model": "CaseFacilityFacade",
+      "foreignKey": "caseId"
+    },
+    "comforts": {
+      "type": "embedsMany",
+      "model": "CaseComfort",
+      "foreignKey": "caseId"
+    },
+    "dependents": {
+      "type": "hasMany",
+      "model": "Dependent",
+      "foreignKey": "caseId"
+    },
+    "caseworkers":{
+      "type":"hasMany",
+      "model":"CaseWorker",
+      "foreignKey":"caseId"
+    },
+    "messages":{
+      "type":"hasMany",
+      "model":"MailMessage",
+      "foreignKey":"caseId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "updateAttributes"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "upsert"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "exists"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findOne"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__findById__owner"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

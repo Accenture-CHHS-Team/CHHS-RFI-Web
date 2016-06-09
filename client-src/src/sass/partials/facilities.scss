@@ -1,0 +1,57 @@
+.facilities {
+	.no-results, .loading {
+		margin: 3em 0;
+	}
+	.facility {
+		background: $gray-lighter;
+		margin: 2em 0;
+
+		.image {
+			background: $gray-light;
+			background-size: cover;
+			background-position: center center;
+			height: 150px;
+		}
+
+		.info {
+			text-align: left;
+		}
+
+		.distance {
+			// margin-bottom: 1em;
+		}
+
+		.link {
+			display: block;
+			width: 20px;
+			height: 30px;
+			margin-top: 55px;
+			text-indent: -9999px;
+			overflow: hidden;
+			background: transparent url(../images/caret-right.png) no-repeat scroll center center;
+			background-size: 50%;
+		}
+	}
+	@media(max-width: $screen-sm) {
+		h3 {
+			font-size: 1.4em;
+			margin: .5em 0;
+		}
+	}
+}
+
+.facility-detail {
+	margin: 3em 0;
+
+	.back {
+		padding-left: 12px;
+		background: transparent url('../images/caret-left-blue-detail.png') no-repeat scroll left center;
+		background-size: 4px 10px;
+	}
+
+	.hero-image {
+		height: 50vh;
+		background: transparent url('../images/hero-image-detail.png') no-repeat scroll center center;
+		background-size: cover;
+	}
+}

@@ -1,0 +1,22 @@
+.login {
+	background: $brand-primary;
+	color: $white;
+	padding: 30vh 0;
+
+	h1 {
+		margin-bottom: 1em;
+	}
+
+	.btn-login {
+		padding-left: 5em;
+		padding-right: 5em;
+	}
+
+	@media(max-width: $screen-sm) {
+		padding: 10vh 0;
+		.btn-login {
+			display: block;
+			width: 100%;
+		}
+	}
+}

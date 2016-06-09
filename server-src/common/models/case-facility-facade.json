@@ -1,0 +1,46 @@
+{
+  "name": "CaseFacilityFacade",
+  "plural": "CaseFacilityFacades",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FacilityId": {
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    "FacilityName": {
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    "Reason": {
+      "type": "string",
+      "required": false
+    },
+    "IsActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

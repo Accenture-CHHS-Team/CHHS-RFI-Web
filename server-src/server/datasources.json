@@ -1,0 +1,103 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysql" : {
+    "name" : "mysql",
+    "connector" : "loopback-connector-mysql",
+    "database" : "calhhsapi",
+    "debug":false,
+    "host":"HOST_NAME_GOES_HERE",
+    "username":"USERNAME_GOES_HERE",
+    "password":"PASSWORD_GOES_HERE",
+    "port":3306
+  },
+  "geocoder": {
+    "name": "geocoder",
+    "baseURL": "http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx",
+    "crud": false,
+    "connector": "rest",
+    "debug": true,
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V04_01.aspx",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "streetAddress": "{address}",
+            "city": "{city}",
+            "state": "{state}",
+            "zip": "{zip}",
+            "apikey": "TAMU_GEO_TOKEN_GOES_HERE",
+            "format": "json",
+            "allowTies": "true",
+            "notStore": "false",
+            "version": "4.01"
+          }
+        },
+        "functions": {
+          "geocode": [
+            "address",
+            "city",
+            "state",
+            "zip"
+          ]
+        }
+      }
+    ]
+  },
+  "facilities": {
+    "name": "facilities",
+    "baseURL": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
+    "crud": false,
+    "connector": "rest",
+    "debug": true,
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
+          },
+          "query": {
+            "facility_status": "LICENSED"
+          }
+        },
+        "functions": {
+          "list": [           
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://chhs.data.ca.gov/resource/mffa-c6z5.json",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "X-App-Token": "SOCRATA_TOKEN_GOES_HERE"
+          },
+          "query": {
+            "facility_status": "LICENSED",
+            "$where": "within_circle(location, {lat}, {long}, {radius})"
+          }
+        },
+        "functions": {
+          "listByRadius": [
+            "long",
+            "lat",
+            "radius"
+          ]
+        }
+      }
+    ]
+  }
+}

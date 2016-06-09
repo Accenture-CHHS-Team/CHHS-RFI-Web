@@ -1,0 +1,72 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 800;
+}
+
+.container {
+	// For now, this is the max width of the site.
+	max-width: 970px;
+}
+
+.notification {
+	position: relative;
+	background: $notification-background;
+	padding: 2em;
+	margin-bottom: 2em;
+	font-size: 1.1em;
+	text-align: center;
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+	.close {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		display: block;
+		width: 15px;
+		height: 14px;
+		overflow: hidden;
+		text-indent: -9999px;
+		background: transparent url(../images/close-notification.png) no-repeat scroll center center;
+		background-size: 15px 14px;
+	}
+}
+
+.footer {
+	background: darken($gray-lighter, 5%);
+	padding: 1em;
+}
+
+.messages {
+	// padding: 2em;
+	// background: $gray-lighter;
+	// border: 1px solid $gray-light;
+}
+
+ul.messages-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.change-location {
+	cursor: pointer;
+	& ~ .content {
+		display: none;
+		color:#fff;
+	}
+}
+
+.popover-content {
+	color: $gray-base;
+}
+
+.btn-link.back {
+	padding-left: 12px;
+	background: transparent url(../images/caret-left-small.png) no-repeat scroll left center;
+	background-size: 4px 10px;
+	color: $gray-light;
+}

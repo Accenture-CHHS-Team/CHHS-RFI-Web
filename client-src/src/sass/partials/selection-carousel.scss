@@ -1,0 +1,190 @@
+.selection-carousel {
+	.items {
+		padding: 1em 0;
+	}
+
+	@media(max-width: $screen-sm) {
+		margin: 0 20px;
+	}
+
+	.option {
+		cursor: pointer;
+	}
+
+	// Nuka-carousel style overrides
+
+	// These are the previous & next buttons. TODO: Need a more specific way to select these...
+	.slider-decorator-0, .slider-decorator-1 {
+		button {
+			background: transparent !important;
+			color: $gray-darker !important;
+		}
+	}
+	.slider-decorator-0 {
+		left: -60px !important;
+	}
+	.slider-decorator-1 {
+		right: -60px !important;
+	}
+
+	// This is the dots decorator. TODO: Need a more specific way to select this...
+	.slider-decorator-2 {
+		display: none;
+	}
+
+
+
+	// Slick Carousel overrides
+	.slick-slider {
+		// margin: 0 -6px;
+		.slick-slide {
+			padding: 15px;
+		}
+		.slick-prev, .slick-next {
+			top: 40%;
+			&:before {
+				color: $gray-darker;
+				content: '';
+				width: 20px;
+				height: 30px;
+				display: block;
+			}
+			&.slick-disabled {
+				visibility: hidden;
+			}
+		}
+		@media(max-width: $screen-sm) {
+			.slick-prev {
+				left: -15px;
+			}
+			.slick-next {
+				right: -15px;
+			}
+		}
+
+		.slick-prev:before {
+			background: transparent url(../images/caret-left.png) no-repeat scroll center center;
+			background-size: 50%;
+		}
+		.slick-next:before {
+			background: transparent url(../images/caret-right.png) no-repeat scroll center center;
+			background-size: 50%;
+		}
+	}
+}
+
+.option {
+	text-align: center;
+
+	.image {
+		height: 165px;
+		background: $gray-lighter none no-repeat scroll center center;
+		margin: 0 0 1em 0;
+		background-size: 40%;
+		border: 5px solid transparent;
+		transition: border .2s linear;
+
+		@media(max-width: $screen-sm) {
+			height: 120px;
+		}
+	}
+
+	&.selected {
+		.image {
+			border: 5px solid $brand-success;
+		}
+	}
+
+	// Item styles
+
+	// Family
+	&.family {
+		.image {
+			background-color: #d8e3d5;
+		}
+
+		&.single {
+			.image {
+				background-image: url(../images/mom.png);
+				background-size: 25%;
+			}
+		}
+
+		&.two {
+			.image {
+				background-image: url(../images/mom-dad.png);
+			}
+		}
+
+		&.extended {
+			.image {
+				background-image: url(../images/extended-family.png);
+			}
+		}
+
+		&.grandparents {
+			.image {
+				background-image: url(../images/grandparents.png);
+			}
+		}
+	}
+
+	// Times
+	&.time {
+		.image {
+			background-color: $gray-lighter;
+		}
+
+		&.time-8pm {
+			.image {
+				background-image: url(../images/8pm.png); 
+			}
+		}
+		&.time-9pm {
+			.image {
+				background-image: url(../images/9pm.png); 
+			}
+		}
+		&.time-10pm {
+			.image {
+				background-image: url(../images/10pm.png); 
+			}
+		}
+		&.time-11pm {
+			.image {
+				background-image: url(../images/11pm.png); 
+			}
+		}
+	}
+
+	// Routines
+	&.routines {
+		.image {
+			background-color: #bfe0f0;
+		}
+
+		&.shower-morning {
+			.image {
+				background-image: url(../images/shower-morning.png);
+			}
+		}
+
+		&.shower-evening {
+			.image {
+				background-image: url(../images/shower-evening.png);
+			}
+		}
+
+		&.bath-morning {
+			.image {
+				background-image: url(../images/bath-morning.png);
+			}
+		}
+
+		&.bath-evening {
+			.image {
+				background-image: url(../images/bath-evening.png);
+			}
+		}
+	}
+}
