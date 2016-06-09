@@ -69,7 +69,7 @@ module.exports = React.createClass({
 							<div className="form-group">
 								<div className="col-sm-offset-4 col-sm-8 text-left">
 									<button type="submit" className="btn btn-primary btn-login">Go</button>
-									<p style={{marginTop: '2em'}}><em>For demonstration purposes, no login information is required.<br/> Click go to continue.</em></p>
+									<p style={{marginTop: '2em'}}><em>For demonstration purposes, no login information is required. Click go to continue.</em></p>
 								</div>
 							</div>
 						</form>
