@@ -20,8 +20,7 @@ var gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps'),
 	babel = require('babelify'),
 	removeCode = require('gulp-remove-code'),
-	gulpif = require('gulp-if');
-
+	useref = require('gulp-useref');
 
 // Define project paths
 var projectName = 'chhs-prototype-frontend',	// Used to prefix file names
@@ -138,23 +137,26 @@ gulp.task('clean_staging', function(cb) {
 gulp.task('js_vendor', ['clean_js'], function(){
 	return gulp.src(files.bower_js, { cwd: './bower_components/' })
 		.pipe(concat(projectName + '.vendor.js'))
-		.pipe(gulp.dest('js', { cwd: paths.dist }))
-		.pipe(rename(function(path){
-			path.basename += '.min';
-		}))
-		.pipe(uglify())
 		.pipe(gulp.dest('js', { cwd: paths.dist }));
+		// NOTE Uglification is now done by useref in the 'html-prod' task
+		// .pipe(rename(function(path){
+		// 	path.basename += '.min';
+		// }))
+		// .pipe(uglify())
+		// .pipe(gulp.dest('js', { cwd: paths.dist }));
 });
 
 
 gulp.task('js', ['clean_js', 'js_vendor'], function(){
-	return bundleJs()
-		.pipe(gulpif(function(){return environment === 'prod'}, removeCode({production : true, development:false})))
-		.pipe(rename(function(path){
-			path.basename += '.min';
-		}))
-		.pipe(uglify())
-		.pipe(gulp.dest('js', { cwd: paths.dist }));
+	return bundleJs();
+		// NOTE Uglification is now done by useref in the 'html-prod' task
+		// .pipe(rename(function(path){
+		// 	path.basename += '.min';
+		// }))
+		// .pipe(uglify())
+		// .pipe(gulp.dest('js', { cwd: paths.dist }));
+
+
 	// return gulp.src(files.js, { cwd: paths.source + 'js' })
 	// 	.pipe(jshint(".jshintrc"))
 	// 	.pipe(jshint.reporter('default'))
@@ -258,6 +260,22 @@ gulp.task('templates', ['clean_html'], function() {
 
 //-----------------------------------------
 //
+//	HTML task
+//
+//-----------------------------------------
+
+gulp.task('html-prod', ['js', 'assets', 'clean_html'], function() {
+	return gulp.src(paths.dist + '*.html')
+        .pipe(useref())
+        .pipe(gulpif('*.js', removeCode({ production : true })))
+        .pipe(gulpif('*.js', uglify()))
+        .pipe(gulp.dest(paths.dist));
+});
+
+
+
+//-----------------------------------------
+//
 // Images
 //
 //-----------------------------------------
@@ -312,7 +330,7 @@ gulp.task('production', ['build'], function() {
 });
 
 // Development Task
-gulp.task('build', ['js', 'css', 'assets', 'images', 'fonts'], function() {
+gulp.task('build', ['js', 'css', 'html-prod', 'assets', 'images', 'fonts'], function() {
 	// Done!
 });
 
