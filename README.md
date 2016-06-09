@@ -19,6 +19,10 @@ We assembled a multidisciplinary and collaborative team that included the follow
  9. Scrum Master - Zane Sadler
 
 ## Design Process
+
+For detailed documentation of the design process, visit: 
+https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/blob/master/Supplemental_Process_Documentation_0609.pdf
+
 > Understood what people needed (see Note #1), by including people in the prototype development and design process
 
 In order to ensure the design was tailored specifically to user needs, we enlisted two subject matter experts to help with the prioritization of features, functionality, and overall look and feel. Lisa, a former caseworker, and Janay, a former foster child and caseworker offered invaluable insight into the needs of biological parents with children in foster care. 
