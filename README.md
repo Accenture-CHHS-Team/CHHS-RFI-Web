@@ -1,5 +1,8 @@
 # California Health and Human Services Agency - Accenture ADPQ Vendor Pool Prototype - Technical Approach
 
+##Prototype
+http://calhhs.client-code.com/
+
 ##Team
 > a. One accountable leader
 
@@ -95,6 +98,12 @@ AWS CloudWatch and Sensu monitoring was set up to monitor server and application
 > o. Container deployment
 
 Application deployed to a Docker container as part of CI deployment.
+
+##More information
+For more details and artifacts related to our process, see: https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/blob/master/Supplemental_Process_Documentation_0609.pdf
+
+To see how we followed the USDS Playbook to build our service, see: https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/blob/master/USDS%20Playbook%20Matrix.xlsx
+
 
 ## Setup
 > p. Instructions
