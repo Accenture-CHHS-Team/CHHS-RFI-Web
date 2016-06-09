@@ -67,7 +67,7 @@ module.exports = React.createClass({
 	getDefaultProps() {
 		return {
 			address: {},
-			text: 'your location',
+			text: 'Use a Different Address',
 			onChange: function() {}
 		};
 	},

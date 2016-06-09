@@ -49,7 +49,7 @@ module.exports = React.createClass({
 			title: !data.profile.FirstName ? '' : data.profile.FirstName + ',',
 			bodyContent: !data.dependent.FirstName 
 				? '' 
-				: <div>There are many places that {data.dependent.FirstName} can stay:<br/>with a relative, in county homes, or in homes through a foster family agency. Your caseworker has recommended a foster family agency for {data.dependent.FirstName}. Here are examples of foster family agencies that are close to <ChangeLocationLink aria-label="Change your location" address={data.address} onChange={this.handleNewAddress} />.</div>
+				: <div>There are many places that {data.dependent.FirstName} can stay:<br/>with a relative, in county homes, or in homes through a foster family agency. Your caseworker has recommended a foster family agency for {data.dependent.FirstName}. Here are examples of foster family agencies that are close to your location. <ChangeLocationLink aria-label="Change your location" address={data.address} onChange={this.handleNewAddress} /></div>
 		}
 
 		return data;

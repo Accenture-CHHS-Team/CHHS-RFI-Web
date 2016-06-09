@@ -194,7 +194,7 @@ module.exports = React.createClass({
 
 						<section id="facilities" className="row">
 							<div className="col-xs-12">
-								<div className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near <ChangeLocationLink address={this.state.address} onChange={this.handleNewAddress} />:</div>
+								<div className="text-center">Here are the Agencies that are recommended for {this.state.dependent.FirstName} near your address. <ChangeLocationLink address={this.state.address} onChange={this.handleNewAddress} />:</div>
 								<FacilitiesList facilities={this.state.facilities} />
 							</div>
 						</section>
