@@ -1,5 +1,8 @@
 # California Health and Human Services Agency - Accenture ADPQ Vendor Pool Prototype - Technical Approach
 
+##Prototype
+The prototype may be accessed at http://calhhs.client-code.com/
+
 ##Team
 > Assigned one leader and gave that person authority and responsibility and held that person accountable for the quality of the prototype submitted
 
@@ -88,7 +91,7 @@ Unit tests used to validate key server functionality.
 
 > Setup or used configuration management
 
-Dockerfiles used to reliably set up a reproducible containerized server environment for continuous deployment. Jenkins is responsible for initiating builds when tracked repository branches are pushed to; the existing server containers are stopped, removed, the image updated, and the container started.
+Dockerfiles used for reproducible, automated configuration in test and deployment.
 
 > Setup or used continuous monitoring
 
