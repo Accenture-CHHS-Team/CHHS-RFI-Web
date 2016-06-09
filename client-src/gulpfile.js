@@ -185,7 +185,7 @@ var bundler = browserify(Object.assign({}, watchify.args, {
 	})),
 	bundleWatcher;
 
-gulp.task('watch-js', function() {
+gulp.task('watch-js', ['clean_js'], function() {
 	bundleWatcher = watchify(bundler);
 	bundleWatcher.on('update', watchBundleJs); // on any dep update, runs the bundler
 	bundleWatcher.on('log', console.log); // output build logs to terminal
@@ -334,7 +334,7 @@ gulp.task('build', ['js', 'css', 'html-prod', 'assets', 'images', 'fonts'], func
 	// Done!
 });
 
-gulp.task('build-dev', ['watch-js', 'css', 'assets', 'images', 'fonts'], function() {
+gulp.task('build-dev', ['js', 'watch-js', 'css', 'assets', 'images', 'fonts'], function() {
 	// Done!
 });
 
@@ -363,7 +363,7 @@ gulp.task('serve-staging', ['build_staging'], function() {
 });
 
 // Watch files during development
-gulp.task('watch', ['build'], function(){
+gulp.task('watch', ['build-dev'], function(){
 	gulp.watch(paths.source + 'sass/**/*.scss', ['css']);
 	// gulp.watch(paths.source + 'js/**/*.js', ['js']);
 	// gulp.watch(paths.source + 'js/**/*.jsx', ['js']);
