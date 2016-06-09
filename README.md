@@ -16,7 +16,7 @@ We assembled a multidisciplinary and collaborative team that included the follow
  6. Front End Web Developer - Matthew McCloskey
  7. Backend Web Developer - Daniel Haab
  8. DevOps Engineer - Jeffery Miles
- 9. Usability Tester/Agile Coach - Zane Sadler
+ 9. Scrum Master - Zane Sadler
 
 ## Design Process
 > Understood what people needed (see Note #1), by including people in the prototype development and design process
