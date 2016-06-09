@@ -21,7 +21,7 @@ We assembled a multidisciplinary and collaborative team that included the follow
 ## Design Process
 
 For detailed documentation of the design process, visit: 
-https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/blob/master/Supplemental_Process_Documentation_0609.pdf
+https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/raw/master/Supplemental_Process_Documentation_0609.pdf
 
 > Understood what people needed (see Note #1), by including people in the prototype development and design process
 
