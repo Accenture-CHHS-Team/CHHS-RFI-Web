@@ -1,5 +1,6 @@
 var React = require('react'),
 	Link = require('react-router').Link,
+	RouterContext = require('react-router').RouterContext,
 	AppDispatcher = require('../dispatchers/AppDispatcher'),
 	ProfileStore = require('../stores/ProfileStore'),
 	ProfileActions = require('../actions/ProfileActions'),
@@ -12,6 +13,9 @@ var React = require('react'),
 	ChangeLocationLink = require('../components/ChangeLocationLink.jsx');
 
 module.exports = React.createClass({
+	contextTypes: {
+		router: React.PropTypes.object
+	},
 	getInitialState() {
 		var state = this.getState();
 		return state;
@@ -59,11 +63,16 @@ module.exports = React.createClass({
 		FacilitiesStore.removeListener('change', this.binds.setState);
 	},
 
+	goBack(e) {
+		e.preventDefault();
+		this.context.router.goBack()
+	},
+
 	render() {
 		return (
 			<div className="facility-detail">
 				<div className="container">
-					<Link aria-label="Return to list" to="/ffa" className="back">Back</Link>
+					<a href="#" onClick={this.goBack} className="back">Back</a>
 					<h2>{this.state.facility.facility_name}</h2>
 				</div>
 				<div className="hero-image"></div>
