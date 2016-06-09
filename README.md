@@ -1,3 +1,5 @@
+# California Health and Human Services Agency - Accenture ADPQ Vendor Pool Prototype - Technical Approach
+
 ##Team
 > Assigned one leader and gave that person authority and responsibility and held that person accountable for the quality of the prototype submitted
 
@@ -17,6 +19,10 @@ We assembled a multidisciplinary and collaborative team that included the follow
  9. Scrum Master - Zane Sadler
 
 ## Design Process
+
+For detailed documentation of the design process, visit: 
+https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/blob/master/Supplemental_Process_Documentation_0609.pdf
+
 > Understood what people needed (see Note #1), by including people in the prototype development and design process
 
 In order to ensure the design was tailored specifically to user needs, we enlisted two subject matter experts to help with the prioritization of features, functionality, and overall look and feel. Lisa, a former caseworker, and Janay, a former foster child and caseworker offered invaluable insight into the needs of biological parents with children in foster care. 
@@ -46,7 +52,7 @@ https://github.com/Accenture-CHHS-Team/CHHS-RFI-Web/blob/master/Supplemental_Pro
 ## Development Process
 > Used an iterative approach, where feedback informed subsequent work or versions of the prototype
 
-We began with the product owner providing an overview and then defining the criteria for success with the team. The team immediately collaborated to establish an initial set of functionality which met the goals of the effort and could be completed in the allocated time. We also established the cadence, roles and responsibilities of this specific agile development effort. We implemented 1 week sprints that would allow us to divide the output into finite deliverables while still providing enough time to make meaningful progress during each iteration. After establishing the initial user stories, the team focused on implementing the technical infrastructure needed to support them while also engaging in user research to further refine and prioritize those stories. This process involved capturing feedback across multiple iterations from users, the product owner and project team as the stories moved from sketches to wireframes and then visual designs. Technical development followed a similar cycle with elements of the complete application being deployed for review, testing and feedback as soon as they were available with usability testing and development happening in parallel as the team moved forward towards an MVP release. Feedback which could not be supported for the initial release was captured in the backlog for consideration in subsequent iterations. 
+We began the project by defining the request and receiving an over view from the product owner. The team immediately collaborated to define an initial set of functionality which they felt met the goals of the effort and could be completed in the allocated time. We also established the cadence, roles and responsibilities of this specific agile development effort. We decided to implement 1 week sprints that would allow us to divide the output into finite deliverables while still provide enough time to make meaningful progress during each iteration. After establishing the initial user stories, the team focused on implementing the technical infrastructure needed to support them while also engaging in user research to further refine and prioritize those stories. This process involved capturing feedback across multiple iterations from users, the product owner and project team as the stories moved from sketches to wireframes and then visual designs. Technical development followed a similar cycle with elements of the complete application being deployed for review, testing and feedback as soon as they were available with usability testing and development happening in parallel as the team moved forward towards an MVP release. Feedback that couldn’t’ be supported for that initial release was captured in the backlog for consideration in subsequent iterations. 
 
 ## Technology
 > Created a prototype that works on multiple devices, and presents a responsive design
@@ -57,17 +63,17 @@ Our front end code is fully responsive and tested across multiple browsers and d
 
 Key technologies:
 * Front End
-        * React.js
+    * React.js
 * API Server
-        * NodeJS
-        * Loopback
-        * MySQL
-        * Mocha/Chai
+    * NodeJS
+    * Loopback
+    * MySQL
+    * Mocha/Chai
 * Infrastructure
-        * Jenkins
-        * Vagrant
-        * Docker
-        * Sensu
+    * Jenkins
+    * Vagrant
+    * Docker
+    * Sensu
 
 ## Environment
 > Deployed the prototype on an Infrastructure as a Service (Iaas) or Platform as Service (Paas) provider, and indicated which provider they used.
