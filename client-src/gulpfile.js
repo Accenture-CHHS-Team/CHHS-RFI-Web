@@ -175,7 +175,8 @@ var bundler = browserify(Object.assign({}, watchify.args, {
 		extensions: ['js', 'jsx']
 	})).transform(babel.configure({
 		// Use all of the ES2015 spec
-		presets: ['es2015', 'react']
+		presets: ['es2015', 'react'],
+		plugins: ['transform-object-assign']
 	})),
 	bundleWatcher;
 
