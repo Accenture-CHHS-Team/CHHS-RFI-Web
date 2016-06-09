@@ -1,7 +1,8 @@
 var React = require('react');
 
 module.exports = React.createClass({
-	onKeyDown : function(o, u, e){				
+	onKeyDown : function(o, u, e){		
+		// select on space-down (ARIA requirement)		
 		if(o.keyCode === 32){
 			o.stopPropagation();
 			o.preventDefault();
