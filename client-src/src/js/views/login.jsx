@@ -9,7 +9,8 @@ module.exports = React.createClass({
 	    AuthStore.on('change', this.checkLogin);
 
 	    // Go ahead an log out if we hit this page
-	    AuthStore.logout();
+	    // Timeout to give parent classes time to register AuthStore callbacks
+	    setTimeout(() => { AuthStore.logout(); }, 0);
 	},
 
 	componentWillUnmount() {
