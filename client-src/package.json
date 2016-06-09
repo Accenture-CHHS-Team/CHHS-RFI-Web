@@ -35,9 +35,11 @@
     "yargs": "^3.29.0"
   },
   "dependencies": {
+    "@asaayers/react-a11y": "^0.1.0",
     "babelify": "^7.3.0",
     "flux": "^2.1.1",
     "react": "^15.1.0",
+    "react-a11y": "^0.3.3",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",
     "react-slick": "^0.12.2",

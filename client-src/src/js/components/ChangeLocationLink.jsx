@@ -44,20 +44,20 @@ var LocationForm = React.createClass({
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div className="form-group">
-					<input onChange={this.handleChange} type="text" className="form-control" placeholder="Address" name="streetAddress" value={this.state.address.streetAddress} />
+					<input aria-label="Address" onChange={this.handleChange} type="text" className="form-control" placeholder="Address" name="streetAddress" value={this.state.address.streetAddress} />
 				</div>
 				<div className="form-group">
-					<input onChange={this.handleChange} type="text" className="form-control" placeholder="City" name="city" value={this.state.address.city} />
+					<input aria-label="City" onChange={this.handleChange} type="text" className="form-control" placeholder="City" name="city" value={this.state.address.city} />
 				</div>
 				<div className="form-group row">
 					<div className="col-xs-6">
-						<input onChange={this.handleChange} type="text" className="form-control" placeholder="State" name="state" value={this.state.address.state} />
+						<input aria-label="State" onChange={this.handleChange} type="text" className="form-control" placeholder="State" name="state" value={this.state.address.state} />
 					</div>
 					<div className="col-xs-6">
-						<input onChange={this.handleChange} type="text" className="form-control" placeholder="Zip" name="zip" value={this.state.address.zip} />
+						<input aria-label="Zip" onChange={this.handleChange} type="text" className="form-control" placeholder="Zip" name="zip" value={this.state.address.zip} />
 					</div>
 				</div>
-				<button type="submit" className="btn btn-primary btn-block">Update</button>
+				<button role="button" aria-label="Change your search address" type="submit" className="btn btn-primary btn-block">Update</button>
 			</form>
 		);
 	}

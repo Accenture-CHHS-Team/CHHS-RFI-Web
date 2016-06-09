@@ -26,7 +26,7 @@ module.exports = React.createClass({
 			<form onSubmit={this._save}>
 				<div className="row">
 					<div className="col-xs-9 col-sm-10">
-						<input 
+						<input aria-label="Enter your message here"
 							type="text"
 							value={this.state.value} 
 							onChange={this._onChange} 
@@ -34,7 +34,7 @@ module.exports = React.createClass({
 							placeholder="Type your message here" />
 					</div>
 					<div className="col-xs-3 col-sm-2">
-						<button type="submit" className="btn btn-primary btn-block">Send</button>
+						<button aria-label="Send your message" type="submit" className="btn btn-primary btn-block">Send</button>
 					</div>
 				</div>
 			</form>

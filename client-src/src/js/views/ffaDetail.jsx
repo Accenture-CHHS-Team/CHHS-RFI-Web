@@ -63,7 +63,7 @@ module.exports = React.createClass({
 		return (
 			<div className="facility-detail">
 				<div className="container">
-					<Link to="/ffa" className="back">Back</Link>
+					<Link aria-label="Return to list" to="/ffa" className="back">Back</Link>
 					<h2>{this.state.facility.facility_name}</h2>
 				</div>
 				<div className="hero-image"></div>
@@ -73,7 +73,7 @@ module.exports = React.createClass({
 						{this.state.facility.facility_address} <br/>
 						{this.state.facility.facility_city}, {this.state.facility.facility_state}<br/>
 						{this.state.facility.facility_zip} <br/>
-						<a href={'http://maps.google.com/?q=' + this.state.facility.facility_address + ', ' + this.state.facility.facility_city+ ', ' + this.state.facility.facility_state + ', ' + this.state.facility.facility_zip} targe="_blank">Open in Maps</a>
+						<a aria-label="Open this location in Google Maps" href={'http://maps.google.com/?q=' + this.state.facility.facility_address + ', ' + this.state.facility.facility_city+ ', ' + this.state.facility.facility_state + ', ' + this.state.facility.facility_zip} targe="_blank">Open in Maps</a>
 					</p>
 					<h4>Phone Number</h4>
 					<p>
